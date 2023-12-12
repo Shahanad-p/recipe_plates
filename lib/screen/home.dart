@@ -19,7 +19,7 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   final ImagePicker _imagePicker = ImagePicker();
   TextEditingController searchController = TextEditingController();
-  List<recipeModel> studentList = [];
+  List<recipeModel> foodRecipetList = [];
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       drawer: const SideBarDrawer(),
       body: Column(
         children: [
-          Text(
+          const Text(
             'What\'s in your kitchen..?',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
@@ -86,7 +86,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       final recipeDatas = recipeList[index];
                       final reversedIndex = recipeList.length - 1 - index;
                       final data = recipeList[reversedIndex];
-                      // final addData=hive
+                      // final addData=hive;
                       File? recipeImage;
                       if (recipeDatas.image != null) {
                         recipeImage = File(recipeDatas.image!);

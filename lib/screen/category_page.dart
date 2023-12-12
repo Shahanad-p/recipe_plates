@@ -39,7 +39,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Beverages',
                 imagePath:
-                    'assets/Image/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
             InkWell(
@@ -50,7 +50,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Fastfood',
                 imagePath:
-                    'assets/Image/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
             InkWell(
@@ -61,7 +61,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Salads',
                 imagePath:
-                    'assets/Image/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
             InkWell(
@@ -72,7 +72,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Desserts',
                 imagePath:
-                    'assets/Image/red-cupcake-with-strawberries-and-cream-illustration-isolated-object-transparent-background-ai-generated-free-png.webp',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
             InkWell(
@@ -83,7 +83,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Healthy',
                 imagePath:
-                    'assets/Image/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
             InkWell(
@@ -94,7 +94,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Grilled',
                 imagePath:
-                    'assets/Image/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
             InkWell(
@@ -105,7 +105,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
               child: buildCategoriesBox(
                 category: 'Snacks',
                 imagePath:
-                    'assets/Image/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
               ),
             ),
           ],
@@ -118,7 +118,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
       backgroundColor: Colors.white10,
       title: Text(
         appBarName,
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        style:
+            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
     );

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:recipe_plates/db/mode/model.dart';
-import 'package:recipe_plates/screen/add.dart';
-import 'package:recipe_plates/screen/home.dart';
 import 'package:recipe_plates/screen/splash_screen.dart';
 
 Future<void> main() async {

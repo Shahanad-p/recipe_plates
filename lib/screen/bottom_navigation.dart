@@ -17,7 +17,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     HomePageWidget(
         // username: '',
         ),
-    const FavouritePageWidget(),
+    FavouritePageWidget(),
     const CategoryPageWidget(),
     PieChartPageWidget(),
   ];

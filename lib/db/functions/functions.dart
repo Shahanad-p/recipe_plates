@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:recipe_plates/db/mode/model.dart';
-import 'package:recipe_plates/screen/update_page.dart';
 
 ValueNotifier<List<recipeModel>> recipeNotifier = ValueNotifier([]);
 List<recipeModel> cartitems = [];
@@ -37,24 +36,25 @@ Future<void> updateRecipe(int index, recipeModel newRecipe) async {
   // }
   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
   await recipeDB.putAt(index, newRecipe);
-  print(recipeDB.values);
+  // print(recipeDB.values);
   getAllRecipiesByList();
 }
 
 Future<void> addToFavourite(recipeModel data) async {
-  final cartdb = await Hive.openBox<recipeModel>('cart_db');
+  final cartdb = await Hive.openBox<recipeModel>('favorite_db');
   cartitems.add(data);
   cartdb.add(data);
-  recipeNotifier.notifyListeners();
+  // recipeNotifier.notifyListeners();
   getAllRecipiesByList();
 }
 
 Future<void> deleteFromFavourite(int index) async {
-  final cartdb = await Hive.openBox<recipeModel>('cart_db');
+  final cartdb = await Hive.openBox<recipeModel>('favorite_db');
   cartdb.deleteAt(index);
   cartitems.removeAt(index);
   getAllRecipiesByList();
 }
+
 
 // Future<void> updateAllRecipies(int index) async {
 //   final recipedb = await Hive.openBox<recipeModel>('recipe_db');

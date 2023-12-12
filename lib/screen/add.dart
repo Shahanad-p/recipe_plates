@@ -92,7 +92,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
       child: Image.asset(
-        'assets/Image/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
+        'assets/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
         height: 150,
         width: 220,
         fit: BoxFit.fill,
@@ -295,12 +295,12 @@ class _AddPageWidgetState extends State<AddPageWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   buildImageSelectionOption(
-                    'assets/Image/Animation - 1701430677440.json',
+                    'assets/Animation - 1701430677440.json',
                     'Gallery',
                     selectedImageFromGallery,
                   ),
                   buildImageSelectionOption(
-                    'assets/Image/Animation - 1701430745712.json',
+                    'assets/Animation - 1701430745712.json',
                     'Camera',
                     selectedImageFromCamera,
                   ),

@@ -5,7 +5,8 @@ import 'package:recipe_plates/db/mode/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class FavouritePageWidget extends StatefulWidget {
-  const FavouritePageWidget({Key? key});
+  final favoriteList = recipeNotifier.value;
+  FavouritePageWidget({Key? key});
 
   @override
   State<FavouritePageWidget> createState() => _FavouritePageWidgetState();
@@ -16,6 +17,7 @@ initState() {
 }
 
 class _FavouritePageWidgetState extends State<FavouritePageWidget> {
+  List<recipeModel> favouriteList = [];
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -43,32 +45,38 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
   Widget buildFavouriteGridView({
     dynamic itemCount,
   }) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount:
-              MediaQuery.of(context).orientation == Orientation.portrait
-                  ? 2
-                  : 4,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        itemCount: cartitems.length,
-        itemBuilder: (context, index) {
-          final recipe = cartitems[index];
-          return buildGridItem(
-            image: recipe.image,
-            iconData: recipe.isFavorite
-                ? Icons.favorite
-                : Icons.favorite_outline_outlined,
-            text1: recipe.name,
-            index: index,
-            recipe: recipe,
-          );
-        },
-      ),
+    return ValueListenableBuilder(
+      valueListenable: recipeNotifier,
+      builder: (BuildContext context, List<recipeModel> favoriteList,
+          Widget? child) {
+        return Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount:
+                  MediaQuery.of(context).orientation == Orientation.portrait
+                      ? 2
+                      : 4,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+            ),
+            itemCount: cartitems.length,
+            itemBuilder: (context, index) {
+              final recipe = cartitems[index];
+              return buildGridItem(
+                image: recipe.image,
+                iconData: recipe.isFavorite
+                    ? Icons.favorite
+                    : Icons.favorite_outline_outlined,
+                text1: recipe.name,
+                index: index,
+                recipe: recipe,
+              );
+            },
+          ),
+        );
+      },
     );
   }
 
@@ -121,8 +129,8 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
               if (image != null)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    image,
+                  child: Image.file(
+                    File(image),
                     height: 100,
                     width: 150,
                     fit: BoxFit.cover,

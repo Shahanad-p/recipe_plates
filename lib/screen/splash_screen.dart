@@ -32,7 +32,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
           width: double.infinity,
           child: Image(
             image: AssetImage(
-              'assets/Image/side-view-mushroom-frying-with-stove-spice-human-hand-pan (1).jpg',
+              'assets/side-view-mushroom-frying-with-stove-spice-human-hand-pan (1).jpg',
             ),
             fit: BoxFit.cover,
           ),

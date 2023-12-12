@@ -35,6 +35,4 @@ class recipeModel {
       required this.image,
       this.index,
       this.isFavorite = false});
-
-  get selectedImagePath => null;
 }

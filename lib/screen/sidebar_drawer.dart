@@ -27,7 +27,7 @@ class SideBarDrawer extends StatelessWidget {
               child: Stack(
                 children: [
                   Lottie.asset(
-                    'assets/Image/Animation - 1701094006028.json', // Replace with the path to your Lottie animation JSON file
+                    'assets/Animation - 1701094006028.json', 
                     height: 300,
                     width: 250,
                     repeat: true,

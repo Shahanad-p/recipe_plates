@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:recipe_plates/db/functions/functions.dart';
 import 'package:recipe_plates/db/mode/model.dart';
-import 'package:recipe_plates/screen/home.dart';
 
 final _imagePicker = ImagePicker();
 final nameController = TextEditingController();
@@ -65,7 +63,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(appBarName: 'New Recipe'),
+      appBar: buildAppBar(appBarName: 'Edit your recipies'),
       body: buildBody(),
     );
   }
@@ -120,7 +118,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
       child: Image.asset(
-        'assets/Image/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
+        'assets/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
         height: 150,
         width: 220,
         fit: BoxFit.fill,
@@ -146,7 +144,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         buildTextFormField(
           nameController,
           'Name',
-          'Enter your recipe name',
+          'Edit recipe name',
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
@@ -161,7 +159,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         buildTextFormField(
           descriptionController,
           'Description',
-          'Enter your recipe description here',
+          'Edit recipe description',
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
@@ -174,7 +172,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         buildTextFormField(
           ingredientsController,
           'Ingredients',
-          'Enter your recipe ingredients',
+          'Edit recipe ingredients',
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
@@ -187,7 +185,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         buildTextFormField(
           costController,
           'Total cost',
-          'Enter your recipe total cost',
+          'Edit recipe cost',
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
@@ -253,7 +251,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
             cost: costController.text,
             image: image,
           );
-          updateRecipe(context); 
+          updateRecipe(context);
           Navigator.of(context).pop();
         } else {
           debugPrint('Please fix the errors before submitting.');
