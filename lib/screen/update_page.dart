@@ -243,14 +243,14 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
       ),
       onPressed: () {
         if (_formKey.currentState!.validate()) {
-          final newRecipe = recipeModel(
-            name: nameController.text,
-            category: categoryController.text,
-            description: descriptionController.text,
-            ingredients: ingredientsController.text,
-            cost: costController.text,
-            image: image,
-          );
+          // final newRecipe = recipeModel(
+          //   name: nameController.text,
+          //   category: categoryController.text,
+          //   description: descriptionController.text,
+          //   ingredients: ingredientsController.text,
+          //   cost: costController.text,
+          //   image: image,
+          // );
           updateRecipe(context);
           Navigator.of(context).pop();
         } else {

@@ -4,9 +4,14 @@ import 'package:recipe_plates/db/functions/functions.dart';
 import 'package:recipe_plates/db/mode/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class FastfoodPage extends StatelessWidget {
+class FastfoodPage extends StatefulWidget {
   const FastfoodPage({Key? key});
 
+  @override
+  State<FastfoodPage> createState() => _FastfoodPageState();
+}
+
+class _FastfoodPageState extends State<FastfoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,43 +37,28 @@ class FastfoodPage extends StatelessWidget {
               .where((food) => food.category.toLowerCase() == 'fastfood')
               .toList();
 
-          return GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 0,
-              mainAxisSpacing: 0,
-            ),
-            itemCount: filteredFastfoodList.length,
-            itemBuilder: (context, index) {
-              final recipeData = filteredFastfoodList[index];
-              File? recipeImage;
-              if (recipeData.image != null) {
-                recipeImage = File(recipeData.image!);
-              }
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ListView.builder(
+              itemCount: filteredFastfoodList.length,
+              itemBuilder: (context, index) {
+                final recipeData = filteredFastfoodList[index];
+                File? recipeImage;
+                if (recipeData.image != null) {
+                  recipeImage = File(recipeData.image!);
+                }
 
-              return buildGridList(
-                context,
-                image: recipeImage,
-                icon: Icons.favorite_border_outlined,
-                text: recipeData.name,
-                category: recipeData.category,
-                description: recipeData.description,
-                ingredients: recipeData.ingredients,
-                cost: recipeData.cost,
-                editIcon: IconButton(
-                  onPressed: () {
-                    // Handle edit action
-                  },
-                  icon: const Icon(Icons.edit),
-                ),
-                deleteIcon: IconButton(
-                  onPressed: () {
-                    deleteRecipies(index);
-                  },
-                  icon: const Icon(Icons.delete),
-                ),
-              );
-            },
+                return buildGridList(
+                  context,
+                  image: recipeImage,
+                  text: recipeData.name,
+                  category: recipeData.category,
+                  description: recipeData.description,
+                  ingredients: recipeData.ingredients,
+                  cost: recipeData.cost,
+                );
+              },
+            ),
           );
         },
       ),
@@ -78,100 +68,113 @@ class FastfoodPage extends StatelessWidget {
   Widget buildGridList(
     BuildContext context, {
     File? image,
-    IconData? icon,
     String? text,
     String? category,
     String? description,
     String? ingredients,
     String? cost,
-    IconButton? deleteIcon,
-    IconButton? editIcon,
   }) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => MenuOpeningPage(
-              name: text,
-              category: category,
-              description: description!,
-              ingredients: ingredients!,
-              cost: cost!,
-              selectedImagePath: image!,
+    double cardWidth = MediaQuery.of(context).size.width *
+        (MediaQuery.of(context).orientation == Orientation.portrait
+            ? 0.4
+            : 0.2);
+    double cardHeight = 120.0;
+    return Padding(
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
+      child: Container(
+        width: cardWidth,
+        height: cardHeight,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(255, 2, 36, 17),
+              offset: Offset(3.0, 3.0),
+              blurRadius: 1,
+              spreadRadius: 1,
             ),
-          ),
-        );
-      },
-      child: Card(
-        elevation: 5,
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: image != null
-                  ? Image.file(
-                      image,
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.cover,
-                    )
-                  : Container(),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            BoxShadow(
+              color: Color.fromARGB(255, 255, 255, 255),
+              blurRadius: 1,
+              spreadRadius: 1,
+            )
+          ],
+        ),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => MenuOpeningPage(
+                name: text,
+                category: category,
+                description: description!,
+                ingredients: ingredients!,
+                cost: cost!,
+                selectedImagePath: image!,
+              ),
+            ));
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(2.10),
+            child: Stack(
               children: [
-                deleteIcon!,
-                editIcon!,
-                const Positioned(
-                  top: 2.0,
-                  right: 2.0,
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: IconButton(
-                      onPressed: null,
-                      icon: Icon(Icons.favorite_outline),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: image != null
+                      ? Image.file(
+                          image,
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.cover,
+                        )
+                      : Container(),
+                ),
+                Positioned(
+                  top: 20,
+                  left: 10,
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          text!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 18,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black,
+                                offset: Offset(2, 2),
+                                blurRadius: 1,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          category!,
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 54, 14, 7),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            shadows: [
+                              Shadow(
+                                color: Colors.white,
+                                offset: Offset(1, 1),
+                                blurRadius: 0,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ],
             ),
-            Positioned(
-              bottom: 35,
-              left: 35,
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      text!,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      category!,
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 10, 65, 12),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      '₹: ${cost.toString()}',
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

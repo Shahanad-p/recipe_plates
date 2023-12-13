@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:recipe_plates/db/functions/functions.dart';
 import 'package:recipe_plates/db/mode/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
@@ -15,13 +14,27 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  final ImagePicker _imagePicker = ImagePicker();
+  // final ImagePicker _imagePicker = ImagePicker();
   TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    getAllRecipiesByList(); // Replace with your actual implementation
+    getAllRecipiesByList();
+  }
+
+  void showDeleteSnackbar() {
+    final snackBar = SnackBar(
+      content: const Text('Recipe deleted'),
+      action: SnackBarAction(
+        label: 'Undo',
+        onPressed: () {
+          // Implement undo action if needed
+          // For example, you can call a method to restore the deleted item.
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override

@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/db/functions/functions.dart';
 import 'package:recipe_plates/db/mode/model.dart';
-import 'package:recipe_plates/screen/home.dart';
 
 class AddPageWidget extends StatefulWidget {
   const AddPageWidget({Key? key}) : super(key: key);
@@ -14,7 +13,7 @@ class AddPageWidget extends StatefulWidget {
 }
 
 class _AddPageWidgetState extends State<AddPageWidget> {
-  final _imagePicker = ImagePicker();
+  // final _imagePicker = ImagePicker();
   final ImagePicker image = ImagePicker();
   final _nameController = TextEditingController();
   final _descriptionController = TextEditingController();

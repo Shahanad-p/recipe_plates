@@ -40,7 +40,7 @@ class _BeveragesPageState extends State<BeveragesPage> {
           return Padding(
             padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
-              shrinkWrap: true,
+              // shrinkWrap: true,
               itemCount: filteredBeveragesList.length,
               itemBuilder: (context, index) {
                 final recipeDatas = filteredBeveragesList[index];
@@ -119,14 +119,6 @@ class _BeveragesPageState extends State<BeveragesPage> {
             padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
-                const Positioned(
-                  top: 15,
-                  left: 10,
-                  child: Text(
-                    'Start Text',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: image != null
@@ -178,14 +170,6 @@ class _BeveragesPageState extends State<BeveragesPage> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 3),
-                        // Text(
-                        //   '₹: ${cost.toString()}',
-                        //   style: const TextStyle(
-                        //     color: Colors.black,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
