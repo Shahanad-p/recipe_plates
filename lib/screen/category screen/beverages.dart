@@ -119,7 +119,6 @@ class _BeveragesPageState extends State<BeveragesPage> {
             padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
-                // Text positioned at the start
                 const Positioned(
                   top: 15,
                   left: 10,

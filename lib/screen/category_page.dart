@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_plates/category%20screen/beverages.dart';
-import 'package:recipe_plates/category%20screen/desserts.dart';
-import 'package:recipe_plates/category%20screen/fastfood.dart';
-import 'package:recipe_plates/category%20screen/grilled.dart';
-import 'package:recipe_plates/category%20screen/healthy.dart';
-import 'package:recipe_plates/category%20screen/salads.dart';
-import 'package:recipe_plates/category%20screen/snacks.dart';
+import 'package:recipe_plates/screen/category%20screen/beverages.dart';
+import 'package:recipe_plates/screen/category%20screen/desserts.dart';
+import 'package:recipe_plates/screen/category%20screen/fastfood.dart';
+import 'package:recipe_plates/screen/category%20screen/grilled.dart';
+import 'package:recipe_plates/screen/category%20screen/healthy.dart';
+import 'package:recipe_plates/screen/category%20screen/salads.dart';
+import 'package:recipe_plates/screen/category%20screen/snacks.dart';
 
 class CategoryPageWidget extends StatefulWidget {
   const CategoryPageWidget({Key? key}) : super(key: key);

@@ -97,15 +97,16 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
           borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
-              color: Color.fromARGB(255, 194, 176, 176),
+              color: Color.fromARGB(255, 184, 177, 177),
               offset: Offset(8.0, 8.0),
-              blurRadius: 0,
-              spreadRadius: 1,
+              blurRadius: 1,
+              spreadRadius: 0,
             ),
             BoxShadow(
               color: Color.fromARGB(255, 255, 255, 255),
-              blurRadius: 1,
-              spreadRadius: 0,
+              offset: Offset(-3.0, -3.0),
+              blurRadius: 10,
+              spreadRadius: 1,
             )
           ],
         ),
@@ -131,14 +132,14 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
                   borderRadius: BorderRadius.circular(20),
                   child: Image.file(
                     File(image),
-                    height: 100,
+                    height: 160,
                     width: 150,
                     fit: BoxFit.cover,
                   ),
                 ),
               Positioned(
-                top: 7,
-                right: 7,
+                top: 5,
+                right: 5,
                 child: IconButton(
                   onPressed: () {
                     deleteFromFavourite(index);
@@ -146,18 +147,18 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
                   icon: const Icon(Icons.favorite_outline),
                 ),
               ),
-              Positioned(
-                left: 50,
-                bottom: 30,
-                child: Text(
-                  text1,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   left: 20,
+              //   bottom: 70,
+              //   child: Text(
+              //     text1,
+              //     style: const TextStyle(
+              //       color: Colors.black,
+              //       fontSize: 15,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

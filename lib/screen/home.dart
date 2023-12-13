@@ -8,25 +8,20 @@ import 'package:recipe_plates/screen/sidebar_drawer.dart';
 import 'package:recipe_plates/screen/update_page.dart';
 
 class HomePageWidget extends StatefulWidget {
-  final recipeList = recipeNotifier.value;
-  HomePageWidget({super.key});
+  HomePageWidget({Key? key}) : super(key: key);
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-@override
 class _HomePageWidgetState extends State<HomePageWidget> {
   final ImagePicker _imagePicker = ImagePicker();
   TextEditingController searchController = TextEditingController();
-  List<recipeModel> foodRecipetList = [];
 
   @override
   void initState() {
     super.initState();
-
-    // loadstd();
-    getAllRecipiesByList();
+    getAllRecipiesByList(); // Replace with your actual implementation
   }
 
   @override
@@ -50,7 +45,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               controller: searchController,
               decoration: InputDecoration(
                 label: const Text('Search'),
-                hintText: 'Search your recipies here..!',
+                hintText: 'Search your recipes here..!',
                 contentPadding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width * 0.1),
                 border: OutlineInputBorder(
@@ -85,8 +80,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     itemBuilder: (context, index) {
                       final recipeDatas = recipeList[index];
                       final reversedIndex = recipeList.length - 1 - index;
-                      final data = recipeList[reversedIndex];
-                      // final addData=hive;
                       File? recipeImage;
                       if (recipeDatas.image != null) {
                         recipeImage = File(recipeDatas.image!);
@@ -102,26 +95,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ingredients: recipeDatas.ingredients,
                         cost: recipeDatas.cost,
                         editIcon: IconButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => UpdatePageWidget(
-                                        index: index,
-                                        name: data.name,
-                                        category: data.category,
-                                        description: data.description,
-                                        ingredients: data.ingredients,
-                                        cost: data.cost,
-                                        image: data.image,
-                                      )));
-                            },
-                            icon: const Icon(Icons.edit)),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => UpdatePageWidget(
+                                index: index,
+                                name: recipeDatas.name,
+                                category: recipeDatas.category,
+                                description: recipeDatas.description,
+                                ingredients: recipeDatas.ingredients,
+                                cost: recipeDatas.cost,
+                                image: recipeDatas.image,
+                              ),
+                            ));
+                          },
+                          icon: const Icon(Icons.edit),
+                        ),
                         deleteIcon: IconButton(
                           onPressed: () {
                             deleteRecipies(index);
                           },
-                          icon: const Icon(
-                            Icons.delete,
-                          ),
+                          icon: const Icon(Icons.delete),
                         ),
                         addToCart: () {
                           addToFavourite(recipeDatas);
@@ -162,7 +155,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     double cardHeight = 150.0;
 
     return Padding(
-      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
+      padding: EdgeInsets.all(
+        MediaQuery.of(context).size.width * 0.01,
+      ),
       child: Container(
         width: cardWidth,
         height: cardHeight,
@@ -242,6 +237,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
                             fontSize: 18,
+                            shadows: [
+                              Shadow(
+                                color: Colors.white,
+                                offset: Offset(1, 1),
+                                blurRadius: 1,
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(height: 3),
@@ -250,6 +252,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           style: const TextStyle(
                             color: Color.fromARGB(255, 10, 65, 12),
                             fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.white,
+                                offset: Offset(1, 1),
+                                blurRadius: 1,
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(height: 3),
@@ -258,6 +267,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Colors.white,
+                                offset: Offset(1, 1),
+                                blurRadius: 1,
+                              ),
+                            ],
                           ),
                         ),
                       ],

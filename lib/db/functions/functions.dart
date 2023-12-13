@@ -69,3 +69,12 @@ Future<void> deleteFromFavourite(int index) async {
 //   await recipedb.putAt(index, recipeUpdate);
 //   getAllRecipiesByList();
 // }
+//chart calcultion
+
+double calculateTotalCost(List<recipeModel> foods) {
+  double totalCost = 0;
+  for (var food in foods) {
+    totalCost += double.parse(food.cost);
+  }
+  return totalCost;
+}
