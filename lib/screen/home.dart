@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/db/functions/functions.dart';
 import 'package:recipe_plates/db/mode/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
@@ -14,7 +15,6 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  // final ImagePicker _imagePicker = ImagePicker();
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -23,18 +23,52 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     getAllRecipiesByList();
   }
 
-  void showDeleteSnackbar() {
-    final snackBar = SnackBar(
-      content: const Text('Recipe deleted'),
-      action: SnackBarAction(
-        label: 'Undo',
-        onPressed: () {
-          // Implement undo action if needed
-          // For example, you can call a method to restore the deleted item.
-        },
-      ),
+  Future<void> showDeleteConfirmationDialog(int index) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'Are you sure you want to delete this recipe.?',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'No',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.green),
+              ),
+              onPressed: () {
+                deleteRecipies(index);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -125,7 +159,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                         deleteIcon: IconButton(
                           onPressed: () {
-                            deleteRecipies(index);
+                            showDeleteConfirmationDialog(index);
                           },
                           icon: const Icon(Icons.delete),
                         ),

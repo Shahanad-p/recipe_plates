@@ -40,6 +40,7 @@ class _FastfoodPageState extends State<FastfoodPage> {
           return Padding(
             padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
+              shrinkWrap: true,
               itemCount: filteredFastfoodList.length,
               itemBuilder: (context, index) {
                 final recipeData = filteredFastfoodList[index];

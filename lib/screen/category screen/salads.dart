@@ -39,14 +39,6 @@ class _SaladsPageState extends State<SaladsPage> {
 
           return ListView.builder(
             shrinkWrap: true,
-            // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //   crossAxisCount:
-            //       MediaQuery.of(context).orientation == Orientation.portrait
-            //           ? 2
-            //           : 4,
-            //   crossAxisSpacing: 0,
-            //   mainAxisSpacing: 0,
-            // ),
             itemCount: filteredSaladsList.length,
             itemBuilder: (context, index) {
               final recipeData = filteredSaladsList[index];
@@ -56,20 +48,11 @@ class _SaladsPageState extends State<SaladsPage> {
               return buildGridList(
                 context,
                 image: recipeImage,
-                // icon: Icons.favorite_border_outlined,
                 text: recipeData.name,
                 category: recipeData.category,
                 description: recipeData.description,
                 ingredients: recipeData.ingredients,
                 cost: recipeData.cost,
-                // editIcon:
-                //     IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-                // deleteIcon: IconButton(
-                //   onPressed: () {
-                //     deleteRecipies(index);
-                //   },
-                //   icon: const Icon(Icons.delete),
-                // ),
               );
             },
           );
@@ -81,14 +64,11 @@ class _SaladsPageState extends State<SaladsPage> {
   Widget buildGridList(
     BuildContext context, {
     File? image,
-    // IconData? icon,
     String? text,
     String? category,
     String? description,
     String? ingredients,
     String? cost,
-    // IconButton? deleteIcon,
-    // IconButton? editIcon,
   }) {
     double cardWidth = MediaQuery.of(context).size.width *
         (MediaQuery.of(context).orientation == Orientation.portrait

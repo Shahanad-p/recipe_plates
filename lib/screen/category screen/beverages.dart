@@ -40,7 +40,7 @@ class _BeveragesPageState extends State<BeveragesPage> {
           return Padding(
             padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
-              // shrinkWrap: true,
+              shrinkWrap: true,
               itemCount: filteredBeveragesList.length,
               itemBuilder: (context, index) {
                 final recipeDatas = filteredBeveragesList[index];

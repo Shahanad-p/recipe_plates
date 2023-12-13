@@ -37,8 +37,7 @@ class _SnacksPageState extends State<SnacksPage> {
               .toList();
 
           return ListView.builder(
-            // shrinkWrap: true,
-
+            shrinkWrap: true,
             itemCount: filteredSnacksList.length,
             itemBuilder: (context, index) {
               final recipeData = filteredSnacksList[index];

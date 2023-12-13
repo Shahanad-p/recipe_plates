@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/db/functions/functions.dart';
@@ -35,12 +36,12 @@ class _AddPageWidgetState extends State<AddPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(appBarName: 'New Recipe'),
+      appBar: buildAppBar('New Recipe'),
       body: buildBody(),
     );
   }
 
-  AppBar buildAppBar({required String appBarName}) {
+  AppBar buildAppBar(String appBarName) {
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.white10,
@@ -155,33 +156,27 @@ class _AddPageWidgetState extends State<AddPageWidget> {
           },
         ),
         const SizedBox(height: 10),
-        buildTextFormField(
-          _costController,
-          'Total cost',
-          'Enter your recipe total cost',
-          80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return 'Total cost is required';
-            }
-            return null;
-          },
-        ),
+        buildTextFormField(_costController, 'Total cost',
+            'Enter your recipe total cost', 80.10, (value) {
+          if (value == null || value.isEmpty) {
+            return 'Total cost is required';
+          }
+          return null;
+        }, numericOnly: true),
       ],
     );
   }
 
-  Widget buildTextFormField(
-    TextEditingController controller,
-    String label,
-    String hintText,
-    double height,
-    String? Function(String?)? validator,
-  ) {
+  Widget buildTextFormField(TextEditingController controller, String label,
+      String hintText, double height, String? Function(String?)? validator,
+      {bool numericOnly = false}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: controller,
+        keyboardType: numericOnly ? TextInputType.number : null,
+        inputFormatters:
+            numericOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
         maxLines: null,
         decoration: InputDecoration(
           border: const OutlineInputBorder(
@@ -276,7 +271,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
   Widget buildImageSelectionDialog() {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.10)),
-      child: Container(
+      child: SizedBox(
         width: 150,
         height: 180,
         child: Padding(
