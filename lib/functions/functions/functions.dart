@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:recipe_plates/functions/model/model.dart';
 
-import 'package:recipe_plates/functions/mode/model.dart';
+
 
 ValueNotifier<List<recipeModel>> recipeNotifier = ValueNotifier([]);
 List<recipeModel> cartitems = [];

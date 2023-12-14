@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
-import 'package:recipe_plates/functions/mode/model.dart';
+import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 import 'package:recipe_plates/screen/sidebar_drawer.dart';
 import 'package:recipe_plates/screen/update_page.dart';
@@ -77,6 +77,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'Hey Shahanad..!',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+              color: Color.fromARGB(255, 142, 146, 143)),
+        ),
+        centerTitle: true,
         backgroundColor: Colors.white10,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -84,6 +92,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       drawer: const SideBarDrawer(),
       body: Column(
         children: [
+          // Container(
+          //   // child: Text(
+          //   //   'Hey Shahanad..!',
+          //   //   style: TextStyle(
+          //   //       fontWeight: FontWeight.bold,
+          //   //       fontSize: 22,
+          //   //       color: Color.fromARGB(255, 11, 90, 14)),
+          //   // ),
+          //   height: 35,
+          //   width: double.infinity,
+          //   color: Colors.amber,
+          // ),
+          const SizedBox(height: 35),
           const Text(
             'What\'s in your kitchen..?',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
-import 'package:recipe_plates/functions/mode/model.dart';
+import 'package:recipe_plates/functions/model/model.dart';
 
 class PieChartPageWidget extends StatelessWidget {
   PieChartPageWidget({Key? key}) : super(key: key);

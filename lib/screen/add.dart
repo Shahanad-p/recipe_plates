@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
-import 'package:recipe_plates/functions/mode/model.dart';
+import 'package:recipe_plates/functions/model/model.dart';
 
 class AddPageWidget extends StatefulWidget {
   const AddPageWidget({Key? key}) : super(key: key);
