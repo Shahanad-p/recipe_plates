@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/db/functions/functions.dart';
-import 'package:recipe_plates/db/mode/model.dart';
+import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/functions/mode/model.dart';
 
 class AddPageWidget extends StatefulWidget {
   const AddPageWidget({Key? key}) : super(key: key);
@@ -294,7 +294,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
                     selectedImageFromGallery,
                   ),
                   buildImageSelectionOption(
-                    'assets/Animation - 1701430745712.json',
+                    'assets/Animation - 1702530000704.json',
                     'Camera',
                     selectedImageFromCamera,
                   ),

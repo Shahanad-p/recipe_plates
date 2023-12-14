@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/db/functions/functions.dart';
-import 'package:recipe_plates/db/mode/model.dart';
+import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/functions/mode/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 import 'package:recipe_plates/screen/sidebar_drawer.dart';
 import 'package:recipe_plates/screen/update_page.dart';
@@ -29,13 +29,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: const SingleChildScrollView(
+          content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(
+                const Text(
                   'Are you sure you want to delete this recipe.?',
                   style: TextStyle(fontSize: 18),
                 ),
+                Lottie.asset('assets/Animation - 1702529005450.json',
+                    height: 60)
               ],
             ),
           ),

@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:recipe_plates/db/functions/functions.dart';
-import 'package:recipe_plates/db/mode/model.dart';
+import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/functions/mode/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class SaladsPage extends StatefulWidget {

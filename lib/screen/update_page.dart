@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:recipe_plates/db/mode/model.dart';
+
 
 final _imagePicker = ImagePicker();
 final nameController = TextEditingController();
