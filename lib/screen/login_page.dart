@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/screen/bottom_navigation.dart';
+import 'package:recipe_plates/screen/home.dart';
 
 class LoginPageWidget extends StatefulWidget {
-  const LoginPageWidget({Key? key}) : super(key: key);
+  const LoginPageWidget({Key? key});
 
   @override
   State<LoginPageWidget> createState() => _LoginPageWidgetState();
@@ -21,7 +22,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 450,
               child: Stack(
                 children: <Widget>[
@@ -74,7 +75,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       border: Border.all(
-                          color: const Color.fromRGBO(196, 135, 198, .3)),
+                        color: const Color.fromRGBO(196, 135, 198, .3),
+                      ),
                       boxShadow: const [
                         BoxShadow(
                           color: Color.fromRGBO(196, 135, 198, .3),
@@ -99,7 +101,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "Username",
-                              hintStyle: TextStyle(color: Colors.grey.shade700),
+                              hintStyle: TextStyle(
+                                color: Colors.grey.shade700,
+                              ),
                             ),
                           ),
                         ),
@@ -112,7 +116,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => BottomNavBarWidget(
-                              username: usernameController.text),
+                            username: usernameController.text,
+                          ),
                         ),
                       );
                     },
@@ -127,6 +132,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
+                    onLongPress: () async {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => HomePageWidget(
+                            username: usernameController.text,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

@@ -8,15 +8,15 @@ class MenuOpeningPage extends StatefulWidget {
   final String ingredients;
   final String cost;
   final File selectedImagePath;
-  MenuOpeningPage({
+  const MenuOpeningPage({
     required this.name,
     required this.category,
     required this.description,
     required this.ingredients,
     required this.cost,
     required this.selectedImagePath,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<MenuOpeningPage> createState() => _MenuOpeningPageState();

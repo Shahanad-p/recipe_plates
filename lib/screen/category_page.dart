@@ -6,9 +6,10 @@ import 'package:recipe_plates/screen/category%20screen/grilled.dart';
 import 'package:recipe_plates/screen/category%20screen/healthy.dart';
 import 'package:recipe_plates/screen/category%20screen/salads.dart';
 import 'package:recipe_plates/screen/category%20screen/snacks.dart';
+import 'package:recipe_plates/screen/category%20screen/soup.dart';
 
 class CategoryPageWidget extends StatefulWidget {
-  const CategoryPageWidget({Key? key}) : super(key: key);
+  const CategoryPageWidget({super.key});
 
   @override
   State<CategoryPageWidget> createState() => _CategoryPageWidgetState();
@@ -33,8 +34,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
           children: [
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => BeveragesPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const BeveragesPage()));
               },
               child: buildCategoriesBox(
                 category: 'Beverages',
@@ -44,68 +45,73 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => FastfoodPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const FastfoodPage()));
               },
               child: buildCategoriesBox(
                 category: 'Fastfood',
                 imagePath:
-                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                    'assets/—Pngtree—creative cartoon burger vector material_3177179.png',
               ),
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SaladsPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SaladsPage()));
               },
               child: buildCategoriesBox(
                 category: 'Salads',
-                imagePath:
-                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                imagePath: 'assets/48049.jpg',
               ),
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => DessertsPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const DessertsPage()));
               },
               child: buildCategoriesBox(
                 category: 'Desserts',
-                imagePath:
-                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                imagePath: 'assets/xj5t_6v6e_220330.jpg',
               ),
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => HealthyPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HealthyPage()));
               },
               child: buildCategoriesBox(
                 category: 'Healthy',
-                imagePath:
-                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                imagePath: 'assets/3631249.jpg',
               ),
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => GrilledPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const GrilledPage()));
               },
               child: buildCategoriesBox(
                 category: 'Grilled',
-                imagePath:
-                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                imagePath: 'assets/13011.jpg',
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SnacksPage()));
+              },
+              child: buildCategoriesBox(
+                category: 'Snacks',
+                imagePath: 'assets/3730825.jpg',
               ),
             ),
             InkWell(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SnacksPage()));
+                    MaterialPageRoute(builder: (context) => const SoupPage()));
               },
               child: buildCategoriesBox(
-                category: 'Snacks',
-                imagePath:
-                    'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                category: 'Soup',
+                imagePath: 'assets/6339776.jpg',
               ),
             ),
           ],
@@ -131,11 +137,11 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
 
     return Padding(
       padding: const EdgeInsets.only(
-        left: 5,
-        right: 5,
+        left: 6,
+        right: 6,
       ),
       child: Container(
-        height: 60,
+        height: 55,
         width: cardWidth,
         margin: const EdgeInsets.all(13.10),
         decoration: BoxDecoration(

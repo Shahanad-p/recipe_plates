@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
-
-
 ValueNotifier<List<recipeModel>> recipeNotifier = ValueNotifier([]);
 List<recipeModel> cartitems = [];
 
@@ -28,14 +26,6 @@ Future<void> deleteRecipies(int index) async {
 }
 
 Future<void> updateRecipe(int index, recipeModel newRecipe) async {
-  // try {
-  //   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
-  //   await recipeDB.putAt(index, newRecipe);
-  //   print(recipeDB.values);
-  //   getAllRecipiesByList();
-  // } catch (e) {
-  //   debugPrint('Error updating recipe: $e');
-  // }
   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
   await recipeDB.putAt(index, newRecipe);
   // print(recipeDB.values);
@@ -57,17 +47,16 @@ Future<void> deleteFromFavourite(int index) async {
   getAllRecipiesByList();
 }
 
-
 // Future<void> updateAllRecipies(int index) async {
 //   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
-//   // final recipeUpdate = recipeModel(
-//   //   name: nameController.text,
-//   //   category: categoryController.text,
-//   //   description: descriptionController.text,
-//   //   ingredients: ingredientsController.text,
-//   //   cost: costController.text,
-//   //   image: image,
-//   // );
+//   final recipeUpdate = recipeModel(
+//     name: nameController.text,
+//     category: categoryController.text,
+//     description: descriptionController.text,
+//     ingredients: ingredientsController.text,
+//     cost: costController.text,
+//     image: image,
+//   );
 //   await recipedb.putAt(index, recipeUpdate);
 //   getAllRecipiesByList();
 // }

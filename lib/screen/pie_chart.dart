@@ -5,7 +5,7 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 class PieChartPageWidget extends StatelessWidget {
-  PieChartPageWidget({Key? key}) : super(key: key);
+  PieChartPageWidget({super.key});
 
   final dataMap = <String, double>{
     "Flutter": 5,

@@ -7,7 +7,7 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 class AddPageWidget extends StatefulWidget {
-  const AddPageWidget({Key? key}) : super(key: key);
+  const AddPageWidget({super.key});
 
   @override
   State<AddPageWidget> createState() => _AddPageWidgetState();
@@ -30,7 +30,8 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     'Desserts',
     'Healthy',
     'Grilled',
-    'Snacks'
+    'Snacks',
+    'Soup'
   ];
 
   @override

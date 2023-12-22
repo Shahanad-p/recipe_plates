@@ -4,20 +4,20 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class SaladsPage extends StatefulWidget {
-  const SaladsPage({super.key});
+class SoupPage extends StatefulWidget {
+  const SoupPage({super.key});
 
   @override
-  State<SaladsPage> createState() => _SaladsPageState();
+  State<SoupPage> createState() => _SoupPageState();
 }
 
-class _SaladsPageState extends State<SaladsPage> {
+class _SoupPageState extends State<SoupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Salads',
+          'Soup',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
@@ -29,31 +29,36 @@ class _SaladsPageState extends State<SaladsPage> {
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
-      body: ValueListenableBuilder<List<recipeModel>>(
+      body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
-          final filteredSaladsList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'salads')
+        builder:
+            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
+          final filteredBeveragesList = recipeList
+              .where((food) => food.category.toLowerCase() == 'soup')
               .toList();
+          return Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: filteredBeveragesList.length,
+              itemBuilder: (context, index) {
+                final recipeDatas = filteredBeveragesList[index];
+                File? recipeImage;
+                if (recipeDatas.image != null) {
+                  recipeImage = File(recipeDatas.image!);
+                }
 
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: filteredSaladsList.length,
-            itemBuilder: (context, index) {
-              final recipeData = filteredSaladsList[index];
-              final recipeImage =
-                  recipeData.image != null ? File(recipeData.image!) : null;
-
-              return buildGridList(
-                context,
-                image: recipeImage,
-                text: recipeData.name,
-                category: recipeData.category,
-                description: recipeData.description,
-                ingredients: recipeData.ingredients,
-                cost: recipeData.cost,
-              );
-            },
+                return buildGridList(
+                  context,
+                  image: recipeImage,
+                  text: recipeDatas.name,
+                  category: recipeDatas.category,
+                  description: recipeDatas.description,
+                  ingredients: recipeDatas.ingredients,
+                  cost: recipeDatas.cost,
+                );
+              },
+            ),
           );
         },
       ),

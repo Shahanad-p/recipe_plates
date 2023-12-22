@@ -3,24 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/screen/edit_page.dart';
 import 'package:recipe_plates/screen/menu.dart';
 import 'package:recipe_plates/screen/sidebar_drawer.dart';
-import 'package:recipe_plates/screen/update_page.dart';
 
 class HomePageWidget extends StatefulWidget {
-  HomePageWidget({Key? key}) : super(key: key);
+  final String username;
+  const HomePageWidget({super.key, required this.username});
 
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+  List<recipeModel> displayedRecipes = [];
   TextEditingController searchController = TextEditingController();
+  void filterRecipes(String query) {
+    setState(() {
+      displayedRecipes = recipeNotifier.value
+          .where((recipe) =>
+              recipe.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     getAllRecipiesByList();
+
+    displayedRecipes = recipeNotifier.value;
   }
 
   Future<void> showDeleteConfirmationDialog(int index) async {
@@ -77,9 +89,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Hey Shahanad..!',
-          style: TextStyle(
+        title: Text(
+          'Hey ${widget.username}..!',
+          style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 22,
               color: Color.fromARGB(255, 142, 146, 143)),
@@ -92,18 +104,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       drawer: const SideBarDrawer(),
       body: Column(
         children: [
-          // Container(
-          //   // child: Text(
-          //   //   'Hey Shahanad..!',
-          //   //   style: TextStyle(
-          //   //       fontWeight: FontWeight.bold,
-          //   //       fontSize: 22,
-          //   //       color: Color.fromARGB(255, 11, 90, 14)),
-          //   // ),
-          //   height: 35,
-          //   width: double.infinity,
-          //   color: Colors.amber,
-          // ),
           const SizedBox(height: 35),
           const Text(
             'What\'s in your kitchen..?',
@@ -113,6 +113,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
             child: TextField(
               controller: searchController,
+              onChanged: filterRecipes,
               decoration: InputDecoration(
                 label: const Text('Search'),
                 hintText: 'Search your recipes here..!',
@@ -146,9 +147,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       crossAxisSpacing: 0,
                       mainAxisSpacing: 0,
                     ),
-                    itemCount: recipeList.length,
+                    itemCount: displayedRecipes.length,
                     itemBuilder: (context, index) {
-                      final recipeDatas = recipeList[index];
+                      final recipeDatas = displayedRecipes[index];
                       final reversedIndex = recipeList.length - 1 - index;
                       File? recipeImage;
                       if (recipeDatas.image != null) {
@@ -167,7 +168,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         editIcon: IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => UpdatePageWidget(
+                              builder: (context) => EditPageWidget(
                                 index: index,
                                 name: recipeDatas.name,
                                 category: recipeDatas.category,

@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/screen/home.dart';
 
 final _imagePicker = ImagePicker();
 final nameController = TextEditingController();
@@ -9,8 +10,8 @@ final categoryController = TextEditingController();
 final descriptionController = TextEditingController();
 final ingredientsController = TextEditingController();
 final costController = TextEditingController();
-final _formKey = GlobalKey<FormState>();
 String? image;
+
 String selectCategory = 'Beverages';
 final List<String> _categoryList = [
   'Beverages',
@@ -22,7 +23,7 @@ final List<String> _categoryList = [
   'Snacks'
 ];
 
-class UpdatePageWidget extends StatefulWidget {
+class EditPageWidget extends StatefulWidget {
   final String name;
   final String category;
   final String description;
@@ -31,7 +32,7 @@ class UpdatePageWidget extends StatefulWidget {
   final String cost;
   dynamic image;
 
-  UpdatePageWidget({
+  EditPageWidget({
     super.key,
     required this.name,
     required this.category,
@@ -43,13 +44,12 @@ class UpdatePageWidget extends StatefulWidget {
   });
 
   @override
-  State<UpdatePageWidget> createState() => _UpdatePageWidgetState();
+  State<EditPageWidget> createState() => _EditPageWidgetState();
 }
 
-class _UpdatePageWidgetState extends State<UpdatePageWidget> {
+class _EditPageWidgetState extends State<EditPageWidget> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     nameController.text = widget.name;
@@ -63,7 +63,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(appBarName: 'Edit your recipies'),
+      appBar: buildAppBar(appBarName: 'Edit your recipes'),
       body: buildBody(),
     );
   }
@@ -87,23 +87,21 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
       scrollDirection: Axis.vertical,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Form(
-          child: Center(
-            child: Column(
-              children: [
-                GestureDetector(
-                  onTap: () async {
-                    await editimage();
-                    setState(() {});
-                  },
-                  child: buildRecipeImage(),
-                ),
-                const SizedBox(height: 20.0),
-                buildRecipeForm(),
-                const SizedBox(height: 10),
-                UpdatedButton(),
-              ],
-            ),
+        child: Center(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () async {
+                  await editImage();
+                  setState(() {});
+                },
+                child: buildRecipeImage(),
+              ),
+              const SizedBox(height: 20.0),
+              buildRecipeForm(),
+              const SizedBox(height: 10),
+              buildUpdateButton(),
+            ],
           ),
         ),
       ),
@@ -148,7 +146,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Name is required';
+              return null;
             }
             return null;
           },
@@ -163,7 +161,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Description is required';
+              return null;
             }
             return null;
           },
@@ -176,7 +174,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Ingredients are required';
+              return null;
             }
             return null;
           },
@@ -189,7 +187,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
           80.10,
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Total cost is required';
+              return null;
             }
             return null;
           },
@@ -230,7 +228,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
     );
   }
 
-  Widget UpdatedButton() {
+  Widget buildUpdateButton() {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.amber),
@@ -242,43 +240,26 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         ),
       ),
       onPressed: () {
-        if (_formKey.currentState!.validate()) {
-          // final newRecipe = recipeModel(
-          //   name: nameController.text,
-          //   category: categoryController.text,
-          //   description: descriptionController.text,
-          //   ingredients: ingredientsController.text,
-          //   cost: costController.text,
-          //   image: image,
-          // );
-          updateRecipe(context);
-          Navigator.of(context).pop();
-        } else {
-          debugPrint('Please fix the errors before submitting.');
-        }
+        recipeUpdate(context);
+        Navigator.of(context).pop();
       },
-      child: const Text('Update Recipies'),
+      child: const Text('Update Recipes'),
     );
   }
 
-  Future<void> editimage() async {
-    final returnImage = await ImagePicker()
-        .pickImage(source: ImageSource.gallery, imageQuality: 10);
-    if (returnImage != null) {
-      return setState(() {
-        image = returnImage.path;
-      });
-    }
-    Navigator.pop(context);
-  }
-
-  Future<void> imageEditCam() async {
-    final returnImage = await ImagePicker()
-        .pickImage(source: ImageSource.camera, imageQuality: 10);
-    if (returnImage != null) {
-      return setState(() {
-        image = returnImage.path;
-      });
+  Future<void> editImage() async {
+    try {
+      final returnImage = await _imagePicker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 10,
+      );
+      if (returnImage != null) {
+        setState(() {
+          image = returnImage.path;
+        });
+      }
+    } catch (e) {
+      print('Image picker exception: $e');
     }
     Navigator.pop(context);
   }
@@ -314,7 +295,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         },
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Category is required';
+            return null;
           }
           return null;
         },
@@ -322,7 +303,7 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
     );
   }
 
-  Future<void> updateRecipe(BuildContext context) async {
+  Future<void> recipeUpdate(BuildContext context) async {
     final name = nameController.text.trim();
     final category = selectCategory.trim();
     final description = descriptionController.text.trim();
@@ -335,8 +316,17 @@ class _UpdatePageWidgetState extends State<UpdatePageWidget> {
         ingredients.isEmpty ||
         cost.isEmpty ||
         image == null) {
-      debugPrint('Please fill in all fields');
+      // debugPrint('Please fill in all fields');
       return;
     }
+
+    final updatedRecipe = recipeModel(
+      name: name,
+      category: category,
+      description: description,
+      ingredients: ingredients,
+      cost: cost,
+      image: image,
+    );
   }
 }

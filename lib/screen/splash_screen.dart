@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_plates/screen/login_page.dart';
 
 class SplashScreenWidget extends StatefulWidget {
-  const SplashScreenWidget({Key? key}) : super(key: key);
+  const SplashScreenWidget({super.key});
 
   @override
   State<SplashScreenWidget> createState() => _SplashScreenWidgetState();
@@ -17,7 +17,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => LoginPageWidget(),
+          builder: (context) => const LoginPageWidget(),
         ),
       );
     });

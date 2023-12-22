@@ -8,7 +8,7 @@ import 'package:recipe_plates/screen/sidebar%20drawer/about_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/help_page.dart';
 
 class SideBarDrawer extends StatelessWidget {
-  const SideBarDrawer({Key? key}) : super(key: key);
+  const SideBarDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

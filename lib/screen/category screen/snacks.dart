@@ -5,7 +5,7 @@ import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class SnacksPage extends StatefulWidget {
-  const SnacksPage({Key? key}) : super(key: key);
+  const SnacksPage({super.key});
 
   @override
   State<SnacksPage> createState() => _SnacksPageState();

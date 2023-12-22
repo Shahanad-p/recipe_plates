@@ -5,7 +5,7 @@ import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class GrilledPage extends StatefulWidget {
-  const GrilledPage({Key? key}) : super(key: key);
+  const GrilledPage({super.key});
 
   @override
   State<GrilledPage> createState() => _GrilledPageState();

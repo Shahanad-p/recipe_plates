@@ -5,7 +5,7 @@ import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class HealthyPage extends StatefulWidget {
-  const HealthyPage({Key? key}) : super(key: key);
+  const HealthyPage({super.key});
 
   @override
   State<HealthyPage> createState() => _HealthyPageState();
@@ -177,4 +177,3 @@ class _HealthyPageState extends State<HealthyPage> {
     );
   }
 }
-

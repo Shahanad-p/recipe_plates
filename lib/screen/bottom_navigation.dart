@@ -14,9 +14,9 @@ class BottomNavBarWidget extends StatefulWidget {
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   List pages = [
-    HomePageWidget(
-        // username: '',
-        ),
+    const HomePageWidget(
+      username: '',
+    ),
     FavouritePageWidget(),
     const CategoryPageWidget(),
     PieChartPageWidget(),
@@ -34,14 +34,14 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     return Scaffold(
       body: pages[currentIndexValue],
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(22.10),
+        padding: const EdgeInsets.all(22.10),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: BottomNavigationBar(
             unselectedFontSize: 0,
             type: BottomNavigationBarType.fixed,
             onTap: onTap,
-            backgroundColor: Color.fromARGB(24, 7, 100, 95),
+            backgroundColor: const Color.fromARGB(24, 7, 100, 95),
             currentIndex: currentIndexValue,
             selectedItemColor: const Color.fromARGB(255, 9, 49, 83),
             unselectedItemColor: const Color.fromARGB(255, 145, 176, 239),
@@ -90,11 +90,11 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => AddPageWidget(),
+                builder: (context) => const AddPageWidget(),
               ),
             );
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
