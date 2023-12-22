@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/home.dart';
 
 final _imagePicker = ImagePicker();
 final nameController = TextEditingController();
@@ -20,7 +19,8 @@ final List<String> _categoryList = [
   'Desserts',
   'Healthy',
   'Grilled',
-  'Snacks'
+  'Snacks',
+  'Soup'
 ];
 
 class EditPageWidget extends StatefulWidget {
@@ -241,7 +241,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
       ),
       onPressed: () {
         recipeUpdate(context);
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
       },
       child: const Text('Update Recipes'),
     );
@@ -261,7 +261,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
     } catch (e) {
       print('Image picker exception: $e');
     }
-    Navigator.pop(context);
+    // Navigator.pop(context);
   }
 
   Widget buildCategoryDropdown() {
@@ -316,7 +316,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
         ingredients.isEmpty ||
         cost.isEmpty ||
         image == null) {
-      // debugPrint('Please fill in all fields');
       return;
     }
 
@@ -328,5 +327,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
       cost: cost,
       image: image,
     );
+
+    Navigator.of(context).pop(updatedRecipe);
   }
 }

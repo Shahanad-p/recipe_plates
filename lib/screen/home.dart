@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
@@ -18,6 +19,7 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   List<recipeModel> displayedRecipes = [];
   TextEditingController searchController = TextEditingController();
+
   void filterRecipes(String query) {
     setState(() {
       displayedRecipes = recipeNotifier.value
@@ -31,7 +33,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     getAllRecipiesByList();
-
     displayedRecipes = recipeNotifier.value;
   }
 
@@ -45,11 +46,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             child: ListBody(
               children: <Widget>[
                 const Text(
-                  'Are you sure you want to delete this recipe.?',
+                  'Are you sure you want to delete this recipe?',
                   style: TextStyle(fontSize: 18),
                 ),
                 Lottie.asset('assets/Animation - 1702529005450.json',
-                    height: 60)
+                    height: 60),
               ],
             ),
           ),
@@ -83,6 +84,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         );
       },
     );
+  }
+
+  Future<void> addToFavourite(recipeModel data) async {
+    final cartdb = await Hive.openBox<recipeModel>('favorite_db');
+
+    // Check if the recipe is not already in the favorites
+    if (!cartitems.contains(data)) {
+      cartitems.add(data);
+      cartdb.add(data);
+      // recipeNotifier.notifyListeners();
+      getAllRecipiesByList();
+    }
+  }
+
+  Future<void> deleteFromFavourite(int index) async {
+    final cartdb = await Hive.openBox<recipeModel>('favorite_db');
+    cartdb.deleteAt(index);
+    cartitems.removeAt(index);
+    getAllRecipiesByList();
   }
 
   @override
@@ -167,7 +187,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         cost: recipeDatas.cost,
                         editIcon: IconButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(
                               builder: (context) => EditPageWidget(
                                 index: index,
                                 name: recipeDatas.name,
@@ -177,7 +198,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 cost: recipeDatas.cost,
                                 image: recipeDatas.image,
                               ),
-                            ));
+                            ))
+                                .then((result) {
+                              if (result != null && result is recipeModel) {
+                                // Handle the updated recipe
+                                updateRecipe(index, result);
+                              }
+                            });
                           },
                           icon: const Icon(Icons.edit),
                         ),
@@ -357,5 +384,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
       ),
     );
+  }
+
+  void updateRecipe(int index, recipeModel updatedRecipe) {
+    setState(() {
+      displayedRecipes[index] = updatedRecipe;
+    });
   }
 }

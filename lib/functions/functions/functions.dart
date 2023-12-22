@@ -28,7 +28,6 @@ Future<void> deleteRecipies(int index) async {
 Future<void> updateRecipe(int index, recipeModel newRecipe) async {
   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
   await recipeDB.putAt(index, newRecipe);
-  // print(recipeDB.values);
   getAllRecipiesByList();
 }
 
@@ -46,21 +45,6 @@ Future<void> deleteFromFavourite(int index) async {
   cartitems.removeAt(index);
   getAllRecipiesByList();
 }
-
-// Future<void> updateAllRecipies(int index) async {
-//   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
-//   final recipeUpdate = recipeModel(
-//     name: nameController.text,
-//     category: categoryController.text,
-//     description: descriptionController.text,
-//     ingredients: ingredientsController.text,
-//     cost: costController.text,
-//     image: image,
-//   );
-//   await recipedb.putAt(index, recipeUpdate);
-//   getAllRecipiesByList();
-// }
-//chart calcultion
 
 double calculateTotalCost(List<recipeModel> foods) {
   double totalCost = 0;
