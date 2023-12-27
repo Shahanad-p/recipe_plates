@@ -7,14 +7,13 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 class AddPageWidget extends StatefulWidget {
-  const AddPageWidget({super.key});
+  const AddPageWidget({Key? key});
 
   @override
   State<AddPageWidget> createState() => _AddPageWidgetState();
 }
 
 class _AddPageWidgetState extends State<AddPageWidget> {
-  // final _imagePicker = ImagePicker();
   final ImagePicker image = ImagePicker();
   final _nameController = TextEditingController();
   final _descriptionController = TextEditingController();
@@ -60,7 +59,10 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.05,
+          vertical: MediaQuery.of(context).size.width * 0.05,
+        ),
         child: Form(
           key: _formKey,
           child: Center(
@@ -243,10 +245,13 @@ class _AddPageWidgetState extends State<AddPageWidget> {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.amber),
         padding: MaterialStateProperty.all(
-          const EdgeInsets.only(left: 35, right: 35),
+          EdgeInsets.only(
+            left: MediaQuery.of(context).size.width * 0.2,
+            right: MediaQuery.of(context).size.width * 0.2,
+          ),
         ),
         textStyle: MaterialStateProperty.all(
-          const TextStyle(fontSize: 18, color: Colors.white),
+          TextStyle(fontSize: 18, color: Colors.white),
         ),
       ),
       onPressed: () {
@@ -256,7 +261,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
           debugPrint('Please fix the errors before submitting.');
         }
       },
-      child: const Text('Add all recipies'),
+      child: const Text('Add all recipes'),
     );
   }
 
@@ -273,8 +278,8 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.10)),
       child: SizedBox(
-        width: 150,
-        height: 180,
+        width: MediaQuery.of(context).size.width * 0.5,
+        height: MediaQuery.of(context).size.height * 0.25,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(

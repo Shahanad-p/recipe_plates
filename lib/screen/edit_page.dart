@@ -51,6 +51,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
   @override
   void initState() {
     super.initState();
+    // getAllRecipiesByList();
 
     nameController.text = widget.name;
     categoryController.text = widget.category;
@@ -241,7 +242,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
       ),
       onPressed: () {
         recipeUpdate(context);
-        // Navigator.of(context).pop();
       },
       child: const Text('Update Recipes'),
     );
@@ -261,7 +261,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
     } catch (e) {
       print('Image picker exception: $e');
     }
-    // Navigator.pop(context);
   }
 
   Widget buildCategoryDropdown() {

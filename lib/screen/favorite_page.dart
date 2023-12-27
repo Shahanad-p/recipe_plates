@@ -1,23 +1,30 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class FavouritePageWidget extends StatefulWidget {
-  final favoriteList = recipeNotifier.value;
-  FavouritePageWidget({Key? key});
+  const FavouritePageWidget({Key? key}) : super(key: key);
 
   @override
-  State<FavouritePageWidget> createState() => _FavouritePageWidgetState();
-}
-
-initState() {
-  getAllRecipiesByList();
+  _FavouritePageWidgetState createState() => _FavouritePageWidgetState();
 }
 
 class _FavouritePageWidgetState extends State<FavouritePageWidget> {
-  List<recipeModel> favouriteList = [];
+  @override
+  void initState() {
+    super.initState();
+    getAllFavouriteRecipes();
+  }
+
+  void deleteFromFavourite(int index) async {
+    final favoriteBox = await Hive.openBox<recipeModel>('favorite_db');
+    favoriteBox.deleteAt(index);
+    favoriteItemsNotifier.value = favoriteBox.values.toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -42,11 +49,9 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
     );
   }
 
-  Widget buildFavouriteGridView({
-    dynamic itemCount,
-  }) {
+  Widget buildFavouriteGridView() {
     return ValueListenableBuilder(
-      valueListenable: recipeNotifier,
+      valueListenable: favoriteItemsNotifier,
       builder: (BuildContext context, List<recipeModel> favoriteList,
           Widget? child) {
         return Padding(
@@ -61,14 +66,11 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
-            itemCount: cartitems.length,
+            itemCount: favoriteList.length,
             itemBuilder: (context, index) {
-              final recipe = cartitems[index];
+              final recipe = favoriteList[index];
               return buildGridItem(
                 image: recipe.image,
-                iconData: recipe.isFavorite
-                    ? Icons.favorite
-                    : Icons.favorite_outline_outlined,
                 text1: recipe.name,
                 index: index,
                 recipe: recipe,
@@ -82,7 +84,6 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
 
   Widget buildGridItem({
     required String? image,
-    required IconData iconData,
     required String text1,
     required int index,
     required recipeModel recipe,
@@ -147,18 +148,6 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
                   icon: const Icon(Icons.favorite_outline),
                 ),
               ),
-              // Positioned(
-              //   left: 20,
-              //   bottom: 70,
-              //   child: Text(
-              //     text1,
-              //     style: const TextStyle(
-              //       color: Colors.black,
-              //       fontSize: 15,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

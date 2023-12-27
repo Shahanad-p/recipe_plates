@@ -151,7 +151,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 176, 194, 178),
-              offset: Offset(8.0, 8.0),
+              offset: Offset(6.0, 6.0),
               blurRadius: 0,
               spreadRadius: 1,
             ),

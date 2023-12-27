@@ -3,7 +3,9 @@ import 'package:hive/hive.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 ValueNotifier<List<recipeModel>> recipeNotifier = ValueNotifier([]);
-List<recipeModel> cartitems = [];
+List<recipeModel> favoriteItems = [];
+ValueNotifier<List<recipeModel>> favoriteItemsNotifier =
+    ValueNotifier<List<recipeModel>>([]);
 
 Future<void> addRecipies(recipeModel value) async {
   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
@@ -31,19 +33,29 @@ Future<void> updateRecipe(int index, recipeModel newRecipe) async {
   getAllRecipiesByList();
 }
 
-Future<void> addToFavourite(recipeModel data) async {
-  final cartdb = await Hive.openBox<recipeModel>('favorite_db');
-  cartitems.add(data);
-  cartdb.add(data);
-  // recipeNotifier.notifyListeners();
-  getAllRecipiesByList();
+Future<void> getAllFavouriteRecipes() async {
+  final favoriteBox = await Hive.openBox<recipeModel>('favorite_db');
+  final favoriteItems = favoriteBox.values.toList();
+  favoriteItemsNotifier.value = favoriteItems;
+}
+
+Future<void> addToFavourite(recipeModel recipe) async {
+  final favoriteBox = await Hive.openBox<recipeModel>('favorite_db');
+  bool isAlreadyInFavorites = favoriteItems.contains(recipe);
+  if (!isAlreadyInFavorites) {
+    favoriteBox.add(recipe);
+    favoriteItems.add(recipe);
+    recipeNotifier.value = List.from(recipeNotifier.value);
+    favoriteItemsNotifier.value = favoriteItems; // Update the ValueNotifier
+  }
 }
 
 Future<void> deleteFromFavourite(int index) async {
-  final cartdb = await Hive.openBox<recipeModel>('favorite_db');
-  cartdb.deleteAt(index);
-  cartitems.removeAt(index);
-  getAllRecipiesByList();
+  final favoriteBox = await Hive.openBox<recipeModel>('favorite_db');
+  favoriteBox.deleteAt(index);
+  favoriteItems.removeAt(index);
+  recipeNotifier.value = List.from(recipeNotifier.value);
+  favoriteItemsNotifier.value = favoriteItems; // Update the ValueNotifier
 }
 
 double calculateTotalCost(List<recipeModel> foods) {
