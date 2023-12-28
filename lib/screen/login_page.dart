@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/screen/bottom_navigation.dart';
 import 'package:recipe_plates/screen/home.dart';
+import 'package:recipe_plates/shared_preference.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({Key? key});
@@ -10,7 +11,33 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
-  TextEditingController usernameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+
+  void saveData() {
+    SharedPreferenceServices.saveString(usernameController.text);
+  }
+
+  void navigateToBottomNavBar() {
+    String username = usernameController.text.trim();
+
+    if (username.isNotEmpty) {
+      saveData();
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => BottomNavBarWidget(
+            userName: username,
+          ),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a username'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +48,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: [
             SizedBox(
               height: 450,
               child: Stack(
-                children: <Widget>[
+                children: [
                   Positioned(
                     top: -40,
                     height: 420,
@@ -58,7 +85,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: [
                   const Center(
                     child: Text(
                       "Login",
@@ -86,7 +113,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       ],
                     ),
                     child: Column(
-                      children: <Widget>[
+                      children: [
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: const BoxDecoration(
@@ -112,15 +139,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                   const SizedBox(height: 30),
                   MaterialButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => BottomNavBarWidget(
-                            username: usernameController.text,
-                          ),
-                        ),
-                      );
-                    },
+                    onPressed: navigateToBottomNavBar,
                     color: const Color.fromRGBO(49, 39, 79, 1),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
@@ -135,9 +154,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     onLongPress: () async {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => HomePageWidget(
-                            username: usernameController.text,
-                          ),
+                          builder: (context) => const HomePageWidget(),
                         ),
                       );
                     },

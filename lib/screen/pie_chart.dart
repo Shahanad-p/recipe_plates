@@ -11,7 +11,7 @@ class PieChartPageWidget extends StatelessWidget {
     "Flutter": 5,
   };
 
-  final colorList = <Color>[
+  final colorList = [
     Colors.greenAccent,
   ];
   List ChartRecpie = recipeNotifier.value;
@@ -116,7 +116,6 @@ class PieChartPageWidget extends StatelessWidget {
 }
 
 double calculateTotalCost(List<recipeModel> recipes) {
-  // Implement your logic to calculate the total cost
   double totalCost = 0;
   for (var recipe in recipes) {
     totalCost += double.parse(recipe.cost);

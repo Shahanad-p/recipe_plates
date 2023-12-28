@@ -30,55 +30,46 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        appBar: buildAppBarWidget('Favourites'),
-        body: buildFavouriteGridView(),
-      ),
-    );
-  }
-
-  AppBar buildAppBarWidget(String appBarText) {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white10,
-      title: Text(
-        appBarText,
-        style:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-      ),
-      centerTitle: true,
-    );
-  }
-
-  Widget buildFavouriteGridView() {
-    return ValueListenableBuilder(
-      valueListenable: favoriteItemsNotifier,
-      builder: (BuildContext context, List<recipeModel> favoriteList,
-          Widget? child) {
-        return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: GridView.builder(
-            shrinkWrap: true,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount:
-                  MediaQuery.of(context).orientation == Orientation.portrait
-                      ? 2
-                      : 4,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-            ),
-            itemCount: favoriteList.length,
-            itemBuilder: (context, index) {
-              final recipe = favoriteList[index];
-              return buildGridItem(
-                image: recipe.image,
-                text1: recipe.name,
-                index: index,
-                recipe: recipe,
-              );
-            },
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white10,
+          title: const Text(
+            'Favourites',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-        );
-      },
+          centerTitle: true,
+        ),
+        body: ValueListenableBuilder(
+          valueListenable: favoriteItemsNotifier,
+          builder: (BuildContext context, List<recipeModel> favoriteList,
+              Widget? child) {
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:
+                      MediaQuery.of(context).orientation == Orientation.portrait
+                          ? 2
+                          : 4,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
+                itemCount: favoriteList.length,
+                itemBuilder: (context, index) {
+                  final recipe = favoriteList[index];
+                  return buildGridItem(
+                    image: recipe.image,
+                    text1: recipe.name,
+                    index: index,
+                    recipe: recipe,
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 

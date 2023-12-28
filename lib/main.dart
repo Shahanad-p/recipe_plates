@@ -3,13 +3,22 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/splash_screen.dart';
+import 'package:recipe_plates/shared_preference.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Hive
   await Hive.initFlutter();
   if (!Hive.isAdapterRegistered(recipeModelAdapter().typeId)) {
     Hive.registerAdapter(recipeModelAdapter());
   }
-  runApp(MyApp());
+
+  // Initialize SharedPreferences
+  await SharedPreferenceServices.init();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreenWidget(),
     );

@@ -26,7 +26,16 @@ class _MenuOpeningPageState extends State<MenuOpeningPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white10,
+        elevation: 0,
+        title: const Text(
+          'Menu',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
       body: SingleChildScrollView(
         child: buildItems(
           widget.selectedImagePath,
@@ -116,19 +125,6 @@ class _MenuOpeningPageState extends State<MenuOpeningPage> {
           const Divider(),
         ],
       ),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      backgroundColor: Colors.white10,
-      elevation: 0,
-      title: const Text(
-        'Menu',
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-      ),
-      centerTitle: true,
-      iconTheme: const IconThemeData(color: Colors.black),
     );
   }
 }

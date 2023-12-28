@@ -4,9 +4,14 @@ import 'package:recipe_plates/screen/category_page.dart';
 import 'package:recipe_plates/screen/favorite_page.dart';
 import 'package:recipe_plates/screen/home.dart';
 import 'package:recipe_plates/screen/pie_chart.dart';
+import 'package:recipe_plates/shared_preference.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
-  const BottomNavBarWidget({super.key, required String username});
+  final String userName;
+  const BottomNavBarWidget({
+    super.key,
+    required this.userName,
+  });
 
   @override
   State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
@@ -14,9 +19,7 @@ class BottomNavBarWidget extends StatefulWidget {
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   List pages = [
-    const HomePageWidget(
-      username: '',
-    ),
+    const HomePageWidget(),
     FavouritePageWidget(),
     const CategoryPageWidget(),
     PieChartPageWidget(),
@@ -27,6 +30,12 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     setState(() {
       currentIndexValue = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferenceServices.saveString(widget.userName);
   }
 
   @override

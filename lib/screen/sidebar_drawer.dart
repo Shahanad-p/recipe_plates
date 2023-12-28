@@ -21,7 +21,7 @@ class SideBarDrawer extends StatelessWidget {
         shadowColor: Colors.black,
         child: ListView(
           padding: EdgeInsets.zero,
-          children: <Widget>[
+          children: [
             DrawerHeader(
               decoration: const BoxDecoration(color: Colors.white),
               child: Stack(

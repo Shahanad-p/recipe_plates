@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 final _imagePicker = ImagePicker();
@@ -51,7 +52,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
   @override
   void initState() {
     super.initState();
-    // getAllRecipiesByList();
+    getAllRecipiesByList();
 
     nameController.text = widget.name;
     categoryController.text = widget.category;
@@ -64,22 +65,17 @@ class _EditPageWidgetState extends State<EditPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(appBarName: 'Edit your recipes'),
-      body: buildBody(),
-    );
-  }
-
-  AppBar buildAppBar({required String appBarName}) {
-    return AppBar(
-      elevation: 0,
-      backgroundColor: Colors.white10,
-      iconTheme: const IconThemeData(color: Colors.black),
-      title: Text(
-        appBarName,
-        style:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white10,
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
+          'Edit your recipes',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
       ),
-      centerTitle: true,
+      body: buildBody(),
     );
   }
 
