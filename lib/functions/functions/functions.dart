@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 ValueNotifier<List<recipeModel>> recipeNotifier = ValueNotifier([]);
@@ -15,6 +15,7 @@ Future<void> addRecipies(recipeModel value) async {
 }
 
 Future<void> getAllRecipiesByList() async {
+  await Hive.initFlutter();
   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
   recipeNotifier.value.clear();
   recipeNotifier.value.addAll(recipedb.values);
@@ -28,6 +29,7 @@ Future<void> deleteRecipies(int index) async {
 }
 
 Future<void> updateRecipe(int index, recipeModel newRecipe) async {
+  await Hive.initFlutter();
   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
   await recipeDB.putAt(index, newRecipe);
   getAllRecipiesByList();
@@ -46,7 +48,7 @@ Future<void> addToFavourite(recipeModel recipe) async {
     favoriteBox.add(recipe);
     favoriteItems.add(recipe);
     recipeNotifier.value = List.from(recipeNotifier.value);
-    favoriteItemsNotifier.value = favoriteItems; // Update the ValueNotifier
+    favoriteItemsNotifier.value = favoriteItems;
   }
 }
 
@@ -55,7 +57,8 @@ Future<void> deleteFromFavourite(int index) async {
   favoriteBox.deleteAt(index);
   favoriteItems.removeAt(index);
   recipeNotifier.value = List.from(recipeNotifier.value);
-  favoriteItemsNotifier.value = favoriteItems; // Update the ValueNotifier
+  favoriteItemsNotifier.value = favoriteItems;
+  favoriteItemsNotifier.value = favoriteBox.values.toList();
 }
 
 double calculateTotalCost(List<recipeModel> foods) {

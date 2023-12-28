@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
@@ -17,12 +16,6 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
   void initState() {
     super.initState();
     getAllFavouriteRecipes();
-  }
-
-  void deleteFromFavourite(int index) async {
-    final favoriteBox = await Hive.openBox<recipeModel>('favorite_db');
-    favoriteBox.deleteAt(index);
-    favoriteItemsNotifier.value = favoriteBox.values.toList();
   }
 
   @override

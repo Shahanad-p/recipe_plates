@@ -322,7 +322,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
       cost: cost,
       image: image,
     );
-
+    updateRecipe(widget.index, updatedRecipe);
     Navigator.of(context).pop(updatedRecipe);
   }
 }

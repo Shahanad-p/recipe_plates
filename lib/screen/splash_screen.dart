@@ -12,7 +12,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -24,16 +24,44 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
-          child: Image(
-            image: AssetImage(
-              'assets/side-view-mushroom-frying-with-stove-spice-human-hand-pan (1).jpg',
-            ),
-            fit: BoxFit.cover,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              const Image(
+                image: AssetImage(
+                  'assets/side-view-mushroom-frying-with-stove-spice-human-hand-pan (1).jpg',
+                ),
+                fit: BoxFit.cover,
+              ),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.4,
+                left: MediaQuery.of(context).size.width * 0.3,
+                child: const Column(
+                  children: [
+                    Text(
+                      'hello',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Your Centered Text 2',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
