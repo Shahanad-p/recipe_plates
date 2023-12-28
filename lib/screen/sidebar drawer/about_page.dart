@@ -6,56 +6,48 @@ class AboutPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBar(
+        title: const Text(
+          'About',
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white10,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(40),
         child: ListView(
-          children: buildAboutContent(),
+          children: [
+            buildSection('About us', [
+              'Welcome to the Recipe plate App, your ultimate cooking companion. We are passionate about bringing you delicious recipes from around the world. Our mission is to inspire your culinary adventures and make cooking a delightful experience.',
+            ]),
+            buildDivider(),
+            buildSection('App information', [
+              '• App Name : Recipe Plate',
+              '• Version: 1.0.0+1',
+            ]),
+            buildDivider(),
+            buildSection('Features', [
+              '• Explore a vast collection of recipes.',
+              '• Save your favorite recipes for easy access.',
+              '• Create shopping lists for your next cooking adventure.',
+            ]),
+            buildDivider(),
+            buildSection('Contact us', [
+              'If you have any questions, feedback, or suggestions, please feel free to reach out to us.',
+              '• Email : shahanadp21@gmail.com',
+              '• Phone : 9645347463',
+            ]),
+            buildDivider(),
+            buildSection('Developed By', [
+              'Recipe Plate App is proudly developed by Muhammed Shahanad PP. Thank you for choosing our app to enhance your cooking journey!',
+            ]),
+            buildDivider(),
+          ],
         ),
       ),
     );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      title: const Text(
-        'About',
-        style: TextStyle(color: Colors.black),
-      ),
-      elevation: 0,
-      backgroundColor: Colors.white10,
-      iconTheme: const IconThemeData(color: Colors.black),
-    );
-  }
-
-  List<Widget> buildAboutContent() {
-    return [
-      buildSection('About us', [
-        'Welcome to the Recipe plate App, your ultimate cooking companion. We are passionate about bringing you delicious recipes from around the world. Our mission is to inspire your culinary adventures and make cooking a delightful experience.',
-      ]),
-      buildDivider(),
-      buildSection('App information', [
-        '• App Name : Recipe Plate',
-        '• Version: 1.0.0+1',
-      ]),
-      buildDivider(),
-      buildSection('Features', [
-        '• Explore a vast collection of recipes.',
-        '• Save your favorite recipes for easy access.',
-        '• Create shopping lists for your next cooking adventure.',
-      ]),
-      buildDivider(),
-      buildSection('Contact us', [
-        'If you have any questions, feedback, or suggestions, please feel free to reach out to us.',
-        '• Email : shahanadp21@gmail.com',
-        '• Phone : 9645347463',
-      ]),
-      buildDivider(),
-      buildSection('Developed By', [
-        'Recipe Plate App is proudly developed by Muhammed Shahanad PP. Thank you for choosing our app to enhance your cooking journey!',
-      ]),
-      buildDivider(),
-    ];
   }
 
   Widget buildSection(String heading, List<String> content) {

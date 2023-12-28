@@ -6,7 +6,15 @@ class HelpPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBar(
+        title: const Text(
+          'Help',
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white10,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(40),
         child: ListView(
@@ -22,18 +30,6 @@ class HelpPageWidget extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      title: const Text(
-        'Help',
-        style: TextStyle(color: Colors.black),
-      ),
-      elevation: 0,
-      backgroundColor: Colors.white10,
-      iconTheme: const IconThemeData(color: Colors.black),
     );
   }
 

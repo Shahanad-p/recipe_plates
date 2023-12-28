@@ -6,41 +6,33 @@ class SettingPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
-      body: buildBody(),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      title: const Text(
-        'Settings',
-        style: TextStyle(color: Colors.black),
+      appBar: AppBar(
+        title: const Text(
+          'Settings',
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white10,
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-      elevation: 0,
-      backgroundColor: Colors.white10,
-      iconTheme: const IconThemeData(color: Colors.black),
-    );
-  }
-
-  Container buildBody() {
-    return Container(
-      padding: const EdgeInsets.all(40),
-      child: ListView(
-        children: [
-          buildSection('Profile', Icons.person),
-          buildDivider(),
-          buildSection('Notification', Icons.notifications),
-          buildDivider(),
-          buildSection('Security', Icons.security),
-          buildDivider(),
-          buildSection('Account', Icons.person),
-          buildDivider(),
-          buildSection('Support', Icons.support),
-          buildDivider(),
-          buildSection('Mode', Icons.mode),
-          buildDivider(),
-        ],
+      body: Container(
+        padding: const EdgeInsets.all(40),
+        child: ListView(
+          children: [
+            buildSection('Profile', Icons.person),
+            buildDivider(),
+            buildSection('Notification', Icons.notifications),
+            buildDivider(),
+            buildSection('Security', Icons.security),
+            buildDivider(),
+            buildSection('Account', Icons.person),
+            buildDivider(),
+            buildSection('Support', Icons.support),
+            buildDivider(),
+            buildSection('Mode', Icons.mode),
+            buildDivider(),
+          ],
+        ),
       ),
     );
   }
