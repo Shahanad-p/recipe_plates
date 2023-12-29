@@ -80,6 +80,7 @@ class PieChartPageWidget extends StatelessWidget {
                             double totalCost = calculateTotalCost(value);
                             double percentage = (cost / totalCost) * 100;
                             final name = ChartRecpie[index].name;
+                            final category = ChartRecpie[index].category;
 
                             return PieChartSectionData(
                               badgePositionPercentageOffset: 1.1,
@@ -87,9 +88,10 @@ class PieChartPageWidget extends StatelessWidget {
                               color: getRandomColor(),
                               value: percentage,
                               title: '''₹ ${cost.toStringAsFixed(2)}
-      (${percentage.toStringAsFixed(2)}%)
-      $name
-      ''',
+      ${percentage.toStringAsFixed(2)}%
+      $name 
+           $category
+           ''',
                               radius: 95,
                               titleStyle: const TextStyle(
                                 fontSize: 13.10,

@@ -70,46 +70,41 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                const Text(
-                  'Are you sure you want to delete this recipe?',
-                  style: TextStyle(fontSize: 18),
+            content: SingleChildScrollView(
+                child: ListBody(children: [
+              const Text(
+                'Are you sure you want to delete this recipe?',
+                style: TextStyle(fontSize: 18),
+              ),
+              Lottie.asset('assets/Animation - 1702529005450.json', height: 60),
+            ])),
+            actions: [
+              TextButton(
+                child: const Text(
+                  'No',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.red),
                 ),
-                Lottie.asset('assets/Animation - 1702529005450.json',
-                    height: 60),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              child: const Text(
-                'No',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.red),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text(
-                'Yes',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.green),
-              ),
-              onPressed: () {
-                deleteRecipies(index);
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+              TextButton(
+                child: const Text(
+                  'Yes',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.green),
+                ),
+                onPressed: () {
+                  deleteRecipies(index);
+                  Navigator.of(context).pop();
+                },
+              )
+            ]);
       },
     );
   }
@@ -117,126 +112,119 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Hey $userName..!',
-          style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.10,
-              color: Color.fromARGB(255, 142, 146, 143)),
+        appBar: AppBar(
+          title: Text(
+            'Hey $userName..!',
+            style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18.10,
+                color: Color.fromARGB(255, 142, 146, 143)),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.white10,
+          elevation: 0,
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
-        centerTitle: true,
-        backgroundColor: Colors.white10,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      drawer: const SideBarDrawer(),
-      body: Column(
-        children: [
+        drawer: const SideBarDrawer(),
+        body: Column(children: [
           const SizedBox(height: 35),
           const Text(
             'What\'s in your kitchen..?',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           Padding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
-            child: TextField(
-              controller: searchController,
-              onChanged: filterRecipes,
-              decoration: InputDecoration(
-                label: const Text('Search'),
-                hintText: 'Search your recipes here..!',
-                contentPadding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.1),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0)),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    searchController.clear();
-                  },
-                  icon: const Icon(Icons.clear),
-                ),
-              ),
-            ),
-          ),
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
+              child: TextField(
+                  controller: searchController,
+                  onChanged: filterRecipes,
+                  decoration: InputDecoration(
+                      label: const Text('Search'),
+                      hintText: 'Search your recipes here..!',
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.1),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          searchController.clear();
+                        },
+                        icon: const Icon(Icons.clear),
+                      )))),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: ValueListenableBuilder(
-                valueListenable: recipeNotifier,
-                builder: (BuildContext ctx, List<recipeModel> recipeList,
-                    Widget? child) {
-                  return GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: MediaQuery.of(context).orientation ==
-                              Orientation.portrait
-                          ? 2
-                          : 4,
-                      crossAxisSpacing: 5,
-                      mainAxisSpacing: 5,
-                    ),
-                    itemCount: displayedRecipes.length,
-                    itemBuilder: (context, index) {
-                      final recipeDatas = displayedRecipes[index];
-                      final reversedIndex = recipeList.length - 1 - index;
-                      File? recipeImage;
-                      if (recipeDatas.image != null) {
-                        recipeImage = File(recipeDatas.image!);
-                      }
-
-                      return buildGridList(
-                        context,
-                        image: recipeImage,
-                        icon: Icons.favorite_border_outlined,
-                        text: recipeDatas.name,
-                        category: recipeDatas.category,
-                        description: recipeDatas.description,
-                        ingredients: recipeDatas.ingredients,
-                        cost: recipeDatas.cost,
-                        editIcon: IconButton(
-                          onPressed: () async {
-                            final result = await Navigator.of(context)
-                                .push(MaterialPageRoute(
-                              builder: (context) => EditPageWidget(
-                                index: index,
-                                name: recipeDatas.name,
-                                category: recipeDatas.category,
-                                description: recipeDatas.description,
-                                ingredients: recipeDatas.ingredients,
-                                cost: recipeDatas.cost,
-                                image: recipeDatas.image,
-                              ),
-                            ));
-
-                            if (result != null && result is recipeModel) {
-                              updateRecipe(index, result);
+              child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: ValueListenableBuilder(
+                      valueListenable: recipeNotifier,
+                      builder: (BuildContext ctx, List<recipeModel> recipeList,
+                          Widget? child) {
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).orientation ==
+                                        Orientation.portrait
+                                    ? 2
+                                    : 4,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                          ),
+                          itemCount: displayedRecipes.length,
+                          itemBuilder: (context, index) {
+                            final recipeDatas = displayedRecipes[index];
+                            final reversedIndex = recipeList.length - 1 - index;
+                            File? recipeImage;
+                            if (recipeDatas.image != null) {
+                              recipeImage = File(recipeDatas.image!);
                             }
+
+                            return buildGridList(
+                              context,
+                              image: recipeImage,
+                              icon: Icons.favorite_border_outlined,
+                              text: recipeDatas.name,
+                              category: recipeDatas.category,
+                              description: recipeDatas.description,
+                              ingredients: recipeDatas.ingredients,
+                              cost: recipeDatas.cost,
+                              editIcon: IconButton(
+                                onPressed: () async {
+                                  final result = await Navigator.of(context)
+                                      .push(MaterialPageRoute(
+                                    builder: (context) => EditPageWidget(
+                                      index: index,
+                                      name: recipeDatas.name,
+                                      category: recipeDatas.category,
+                                      description: recipeDatas.description,
+                                      ingredients: recipeDatas.ingredients,
+                                      cost: recipeDatas.cost,
+                                      image: recipeDatas.image,
+                                    ),
+                                  ));
+
+                                  if (result != null && result is recipeModel) {
+                                    updateRecipe(index, result);
+                                  }
+                                },
+                                icon: const Icon(Icons.edit),
+                              ),
+                              deleteIcon: IconButton(
+                                onPressed: () {
+                                  showDeleteConfirmationDialog(index);
+                                },
+                                icon: const Icon(Icons.delete),
+                              ),
+                              addToFavorite: () {
+                                addToFavourite(recipeDatas);
+                              },
+                              onDelete: () {
+                                deleteRecipies(reversedIndex);
+                              },
+                            );
                           },
-                          icon: const Icon(Icons.edit),
-                        ),
-                        deleteIcon: IconButton(
-                          onPressed: () {
-                            showDeleteConfirmationDialog(index);
-                          },
-                          icon: const Icon(Icons.delete),
-                        ),
-                        addToFavorite: () {
-                          addToFavourite(recipeDatas);
-                        },
-                        onDelete: () {
-                          deleteRecipies(reversedIndex);
-                        },
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+                        );
+                      })))
+        ]));
   }
 
   Widget buildGridList(
@@ -267,21 +255,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromARGB(255, 229, 218, 218),
-              offset: Offset(5.0, 5.0),
-              blurRadius: 0,
-              spreadRadius: 0,
-            ),
-            BoxShadow(
-              color: Color.fromARGB(255, 255, 255, 255),
-              blurRadius: 0,
-              spreadRadius: 0,
-            )
-          ],
-        ),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 229, 218, 218),
+                offset: Offset(5.0, 5.0),
+                blurRadius: 0,
+                spreadRadius: 0,
+              ),
+              BoxShadow(
+                color: Color.fromARGB(255, 255, 255, 255),
+                blurRadius: 0,
+                spreadRadius: 0,
+              )
+            ]),
         child: InkWell(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
@@ -311,32 +298,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       : Container(),
                 ),
                 Positioned(
-                  top: 2.0,
-                  right: 2.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                      onPressed: addToFavorite,
-                      icon: const Icon(Icons.favorite_outline),
-                    ),
-                  ),
-                ),
+                    top: 2.0,
+                    right: 2.0,
+                    child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed: addToFavorite,
+                          icon: const Icon(Icons.favorite_outline),
+                        ))),
                 Positioned(
-                  top: 2.0,
-                  right: 50.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: deleteIcon!,
-                  ),
-                ),
+                    top: 2.0,
+                    right: 50.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: deleteIcon!,
+                    )),
                 Positioned(
-                  top: 2.0,
-                  left: 2.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: editIcon!,
-                  ),
-                ),
+                    top: 2.0,
+                    left: 2.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: editIcon!,
+                    )),
                 Positioned(
                   bottom: 35,
                   left: 35,
@@ -344,37 +327,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text(
-                          text!,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 18,
-                            shadows: [
-                              Shadow(
-                                color: Colors.white,
-                                offset: Offset(1, 1),
-                                blurRadius: 1,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Text(text!,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 18,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.white,
+                                    offset: Offset(1, 1),
+                                    blurRadius: 1,
+                                  )
+                                ])),
                         const SizedBox(height: 3),
-                        Text(
-                          category!,
-                          style: const TextStyle(
-                            color: Color.fromARGB(255, 10, 65, 12),
-                            fontWeight: FontWeight.bold,
-                            shadows: [
-                              Shadow(
-                                color: Colors.white,
-                                offset: Offset(1, 1),
-                                blurRadius: 1,
-                              ),
-                            ],
-                          ),
-                        ),
+                        Text(category!,
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 10, 65, 12),
+                                fontWeight: FontWeight.bold,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.white,
+                                    offset: Offset(1, 1),
+                                    blurRadius: 1,
+                                  )
+                                ])),
                         const SizedBox(height: 3),
                         Text(
                           '₹: ${cost.toString()}',

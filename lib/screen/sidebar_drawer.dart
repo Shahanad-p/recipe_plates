@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:recipe_plates/screen/sidebar%20drawer/data_reset.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/privacy_policy_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/setting_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/terms_condions_page.dart';
@@ -70,9 +71,14 @@ class SideBarDrawer extends StatelessWidget {
               onClicked: () => selectedItem(context, 4),
             ),
             buildMenuItem(
+              text: 'Reset',
+              icon: Icons.restart_alt,
+              onClicked: () => selectedItem(context, 5),
+            ),
+            buildMenuItem(
               text: 'Logout',
               icon: Icons.logout_outlined,
-              onClicked: () => selectedItem(context, 5),
+              onClicked: () => selectedItem(context, 6),
             ),
           ],
         ),
@@ -133,6 +139,9 @@ class SideBarDrawer extends StatelessWidget {
         );
         break;
       case 5:
+        resetRecipe(context);
+        break;
+      case 6:
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const LoginPageWidget()),
         );
