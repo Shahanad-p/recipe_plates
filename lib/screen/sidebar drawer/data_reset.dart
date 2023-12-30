@@ -1,26 +1,32 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/splash_screen.dart';
 
-Future<void> resetRecipe(
-  BuildContext context,
-) async {
+Future<void> resetRecipe(BuildContext context) async {
   bool confirmResetDatas = await showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        title: const Text(
-          "Confirm Reset",
-          style: TextStyle(color: Color.fromARGB(255, 255, 0, 0)),
+        backgroundColor: const Color.fromARGB(255, 229, 232, 227),
+        content: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text(
+                "This will be delete your all recipies. Do you want to continue..?",
+                style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+              const SizedBox(height: 10),
+              Lottie.asset('assets/Animation - 1703841326068.json',
+                  height: 50, width: 50)
+            ],
+          ),
         ),
-        content: const Text(
-          "This will delete this cart. This action is irreversible. Do you want to continue ?",
-          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-        ),
-        actions: <Widget>[
+        actions: [
           TextButton(
             child: const Text(
               "Cancel",

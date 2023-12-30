@@ -1,19 +1,30 @@
-import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 
 class PieChartPageWidget extends StatelessWidget {
-  PieChartPageWidget({super.key});
+  PieChartPageWidget({Key? key});
 
-  final dataMap = <String, double>{
-    "Flutter": 5,
-  };
-
-  final colorList = [
+  final List<Color> fixedColors = [
     Colors.greenAccent,
+    Colors.blueAccent,
+    Colors.redAccent,
+    Colors.yellowAccent,
+    Colors.amber,
+    Colors.pinkAccent,
+    Colors.tealAccent,
+    Colors.purpleAccent,
+    Colors.orangeAccent,
+    Colors.limeAccent,
+    Colors.lightGreenAccent,
+    Colors.indigoAccent,
+    Colors.grey,
+    Colors.blueGrey,
+    Colors.amberAccent,
   ];
+
   List ChartRecpie = recipeNotifier.value;
 
   @override
@@ -69,44 +80,48 @@ class PieChartPageWidget extends StatelessWidget {
               ValueListenableBuilder(
                 valueListenable: recipeNotifier,
                 builder: (context, value, child) {
-                  return SizedBox(
-                    height: 500,
-                    child: PieChart(
-                      PieChartData(
-                        sections: List.generate(
-                          ChartRecpie.length,
-                          (index) {
-                            double cost = double.parse(ChartRecpie[index].cost);
-                            double totalCost = calculateTotalCost(value);
-                            double percentage = (cost / totalCost) * 100;
-                            final name = ChartRecpie[index].name;
-                            final category = ChartRecpie[index].category;
+                  if (ChartRecpie.isEmpty) {
+                    return Lottie.asset(
+                        'assets/Animation - 1703850800347.json');
+                  } else {
+                    return SizedBox(
+                      height: 500,
+                      child: PieChart(
+                        PieChartData(
+                          sections: List.generate(
+                            ChartRecpie.length,
+                            (index) {
+                              double cost =
+                                  double.parse(ChartRecpie[index].cost);
+                              double totalCost = calculateTotalCost(value);
+                              double percentage = (cost / totalCost) * 100;
+                              final name = ChartRecpie[index].name;
+                              final category = ChartRecpie[index].category;
 
-                            return PieChartSectionData(
-                              badgePositionPercentageOffset: 1.1,
-                              titlePositionPercentageOffset: .4,
-                              color: getRandomColor(),
-                              value: percentage,
-                              title: '''₹ ${cost.toStringAsFixed(2)}
-      ${percentage.toStringAsFixed(2)}%
-      $name 
-           $category
+                              return PieChartSectionData(
+                                color: fixedColors[index % fixedColors.length],
+                                value: percentage,
+                                title: '''  ₹ ${cost.toStringAsFixed(2)}
+        ${percentage.toStringAsFixed(2)}%
+   $name 
+       $category
            ''',
-                              radius: 95,
-                              titleStyle: const TextStyle(
-                                fontSize: 13.10,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                              ),
-                            );
-                          },
+                                radius: 95,
+                                titleStyle: const TextStyle(
+                                  fontSize: 13.10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              );
+                            },
+                          ),
+                          sectionsSpace: 3,
+                          centerSpaceRadius: 80,
+                          startDegreeOffset: 10,
                         ),
-                        sectionsSpace: 3,
-                        centerSpaceRadius: 80,
-                        startDegreeOffset: 10,
                       ),
-                    ),
-                  );
+                    );
+                  }
                 },
               ),
             ],
@@ -123,8 +138,4 @@ double calculateTotalCost(List<recipeModel> recipes) {
     totalCost += double.parse(recipe.cost);
   }
   return totalCost;
-}
-
-Color getRandomColor() {
-  return Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 }
