@@ -8,12 +8,12 @@ class PieChartPageWidget extends StatelessWidget {
   PieChartPageWidget({Key? key});
 
   final List<Color> fixedColors = [
+    Colors.amber,
+    Colors.pinkAccent,
     Colors.greenAccent,
     Colors.blueAccent,
     Colors.redAccent,
     Colors.yellowAccent,
-    Colors.amber,
-    Colors.pinkAccent,
     Colors.tealAccent,
     Colors.purpleAccent,
     Colors.orangeAccent,
@@ -81,8 +81,16 @@ class PieChartPageWidget extends StatelessWidget {
                 valueListenable: recipeNotifier,
                 builder: (context, value, child) {
                   if (ChartRecpie.isEmpty) {
-                    return Lottie.asset(
-                        'assets/Animation - 1703850800347.json');
+                    return Container(
+                      height: 500,
+                      child: Center(
+                        child: Lottie.asset(
+                          'assets/Animation - 1703913980311.json',
+                          height: 135,
+                          width: 135,
+                        ),
+                      ),
+                    );
                   } else {
                     return SizedBox(
                       height: 500,
@@ -116,7 +124,8 @@ class PieChartPageWidget extends StatelessWidget {
                             },
                           ),
                           sectionsSpace: 3,
-                          centerSpaceRadius: 80,
+                          centerSpaceRadius:
+                              80, // Set the radius for the center space
                           startDegreeOffset: 10,
                         ),
                       ),

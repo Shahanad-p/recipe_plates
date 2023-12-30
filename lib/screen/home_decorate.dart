@@ -65,78 +65,73 @@ Widget buildGridList(
                     ? Image.file(
                         image,
                         width: double.infinity,
-                        height: double.infinity,
+                        height: 110,
                         fit: BoxFit.cover,
                       )
                     : Container(),
               ),
               Positioned(
-                  top: 2.0,
-                  right: 2.0,
-                  child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                        onPressed: addToFavorite,
-                        icon: const Icon(Icons.favorite_outline),
-                      ))),
+                top: 2.0,
+                right: 2.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    onPressed: addToFavorite,
+                    icon: const Icon(Icons.favorite_outline),
+                  ),
+                ),
+              ),
               Positioned(
-                  top: 2.0,
-                  right: 50.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: deleteIcon!,
-                  )),
+                top: 2.0,
+                right: 50.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: deleteIcon!,
+                ),
+              ),
               Positioned(
-                  top: 2.0,
-                  left: 2.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: editIcon!,
-                  )),
+                top: 2.0,
+                left: 2.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: editIcon!,
+                ),
+              ),
               Positioned(
-                bottom: 35,
-                left: 35,
+                bottom: 1.0,
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(text!,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 18,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.white,
-                                  offset: Offset(1, 1),
-                                  blurRadius: 1,
-                                )
-                              ])),
-                      const SizedBox(height: 3),
-                      Text(category!,
-                          style: const TextStyle(
-                              color: Color.fromARGB(255, 10, 65, 12),
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.white,
-                                  offset: Offset(1, 1),
-                                  blurRadius: 1,
-                                )
-                              ])),
-                      const SizedBox(height: 3),
                       Text(
-                        '₹: ${cost.toString()}',
+                        text!,
                         style: const TextStyle(
                           color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 18,
+                          shadows: [
+                            Shadow(
+                              color: Colors.white,
+                              offset: Offset(1, 1),
+                              blurRadius: 1,
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        category!,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 10, 65, 12),
                           fontWeight: FontWeight.bold,
                           shadows: [
                             Shadow(
                               color: Colors.white,
                               offset: Offset(1, 1),
                               blurRadius: 1,
-                            ),
+                            )
                           ],
                         ),
                       ),
