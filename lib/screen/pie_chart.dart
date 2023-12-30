@@ -124,8 +124,7 @@ class PieChartPageWidget extends StatelessWidget {
                             },
                           ),
                           sectionsSpace: 3,
-                          centerSpaceRadius:
-                              80, // Set the radius for the center space
+                          centerSpaceRadius: 80,
                           startDegreeOffset: 10,
                         ),
                       ),
@@ -148,15 +147,3 @@ double calculateTotalCost(List<recipeModel> recipes) {
   }
   return totalCost;
 }
-// double calculateTotalCost(List<recipeModel> recipes) {
-//   double totalCost = 0;
-//   for (var recipe in recipes) {
-//     try {
-//       totalCost += double.parse(recipe.cost);
-//     } catch (e) {
-//       // Handle the case where parsing fails (e.g., cost is not a valid double)
-//       print("Error parsing cost: ${recipe.cost}");
-//     }
-//   }
-//   return totalCost;
-// }

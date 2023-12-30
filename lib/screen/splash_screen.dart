@@ -24,7 +24,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: SizedBox(
           height: double.infinity,
@@ -32,34 +32,11 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              const Image(
+              Image(
                 image: AssetImage(
                   'assets/side-view-mushroom-frying-with-stove-spice-human-hand-pan (1).jpg',
                 ),
                 fit: BoxFit.cover,
-              ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.4,
-                left: MediaQuery.of(context).size.width * 0.3,
-                child: const Column(
-                  children: [
-                    Text(
-                      'hello',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Your Centered Text 2',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ],
           ),

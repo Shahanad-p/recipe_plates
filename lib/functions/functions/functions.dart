@@ -31,8 +31,12 @@ Future<void> deleteRecipies(int index) async {
 Future<void> updateRecipe(int index, recipeModel newRecipe) async {
   await Hive.initFlutter();
   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
-  await recipeDB.putAt(index, newRecipe);
-  getAllRecipiesByList();
+  if (index >= 0 && index < recipeDB.length) {
+    await recipeDB.putAt(index, newRecipe);
+    getAllRecipiesByList();
+  } else {
+    print('Index is out of range: $index');
+  }
 }
 
 Future<void> getAllFavouriteRecipes() async {
