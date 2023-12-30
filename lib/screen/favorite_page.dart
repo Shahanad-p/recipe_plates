@@ -129,7 +129,10 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
                   onPressed: () {
                     deleteFromFavourite(index);
                   },
-                  icon: const Icon(Icons.favorite_outline),
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: Color.fromARGB(255, 20, 60, 130),
+                  ),
                 ),
               ),
             ],

@@ -386,5 +386,13 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     setState(() {
       _image = null;
     });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Successfully added new recipe.!'),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.green,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 }

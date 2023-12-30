@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 
-Future<void> showDeleteConfirmationDialog(BuildContext context, int index) async {
-  return showDialog(
+Future<bool?> showDeleteConfirmationDialog(
+    BuildContext context, int index) async {
+  return showDialog<bool>(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
@@ -30,7 +31,7 @@ Future<void> showDeleteConfirmationDialog(BuildContext context, int index) async
               ),
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(false); // Return false for cancellation
             },
           ),
           TextButton(
@@ -44,7 +45,7 @@ Future<void> showDeleteConfirmationDialog(BuildContext context, int index) async
             ),
             onPressed: () {
               deleteRecipies(index);
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(true); // Return true for confirmation
             },
           )
         ],

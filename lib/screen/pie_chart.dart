@@ -85,9 +85,9 @@ class PieChartPageWidget extends StatelessWidget {
                       height: 500,
                       child: Center(
                         child: Lottie.asset(
-                          'assets/Animation - 1703913980311.json',
-                          height: 135,
-                          width: 135,
+                          'assets/Animation - 1703942875916.json',
+                          height: 150,
+                          width: 150,
                         ),
                       ),
                     );
@@ -148,3 +148,15 @@ double calculateTotalCost(List<recipeModel> recipes) {
   }
   return totalCost;
 }
+// double calculateTotalCost(List<recipeModel> recipes) {
+//   double totalCost = 0;
+//   for (var recipe in recipes) {
+//     try {
+//       totalCost += double.parse(recipe.cost);
+//     } catch (e) {
+//       // Handle the case where parsing fails (e.g., cost is not a valid double)
+//       print("Error parsing cost: ${recipe.cost}");
+//     }
+//   }
+//   return totalCost;
+// }

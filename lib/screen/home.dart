@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/delete_snakbar.dart';
@@ -30,14 +31,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     usernameController.dispose();
   }
 
-  saveData() {
+  void saveData() {
     SharedPreferenceServices.saveString(usernameController.text);
     usernameController.clear();
     getData();
     setState(() {});
   }
 
-  getData() {
+  void getData() {
     if (SharedPreferenceServices.getString() != null) {
       userName = SharedPreferenceServices.getString()!;
     }
@@ -59,16 +60,33 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     });
   }
 
+  void deleteRecipies(int index) {
+    showDeleteConfirmationDialog(context, index).then((confirmed) {
+      if (confirmed != null && confirmed) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Recipe deleted successfully.!'),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    });
+  }
+
   @override
-  build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
+      key: GlobalKey<ScaffoldState>(),
       appBar: AppBar(
         title: Text(
           'Hey $userName..!',
           style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.10,
-              color: Color.fromARGB(255, 142, 146, 143)),
+            fontWeight: FontWeight.bold,
+            fontSize: 18.10,
+            color: Color.fromARGB(255, 142, 146, 143),
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.white10,
@@ -92,9 +110,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 label: const Text('Search'),
                 hintText: 'Search your recipes here..!',
                 contentPadding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.1),
+                  horizontal: MediaQuery.of(context).size.width * 0.1,
+                ),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0)),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
                 suffixIcon: IconButton(
                   onPressed: () {
                     searchController.clear();
@@ -111,6 +131,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 valueListenable: recipeNotifier,
                 builder: (BuildContext ctx, List<recipeModel> recipeList,
                     Widget? child) {
+                  if (displayedRecipes.isEmpty) {
+                    return Container(
+                      height: 500,
+                      child: Lottie.asset(
+                          'assets/Animation - 1703913980311.json',
+                          height: 135,
+                          width: 135),
+                    );
+                  }
                   return GridView.builder(
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -124,7 +153,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     itemCount: displayedRecipes.length,
                     itemBuilder: (context, index) {
                       final recipeDatas = displayedRecipes[index];
-                      final reversedIndex = recipeList.length - 1 - index;
                       File? recipeImage;
                       if (recipeDatas.image != null) {
                         recipeImage = File(recipeDatas.image!);
@@ -159,20 +187,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               updateRecipe(index, result);
                             }
                           },
-                          icon: const Icon(Icons.edit),
+                          icon: const Icon(
+                            Icons.edit,
+                            color: Color.fromARGB(255, 34, 123, 37),
+                          ),
                         ),
                         deleteIcon: IconButton(
                           onPressed: () {
-                            showDeleteConfirmationDialog(context, index);
+                            deleteRecipies(index);
                           },
-                          icon: const Icon(Icons.delete),
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Color.fromARGB(255, 148, 37, 29),
+                          ),
                         ),
                         addToFavorite: () {
                           addToFavourite(recipeDatas);
                         },
-                        onDelete: () {
-                          deleteRecipies(reversedIndex);
-                        },
+                        onDelete: () {},
                       );
                     },
                   );
