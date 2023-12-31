@@ -24,7 +24,7 @@ class _FastfoodPageState extends State<FastfoodPage> {
             color: Colors.black,
           ),
         ),
-        elevation: 0,
+        elevation: 1,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),

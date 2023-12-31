@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/screen/bottom_navigation.dart';
 import 'package:recipe_plates/screen/splash_screen.dart';
 import 'package:recipe_plates/shared_preference.dart';
 
