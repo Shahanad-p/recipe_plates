@@ -11,8 +11,8 @@ class SettingPageWidget extends StatelessWidget {
           'Settings',
           style: TextStyle(color: Colors.black),
         ),
-        elevation: 0,
-        backgroundColor: Colors.white10,
+        backgroundColor: Colors.white,
+        elevation: 1,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Container(

@@ -11,8 +11,8 @@ class AboutPageWidget extends StatelessWidget {
           'About',
           style: TextStyle(color: Colors.black),
         ),
-        elevation: 0,
-        backgroundColor: Colors.white10,
+        elevation: 1,
+        backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Padding(

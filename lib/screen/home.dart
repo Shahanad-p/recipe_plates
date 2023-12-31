@@ -83,7 +83,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         title: Text(
           'Hey $userName..!',
           style: const TextStyle(
-            fontWeight: FontWeight.bold,
             fontSize: 18.10,
             color: Color.fromARGB(255, 142, 146, 143),
           ),
