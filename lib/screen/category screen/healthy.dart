@@ -32,7 +32,6 @@ class _HealthyPageState extends State<HealthyPage> {
       body: ValueListenableBuilder<List<recipeModel>>(
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
-          // Filter recipes based on the category
           final filteredHealthyList = recipeList
               .where((recipe) => recipe.category.toLowerCase() == 'healthy')
               .toList();
@@ -82,7 +81,7 @@ class _HealthyPageState extends State<HealthyPage> {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.10),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),

@@ -67,7 +67,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
                   ),
                   const SizedBox(height: 20.0),
                   buildRecipeForm(),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 10.10),
                   buildAddButton(),
                 ],
               ),

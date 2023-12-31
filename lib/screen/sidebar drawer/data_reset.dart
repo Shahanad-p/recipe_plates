@@ -20,9 +20,9 @@ Future<void> resetRecipe(BuildContext context) async {
                 "This will be delete your all recipies. Do you want to continue..?",
                 style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 10.10),
               Lottie.asset('assets/Animation - 1703841326068.json',
-                  height: 50, width: 50)
+                  height: 50.10, width: 50.10)
             ],
           ),
         ),

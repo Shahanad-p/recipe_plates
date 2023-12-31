@@ -112,7 +112,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   horizontal: MediaQuery.of(context).size.width * 0.1,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(12.10),
                 ),
                 suffixIcon: IconButton(
                   onPressed: () {

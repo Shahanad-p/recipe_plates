@@ -143,7 +143,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     onPressed: navigateToBottomNavBar,
                     color: const Color.fromRGBO(49, 39, 79, 1),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(50.10),
                     ),
                     height: 50,
                     child: const Center(

@@ -13,7 +13,7 @@ Future<bool?> showDeleteConfirmationDialog(
           child: ListBody(
             children: [
               const Text(
-                'Are you sure you want to delete this recipe?',
+                'Are you sure? you want to delete this recipe?',
                 style: TextStyle(fontSize: 18),
               ),
               Lottie.asset('assets/Animation - 1702529005450.json', height: 60),
