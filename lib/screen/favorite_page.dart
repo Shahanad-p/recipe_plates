@@ -24,8 +24,8 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white10,
+          elevation: 1,
+          backgroundColor: Colors.white,
           title: const Text(
             'Favourites',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),

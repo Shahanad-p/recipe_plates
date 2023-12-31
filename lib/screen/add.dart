@@ -37,8 +37,8 @@ class _AddPageWidgetState extends State<AddPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white10,
+        elevation: 1,
+        backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
           'New Recipe',

@@ -22,8 +22,8 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
       onWillPop: () async => false,
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white10,
+          elevation: 1,
+          backgroundColor: Colors.white,
           title: const Text(
             'Categories',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
