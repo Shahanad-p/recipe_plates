@@ -22,8 +22,8 @@ class MenuOpeningPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white10,
-        elevation: 0,
+        backgroundColor: Colors.white,
+        elevation: 1,
         title: const Text(
           'Menu',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),

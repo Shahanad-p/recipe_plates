@@ -20,102 +20,105 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 1,
-          backgroundColor: Colors.white,
-          title: const Text(
-            'Categories',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 1,
+            backgroundColor: Colors.white,
+            title: const Text(
+              'Categories',
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
           ),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: ListView(
-            children: [
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const BeveragesPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Beverages',
-                  imagePath:
-                      'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+          body: Center(
+            child: ListView(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const BeveragesPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Beverages',
+                    imagePath:
+                        'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const FastfoodPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Fastfood',
-                  imagePath:
-                      'assets/—Pngtree—creative cartoon burger vector material_3177179.png',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const FastfoodPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Fastfood',
+                    imagePath:
+                        'assets/—Pngtree—creative cartoon burger vector material_3177179.png',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SaladsPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Salads',
-                  imagePath: 'assets/48049.jpg',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SaladsPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Salads',
+                    imagePath: 'assets/48049.jpg',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const DessertsPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Desserts',
-                  imagePath: 'assets/xj5t_6v6e_220330.jpg',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const DessertsPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Desserts',
+                    imagePath: 'assets/xj5t_6v6e_220330.jpg',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HealthyPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Healthy',
-                  imagePath: 'assets/3631249.jpg',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const HealthyPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Healthy',
+                    imagePath: 'assets/3631249.jpg',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const GrilledPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Grilled',
-                  imagePath: 'assets/13011.jpg',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const GrilledPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Grilled',
+                    imagePath: 'assets/13011.jpg',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SnacksPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Snacks',
-                  imagePath: 'assets/3730825.jpg',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SnacksPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Snacks',
+                    imagePath: 'assets/3730825.jpg',
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SoupPage()));
-                },
-                child: buildCategoriesBox(
-                  category: 'Soup',
-                  imagePath: 'assets/6339776.jpg',
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SoupPage()));
+                  },
+                  child: buildCategoriesBox(
+                    category: 'Soup',
+                    imagePath: 'assets/6339776.jpg',
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

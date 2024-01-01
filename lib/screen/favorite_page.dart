@@ -22,45 +22,48 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 1,
-          backgroundColor: Colors.white,
-          title: const Text(
-            'Favourites',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 1,
+            backgroundColor: Colors.white,
+            title: const Text(
+              'Favourites',
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
           ),
-          centerTitle: true,
-        ),
-        body: ValueListenableBuilder(
-          valueListenable: favoriteItemsNotifier,
-          builder: (BuildContext context, List<recipeModel> favoriteList,
-              Widget? child) {
-            return Padding(
-              padding: const EdgeInsets.all(20.10),
-              child: GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:
-                      MediaQuery.of(context).orientation == Orientation.portrait
-                          ? 2
-                          : 4,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
+          body: ValueListenableBuilder(
+            valueListenable: favoriteItemsNotifier,
+            builder: (BuildContext context, List<recipeModel> favoriteList,
+                Widget? child) {
+              return Padding(
+                padding: const EdgeInsets.all(20.10),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: MediaQuery.of(context).orientation ==
+                            Orientation.portrait
+                        ? 2
+                        : 4,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
+                  itemCount: favoriteList.length,
+                  itemBuilder: (context, index) {
+                    final recipe = favoriteList[index];
+                    return buildGridItem(
+                      image: recipe.image,
+                      text1: recipe.name,
+                      index: index,
+                      recipe: recipe,
+                    );
+                  },
                 ),
-                itemCount: favoriteList.length,
-                itemBuilder: (context, index) {
-                  final recipe = favoriteList[index];
-                  return buildGridItem(
-                    image: recipe.image,
-                    text1: recipe.name,
-                    index: index,
-                    recipe: recipe,
-                  );
-                },
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

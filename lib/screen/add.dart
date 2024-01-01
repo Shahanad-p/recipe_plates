@@ -86,7 +86,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.0),
       child: Image.asset(
-        'assets/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
+        'assets/2947690.jpg',
         height: 150,
         width: 220,
         fit: BoxFit.fill,
