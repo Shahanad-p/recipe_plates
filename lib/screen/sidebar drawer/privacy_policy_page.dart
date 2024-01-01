@@ -16,7 +16,7 @@ class PrivacyPolicyPageWidget extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(40.10),
+        padding: const EdgeInsets.all(40.12),
         child: ListView(
           children: [
             buildHeading('Privacy policy'),

@@ -16,7 +16,7 @@ class SettingPageWidget extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Container(
-        padding: const EdgeInsets.all(40.10),
+        padding: const EdgeInsets.all(40.12),
         child: ListView(
           children: [
             buildSection('Profile', Icons.person),
