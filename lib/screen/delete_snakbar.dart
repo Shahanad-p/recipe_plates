@@ -45,7 +45,7 @@ Future<bool?> showDeleteConfirmationDialog(
             ),
             onPressed: () {
               deleteRecipies(index);
-              Navigator.of(context).pop(true); // Return true for confirmation
+              Navigator.of(context).pop(true); 
             },
           )
         ],
