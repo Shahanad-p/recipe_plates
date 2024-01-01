@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class HealthyPage extends StatefulWidget {
+class HealthyPage extends StatelessWidget {
   const HealthyPage({super.key});
 
-  @override
-  State<HealthyPage> createState() => _HealthyPageState();
-}
-
-class _HealthyPageState extends State<HealthyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

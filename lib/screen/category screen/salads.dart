@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class SaladsPage extends StatefulWidget {
+class SaladsPage extends StatelessWidget {
   const SaladsPage({super.key});
 
-  @override
-  State<SaladsPage> createState() => _SaladsPageState();
-}
-
-class _SaladsPageState extends State<SaladsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

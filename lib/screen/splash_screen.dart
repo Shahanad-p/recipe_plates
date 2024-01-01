@@ -1,8 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/main.dart';
 import 'package:recipe_plates/screen/bottom_navigation.dart';
 import 'package:recipe_plates/screen/login_page.dart';
-import 'package:recipe_plates/shared_preference.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenWidget extends StatefulWidget {
@@ -55,7 +56,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   Future goToLogin() async {
     await Future.delayed(const Duration(seconds: 3));
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const LoginPageWidget()));
+        MaterialPageRoute(builder: (context) => LoginPageWidget()));
   }
 
   Future<void> CheckUserLoggedIn() async {
@@ -66,8 +67,7 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
       goToLogin();
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) =>
-              BottomNavBarWidget(userName: '')));
+          builder: (context) => const BottomNavBarWidget(userName: '')));
     }
   }
 }

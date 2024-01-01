@@ -6,7 +6,6 @@ import 'package:recipe_plates/screen/home.dart';
 import 'package:recipe_plates/screen/pie_chart.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
-  // final String userName;
   const BottomNavBarWidget({
     super.key,
     required String userName,
@@ -32,12 +31,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       currentIndexValue = index;
     });
   }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   SharedPreferenceServices.saveString(widget.userName);
-  // }
 
   @override
   Widget build(BuildContext context) {

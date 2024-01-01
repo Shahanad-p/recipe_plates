@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-class MenuOpeningPage extends StatefulWidget {
+class MenuOpeningPage extends StatelessWidget {
   final String name;
   final String category;
   final String description;
@@ -19,11 +19,6 @@ class MenuOpeningPage extends StatefulWidget {
   });
 
   @override
-  State<MenuOpeningPage> createState() => _MenuOpeningPageState();
-}
-
-class _MenuOpeningPageState extends State<MenuOpeningPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -38,12 +33,12 @@ class _MenuOpeningPageState extends State<MenuOpeningPage> {
       ),
       body: SingleChildScrollView(
         child: buildItems(
-          widget.selectedImagePath,
-          widget.name,
-          widget.category,
-          widget.description,
-          widget.ingredients,
-          widget.cost,
+          selectedImagePath,
+          name,
+          category,
+          description,
+          ingredients,
+          cost,
         ),
       ),
     );

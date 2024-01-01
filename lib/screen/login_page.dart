@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/main.dart';
 import 'package:recipe_plates/screen/bottom_navigation.dart';
-import 'package:recipe_plates/shared_preference.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginPageWidget extends StatefulWidget {
-  const LoginPageWidget({Key? key});
+class LoginPageWidget extends StatelessWidget {
+  LoginPageWidget({Key? key});
 
-  @override
-  State<LoginPageWidget> createState() => _LoginPageWidgetState();
-}
-
-class _LoginPageWidgetState extends State<LoginPageWidget> {
   final TextEditingController usernameController = TextEditingController();
+
   void checkLogin(BuildContext context) async {
     final userName = usernameController.text;
 

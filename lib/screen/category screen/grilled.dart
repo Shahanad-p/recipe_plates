@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class GrilledPage extends StatefulWidget {
+class GrilledPage extends StatelessWidget {
   const GrilledPage({super.key});
 
-  @override
-  State<GrilledPage> createState() => _GrilledPageState();
-}
-
-class _GrilledPageState extends State<GrilledPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

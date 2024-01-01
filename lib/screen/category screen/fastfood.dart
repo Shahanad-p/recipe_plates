@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class FastfoodPage extends StatefulWidget {
+class FastfoodPage extends StatelessWidget {
   const FastfoodPage({Key? key});
 
-  @override
-  State<FastfoodPage> createState() => _FastfoodPageState();
-}
-
-class _FastfoodPageState extends State<FastfoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

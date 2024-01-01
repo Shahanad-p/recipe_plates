@@ -255,7 +255,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
         });
       }
     } catch (e) {
-      print('Image picker exception: $e');
+      // print('Image picker exception: $e');
     }
   }
 
