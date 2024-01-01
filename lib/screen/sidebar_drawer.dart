@@ -7,6 +7,7 @@ import 'package:recipe_plates/screen/sidebar%20drawer/terms_condions_page.dart';
 import 'package:recipe_plates/screen/login_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/about_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/help_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SideBarDrawer extends StatelessWidget {
   const SideBarDrawer({super.key});
@@ -107,6 +108,14 @@ class SideBarDrawer extends StatelessWidget {
     );
   }
 
+  signOut(BuildContext context) async {
+    final _sharedPref = await SharedPreferences.getInstance();
+    await _sharedPref.clear();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => LoginPageWidget()),
+        (route) => false);
+  }
+
   void selectedItem(BuildContext context, int index) {
     switch (index) {
       case 0:
@@ -142,9 +151,7 @@ class SideBarDrawer extends StatelessWidget {
         resetRecipe(context);
         break;
       case 6:
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const LoginPageWidget()),
-        );
+        signOut(context);
         break;
     }
   }

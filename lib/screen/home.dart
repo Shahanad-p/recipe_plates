@@ -7,10 +7,10 @@ import 'package:recipe_plates/screen/delete_snakbar.dart';
 import 'package:recipe_plates/screen/edit_page.dart';
 import 'package:recipe_plates/screen/home_decorate.dart';
 import 'package:recipe_plates/screen/sidebar_drawer.dart';
-import 'package:recipe_plates/shared_preference.dart';
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+  final String userName;
+  const HomePageWidget({super.key, required this.userName});
 
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
@@ -20,29 +20,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   List<recipeModel> displayedRecipes = [];
   TextEditingController searchController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
-  String userName = '';
+  // String userName = '';
 
   @override
   void initState() {
     super.initState();
-    getData();
     getAllRecipiesByList();
     displayedRecipes = recipeNotifier.value;
     usernameController.dispose();
-  }
-
-  void saveData() {
-    SharedPreferenceServices.saveString(usernameController.text);
-    usernameController.clear();
-    getData();
-    setState(() {});
-  }
-
-  void getData() {
-    if (SharedPreferenceServices.getString() != null) {
-      userName = SharedPreferenceServices.getString()!;
-    }
-    setState(() {});
   }
 
   void updateRecipe(int index, recipeModel updatedRecipe) {
@@ -80,13 +65,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Scaffold(
       key: GlobalKey<ScaffoldState>(),
       appBar: AppBar(
-        title: Text(
-          'Hey $userName..!',
-          style: const TextStyle(
-            fontSize: 18.10,
-            color: Color.fromARGB(255, 142, 146, 143),
-          ),
-        ),
+        title: const Text('Home',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 1,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_plates/main.dart';
 import 'package:recipe_plates/screen/bottom_navigation.dart';
-
-import 'package:recipe_plates/screen/home.dart';
 import 'package:recipe_plates/shared_preference.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({Key? key});
@@ -13,28 +13,29 @@ class LoginPageWidget extends StatefulWidget {
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
   final TextEditingController usernameController = TextEditingController();
+  void checkLogin(BuildContext context) async {
+    final userName = usernameController.text;
 
-  void saveData() {
-    SharedPreferenceServices.saveString(usernameController.text);
-  }
+    if (userName.isNotEmpty) {
+      final _sharedPref = await SharedPreferences.getInstance();
+      await _sharedPref.setBool(save_key_name, true);
 
-  void navigateToBottomNavBar() {
-    String username = usernameController.text.trim();
-
-    if (username.isNotEmpty) {
-      saveData();
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => BottomNavBarWidget(
-            userName: username,
+            userName: userName,
           ),
         ),
       );
     } else {
+      // print('Showing snackbar: Please enter a username');
+      // print('Username entered: $userName');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please enter a username'),
           backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 2),
+          content: Text('Please enter a username'),
         ),
       );
     }
@@ -43,7 +44,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -124,7 +124,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               ),
                             ),
                           ),
-                          child: TextField(
+                          child: TextFormField(
                             controller: usernameController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -140,7 +140,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ),
                   const SizedBox(height: 30),
                   MaterialButton(
-                    onPressed: navigateToBottomNavBar,
+                    onPressed: () {
+                      checkLogin(context);
+                    },
                     color: const Color.fromRGBO(49, 39, 79, 1),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.10),
@@ -152,13 +154,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    onLongPress: () async {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const HomePageWidget(),
-                        ),
-                      );
-                    },
                   ),
                 ],
               ),

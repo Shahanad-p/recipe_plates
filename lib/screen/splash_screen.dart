@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_plates/main.dart';
+import 'package:recipe_plates/screen/bottom_navigation.dart';
 import 'package:recipe_plates/screen/login_page.dart';
+import 'package:recipe_plates/shared_preference.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenWidget extends StatefulWidget {
   const SplashScreenWidget({super.key});
@@ -11,15 +15,13 @@ class SplashScreenWidget extends StatefulWidget {
 class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   @override
   void initState() {
+    CheckUserLoggedIn();
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginPageWidget(),
-        ),
-      );
-    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
   }
 
   @override
@@ -43,5 +45,29 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future goToLogin() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const LoginPageWidget()));
+  }
+
+  Future<void> CheckUserLoggedIn() async {
+    final _sharedPref = await SharedPreferences.getInstance();
+    final _userLoggedIn = _sharedPref.getBool(save_key_name);
+    // final userName = _sharedPref.getString('username') ?? '';
+    if (_userLoggedIn == null || _userLoggedIn == false) {
+      goToLogin();
+    } else {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) =>
+              BottomNavBarWidget(userName: '')));
+    }
   }
 }
