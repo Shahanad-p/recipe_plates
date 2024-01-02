@@ -141,12 +141,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
           'Name',
           'Edit recipe name',
           80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return null;
-            }
-            return null;
-          },
         ),
         const SizedBox(height: 10),
         buildCategoryDropdown(),
@@ -156,12 +150,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
           'Description',
           'Edit recipe description',
           80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return null;
-            }
-            return null;
-          },
         ),
         const SizedBox(height: 10),
         buildTextFormField(
@@ -169,12 +157,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
           'Ingredients',
           'Edit recipe ingredients',
           80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return null;
-            }
-            return null;
-          },
         ),
         const SizedBox(height: 10),
         buildTextFormField(
@@ -182,12 +164,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
           'Total cost',
           'Edit recipe cost',
           80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return null;
-            }
-            return null;
-          },
         ),
       ],
     );
@@ -198,7 +174,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
     String label,
     String hintText,
     double height,
-    String? Function(String?)? validator,
   ) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -220,7 +195,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
             left: 25,
           ),
         ),
-        validator: validator,
       ),
     );
   }

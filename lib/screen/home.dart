@@ -20,7 +20,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   List<recipeModel> displayedRecipes = [];
   TextEditingController searchController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
-  // String userName = '';
 
   @override
   void initState() {

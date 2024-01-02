@@ -3,12 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/data_reset.dart';
-
 import 'package:recipe_plates/screen/sidebar%20drawer/setting_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/terms_condions_page.dart';
 import 'package:recipe_plates/screen/login_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/about_page.dart';
-import 'package:recipe_plates/screen/sidebar%20drawer/help_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SideBarDrawer extends StatelessWidget {
@@ -54,29 +52,24 @@ class SideBarDrawer extends StatelessWidget {
               onClicked: () => selectedItem(context, 0),
             ),
             buildMenuItem(
-              text: 'Help',
-              icon: Icons.help_outline,
-              onClicked: () => selectedItem(context, 1),
-            ),
-            buildMenuItem(
               text: 'About',
               icon: Icons.error_outline,
-              onClicked: () => selectedItem(context, 2),
+              onClicked: () => selectedItem(context, 1),
             ),
             buildMenuItem(
               text: 'Terms & Conditions',
               icon: Icons.description_outlined,
-              onClicked: () => selectedItem(context, 3),
+              onClicked: () => selectedItem(context, 2),
             ),
             buildMenuItem(
               text: 'Reset',
               icon: Icons.restart_alt,
-              onClicked: () => selectedItem(context, 4),
+              onClicked: () => selectedItem(context, 3),
             ),
             buildMenuItem(
               text: 'Logout',
               icon: Icons.logout_outlined,
-              onClicked: () => selectedItem(context, 5),
+              onClicked: () => selectedItem(context, 4),
             ),
           ],
         ),
@@ -122,26 +115,20 @@ class SideBarDrawer extends StatelessWidget {
         break;
       case 1:
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const HelpPageWidget()),
+          MaterialPageRoute(builder: (context) => const AboutPageWidget()),
         );
         break;
       case 2:
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const AboutPageWidget()),
-        );
-
-        break;
-      case 3:
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => const TermsConditionsPageWidget(),
           ),
         );
         break;
-      case 4:
+      case 3:
         resetRecipe(context);
         break;
-      case 5:
+      case 4:
         signOut(context);
         break;
     }
