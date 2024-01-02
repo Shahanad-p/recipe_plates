@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/data_reset.dart';
-import 'package:recipe_plates/screen/sidebar%20drawer/privacy_policy_page.dart';
+
 import 'package:recipe_plates/screen/sidebar%20drawer/setting_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/terms_condions_page.dart';
 import 'package:recipe_plates/screen/login_page.dart';
@@ -64,24 +64,19 @@ class SideBarDrawer extends StatelessWidget {
               onClicked: () => selectedItem(context, 2),
             ),
             buildMenuItem(
-              text: 'Privacy & Policy',
-              icon: Icons.privacy_tip,
-              onClicked: () => selectedItem(context, 3),
-            ),
-            buildMenuItem(
               text: 'Terms & Conditions',
               icon: Icons.description_outlined,
-              onClicked: () => selectedItem(context, 4),
+              onClicked: () => selectedItem(context, 3),
             ),
             buildMenuItem(
               text: 'Reset',
               icon: Icons.restart_alt,
-              onClicked: () => selectedItem(context, 5),
+              onClicked: () => selectedItem(context, 4),
             ),
             buildMenuItem(
               text: 'Logout',
               icon: Icons.logout_outlined,
-              onClicked: () => selectedItem(context, 6),
+              onClicked: () => selectedItem(context, 5),
             ),
           ],
         ),
@@ -134,25 +129,19 @@ class SideBarDrawer extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const AboutPageWidget()),
         );
+
         break;
       case 3:
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const PrivacyPolicyPageWidget(),
-          ),
-        );
-        break;
-      case 4:
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => const TermsConditionsPageWidget(),
           ),
         );
         break;
-      case 5:
+      case 4:
         resetRecipe(context);
         break;
-      case 6:
+      case 5:
         signOut(context);
         break;
     }
