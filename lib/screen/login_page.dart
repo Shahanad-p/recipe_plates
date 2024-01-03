@@ -90,7 +90,7 @@ class LoginPageWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 30.10),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),

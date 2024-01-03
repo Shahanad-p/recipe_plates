@@ -76,7 +76,7 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
     required recipeModel recipe,
   }) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10.10),
       child: Container(
         height: 160,
         width: 150,

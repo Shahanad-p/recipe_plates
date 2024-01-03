@@ -79,7 +79,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             const SizedBox(height: 35),
             const Text(
               'What\'s in your kitchen..?',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.10),
             ),
             Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),

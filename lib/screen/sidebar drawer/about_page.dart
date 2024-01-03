@@ -16,7 +16,7 @@ class AboutPageWidget extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(40.12),
+        padding: const EdgeInsets.all(40.20),
         child: ListView(
           children: [
             buildSection('About us', [

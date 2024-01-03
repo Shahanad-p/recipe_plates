@@ -74,7 +74,7 @@ class MenuOpeningPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 20.10),
           Text(
             nameText,
             style: const TextStyle(
@@ -83,7 +83,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28),
+          const SizedBox(height: 28.10),
           Text(
             categoryText,
             style: const TextStyle(
@@ -93,7 +93,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28),
+          const SizedBox(height: 28.10),
           Text(
             descriptionText,
             style: const TextStyle(
@@ -101,7 +101,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28),
+          const SizedBox(height: 28.10),
           Text(
             ingredientsText,
             style: const TextStyle(
@@ -109,7 +109,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28),
+          const SizedBox(height: 28.10),
           Text(
             '₹: $costText',
             style: const TextStyle(

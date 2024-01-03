@@ -157,7 +157,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10.10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

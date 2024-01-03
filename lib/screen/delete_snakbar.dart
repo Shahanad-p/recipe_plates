@@ -14,7 +14,7 @@ Future<bool?> showDeleteConfirmationDialog(
             children: [
               const Text(
                 'Are you sure? you want to delete this recipe?',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18.10),
               ),
               Lottie.asset('assets/Animation - 1702529005450.json', height: 60),
             ],
@@ -45,7 +45,7 @@ Future<bool?> showDeleteConfirmationDialog(
             ),
             onPressed: () {
               deleteRecipies(index);
-              Navigator.of(context).pop(true); 
+              Navigator.of(context).pop(true);
             },
           )
         ],
