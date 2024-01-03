@@ -15,7 +15,7 @@ class HealthyPage extends StatelessWidget {
           'Healthy',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 18.10,
             color: Colors.black,
           ),
         ),
@@ -105,7 +105,7 @@ class HealthyPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2.20),
             child: Stack(
               children: [
                 ClipRRect(

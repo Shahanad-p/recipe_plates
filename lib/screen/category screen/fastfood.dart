@@ -15,7 +15,7 @@ class FastfoodPage extends StatelessWidget {
           'Fastfood',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 18.10,
             color: Colors.black,
           ),
         ),
@@ -110,7 +110,7 @@ class FastfoodPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2.20),
             child: Stack(
               children: [
                 ClipRRect(

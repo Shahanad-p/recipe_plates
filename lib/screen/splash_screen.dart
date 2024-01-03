@@ -60,10 +60,10 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   }
 
   Future<void> CheckUserLoggedIn() async {
-    final _sharedPref = await SharedPreferences.getInstance();
-    final _userLoggedIn = _sharedPref.getBool(save_key_name);
+    final sharedPref = await SharedPreferences.getInstance();
+    final userLoggedIn = sharedPref.getBool(save_key_name);
     // final userName = _sharedPref.getString('username') ?? '';
-    if (_userLoggedIn == null || _userLoggedIn == false) {
+    if (userLoggedIn == null || userLoggedIn == false) {
       goToLogin();
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(

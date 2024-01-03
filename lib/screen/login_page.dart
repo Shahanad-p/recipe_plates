@@ -12,8 +12,8 @@ class LoginPageWidget extends StatelessWidget {
     final userName = usernameController.text;
 
     if (userName.isNotEmpty) {
-      final _sharedPref = await SharedPreferences.getInstance();
-      await _sharedPref.setBool(save_key_name, true);
+      final sharedPref = await SharedPreferences.getInstance();
+      await sharedPref.setBool(save_key_name, true);
 
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
@@ -23,8 +23,6 @@ class LoginPageWidget extends StatelessWidget {
         ),
       );
     } else {
-      // print('Showing snackbar: Please enter a username');
-      // print('Username entered: $userName');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: Colors.red,
