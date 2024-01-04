@@ -98,8 +98,8 @@ class SideBarDrawer extends StatelessWidget {
   }
 
   signOut(BuildContext context) async {
-    final _sharedPref = await SharedPreferences.getInstance();
-    await _sharedPref.clear();
+    final sharedPref = await SharedPreferences.getInstance();
+    await sharedPref.clear();
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => LoginPageWidget()),
         (route) => false);

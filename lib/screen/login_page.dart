@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/main.dart';
 import 'package:recipe_plates/screen/bottom_navigation.dart';

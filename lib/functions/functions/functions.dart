@@ -34,8 +34,6 @@ Future<void> updateRecipe(int index, recipeModel newRecipe) async {
   if (index >= 0 && index < recipeDB.length) {
     await recipeDB.putAt(index, newRecipe);
     getAllRecipiesByList();
-  } else {
-    print('Index is out of range: $index');
   }
 }
 

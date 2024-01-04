@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors, non_constant_identifier_names
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -80,7 +82,7 @@ class PieChartPageWidget extends StatelessWidget {
                   valueListenable: recipeNotifier,
                   builder: (context, value, child) {
                     if (ChartRecpie.isEmpty) {
-                      return Container(
+                      return SizedBox(
                         height: 500,
                         child: Center(
                           child: Lottie.asset(

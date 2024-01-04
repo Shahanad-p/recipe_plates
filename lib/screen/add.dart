@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, use_key_in_widget_constructors
 
 import 'dart:io';
 import 'package:flutter/material.dart';

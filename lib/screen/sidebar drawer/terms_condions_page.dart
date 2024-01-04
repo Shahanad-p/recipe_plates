@@ -14,10 +14,6 @@ class TermsConditionsPageWidget extends StatelessWidget {
         elevation: 1,
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
-        bottom: PreferredSize(
-          child: Container(),
-          preferredSize: const Size.fromHeight(0),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(40.20),
@@ -76,7 +72,7 @@ class TermsConditionsPageWidget extends StatelessWidget {
         buildSpacing(10),
         if (content is String)
           buildText(content)
-        else if (content is List<String>)
+        else if (content is List)
           ...content.map((text) => buildText(text)),
         buildSpacing(15),
       ],

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -84,7 +86,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    await editImage();
+                    editImage();
                     setState(() {});
                   },
                   child: buildRecipeImage(),
@@ -213,18 +215,19 @@ class _EditPageWidgetState extends State<EditPageWidget> {
     );
   }
 
-  Future<void> editImage() async {
-    try {
-      final returnImage = await _imagePicker.pickImage(
-        source: ImageSource.gallery,
-        imageQuality: 10,
-      );
+  void editImage() {
+    _imagePicker
+        .pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 10,
+    )
+        .then((returnImage) {
       if (returnImage != null) {
         setState(() {
           image = returnImage.path;
         });
       }
-    } catch (e) {}
+    });
   }
 
   Widget buildCategoryDropdown() {

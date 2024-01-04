@@ -1,7 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
-import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
 class FastfoodPage extends StatelessWidget {

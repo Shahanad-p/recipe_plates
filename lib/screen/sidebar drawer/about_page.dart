@@ -50,7 +50,7 @@ class AboutPageWidget extends StatelessWidget {
     );
   }
 
-  Widget buildSection(String heading, List<String> content) {
+  Widget buildSection(String heading, List content) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
