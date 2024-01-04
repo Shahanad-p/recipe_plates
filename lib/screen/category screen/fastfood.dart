@@ -26,10 +26,10 @@ class FastfoodPage extends StatelessWidget {
       ),
       body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder:
-            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
+        builder: (context, recipeList, child) {
           final filteredFastfoodList = recipeList
-              .where((food) => food.category.toLowerCase() == 'fastfood')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'fastfood')
               .toList();
 
           return Padding(

@@ -28,7 +28,8 @@ class SnacksPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredSnacksList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'snacks')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'snacks')
               .toList();
 
           return ListView.builder(

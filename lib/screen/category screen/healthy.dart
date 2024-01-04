@@ -28,7 +28,8 @@ class HealthyPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredHealthyList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'healthy')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'healthy')
               .toList();
 
           return ListView.builder(

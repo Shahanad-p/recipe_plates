@@ -26,10 +26,10 @@ class SoupPage extends StatelessWidget {
       ),
       body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder:
-            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
+        builder: (context, recipeList, child) {
           final filteredBeveragesList = recipeList
-              .where((food) => food.category.toLowerCase() == 'soup')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'soup')
               .toList();
           return Padding(
             padding: const EdgeInsets.all(15.11),

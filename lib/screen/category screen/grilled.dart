@@ -28,7 +28,8 @@ class GrilledPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredGrilledList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'grilled')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'grilled')
               .toList();
 
           return ListView.builder(

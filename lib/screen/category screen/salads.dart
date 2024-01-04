@@ -28,7 +28,8 @@ class SaladsPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredSaladsList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'salads')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'salads')
               .toList();
 
           return ListView.builder(

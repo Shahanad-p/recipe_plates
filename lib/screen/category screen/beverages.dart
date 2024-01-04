@@ -26,8 +26,7 @@ class BeveragesPage extends StatelessWidget {
       ),
       body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder:
-            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
+        builder: (context, recipeList, child) {
           final filteredBeveragesList = recipeList
               .where((categorizedRecipes) =>
                   categorizedRecipes.category.toLowerCase() == 'beverages')
