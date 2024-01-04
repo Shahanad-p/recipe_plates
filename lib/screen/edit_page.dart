@@ -75,30 +75,26 @@ class _EditPageWidgetState extends State<EditPageWidget> {
         ),
         centerTitle: true,
       ),
-      body: buildBody(),
-    );
-  }
-
-  Widget buildBody() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Center(
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () async {
-                  await editImage();
-                  setState(() {});
-                },
-                child: buildRecipeImage(),
-              ),
-              const SizedBox(height: 20.0),
-              buildRecipeForm(),
-              const SizedBox(height: 10),
-              buildUpdateButton(),
-            ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Center(
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    await editImage();
+                    setState(() {});
+                  },
+                  child: buildRecipeImage(),
+                ),
+                const SizedBox(height: 20.0),
+                buildRecipeForm(),
+                const SizedBox(height: 10),
+                buildUpdateButton(),
+              ],
+            ),
           ),
         ),
       ),
@@ -228,9 +224,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
           image = returnImage.path;
         });
       }
-    } catch (e) {
-      // print('Image picker exception: $e');
-    }
+    } catch (e) {}
   }
 
   Widget buildCategoryDropdown() {

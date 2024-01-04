@@ -29,7 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     usernameController.dispose();
   }
 
-  void updateRecipe(int index, recipeModel updatedRecipe) {
+  void editRecipe(int index, recipeModel updatedRecipe) {
     setState(() {
       displayedRecipes[index] = updatedRecipe;
     });
@@ -112,7 +112,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   builder: (BuildContext ctx, List<recipeModel> recipeList,
                       Widget? child) {
                     if (displayedRecipes.isEmpty) {
-                      return Container(
+                      return SizedBox(
                         height: 500,
                         child: Lottie.asset(
                             'assets/Animation - 1703913980311.json',
@@ -164,7 +164,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               );
 
                               if (result != null && result is recipeModel) {
-                                updateRecipe(index, result);
+                                editRecipe(index, result);
                               }
                             },
                             icon: const Icon(

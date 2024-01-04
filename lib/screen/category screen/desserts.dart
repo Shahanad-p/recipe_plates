@@ -28,7 +28,8 @@ class DessertsPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredDessertsList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'desserts')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'desserts')
               .toList();
 
           return Padding(

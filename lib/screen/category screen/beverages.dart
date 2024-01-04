@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-
 import 'package:recipe_plates/screen/menu.dart';
 
 class BeveragesPage extends StatelessWidget {
@@ -30,7 +29,8 @@ class BeveragesPage extends StatelessWidget {
         builder:
             (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
           final filteredBeveragesList = recipeList
-              .where((food) => food.category.toLowerCase() == 'beverages')
+              .where((categorizedRecipes) =>
+                  categorizedRecipes.category.toLowerCase() == 'beverages')
               .toList();
 
           return Padding(

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -247,7 +249,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
       ),
       onPressed: () {
         if (_formKey.currentState!.validate()) {
-          addButtonClicked(context);
+          addButtonClicked();
         } else {
           debugPrint('Please fix the errors before submitting.');
         }
@@ -349,7 +351,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     Navigator.pop(context);
   }
 
-  Future<void> addButtonClicked(BuildContext context) async {
+  Future<void> addButtonClicked() async {
     final name = _nameController.text.trim();
     final category = selectCategory.trim();
     final description = _descriptionController.text.trim();
@@ -379,13 +381,13 @@ class _AddPageWidgetState extends State<AddPageWidget> {
 
     Navigator.of(context).pop(recipe);
 
-    _nameController.clear();
-    _descriptionController.clear();
-    _ingredientsController.clear();
-    _costController.clear();
-    setState(() {
-      _image = null;
-    });
+    // _nameController.clear();
+    // _descriptionController.clear();
+    // _ingredientsController.clear();
+    // _costController.clear();
+    // setState(() {
+    //   _image = null;
+    // });
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Successfully added new recipe.!'),

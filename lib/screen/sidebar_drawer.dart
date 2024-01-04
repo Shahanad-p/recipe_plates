@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/data_reset.dart';

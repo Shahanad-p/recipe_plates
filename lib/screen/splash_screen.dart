@@ -62,7 +62,6 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
   Future<void> CheckUserLoggedIn() async {
     final sharedPref = await SharedPreferences.getInstance();
     final userLoggedIn = sharedPref.getBool(save_key_name);
-    // final userName = _sharedPref.getString('username') ?? '';
     if (userLoggedIn == null || userLoggedIn == false) {
       goToLogin();
     } else {

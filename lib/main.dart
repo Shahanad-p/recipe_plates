@@ -11,7 +11,7 @@ Future<void> main() async {
   if (!Hive.isAdapterRegistered(recipeModelAdapter().typeId)) {
     Hive.registerAdapter(recipeModelAdapter());
   }
-  // await SharedPreferenceServices.init();
+
   runApp(const MyApp());
 }
 
