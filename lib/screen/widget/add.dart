@@ -169,7 +169,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
       String hintText, double height, String? Function(String?)? validator,
       {bool numericOnly = false}) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.10),
       child: TextFormField(
         controller: controller,
         keyboardType: numericOnly ? TextInputType.number : null,

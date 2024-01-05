@@ -111,7 +111,7 @@ class LoginPageWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10.10),
                             decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(

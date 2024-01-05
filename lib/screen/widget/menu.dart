@@ -53,7 +53,7 @@ class MenuOpeningPage extends StatelessWidget {
     String costText,
   ) {
     return Padding(
-      padding: const EdgeInsets.all(15.10),
+      padding: const EdgeInsets.all(15.20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

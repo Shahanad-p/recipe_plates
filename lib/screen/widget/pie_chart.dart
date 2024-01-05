@@ -18,7 +18,6 @@ class PieChartPageWidget extends StatelessWidget {
     Colors.purpleAccent,
     Colors.lightGreenAccent,
     Colors.indigoAccent,
-    Colors.blueGrey,
     Colors.amberAccent,
   ];
 

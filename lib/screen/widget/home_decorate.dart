@@ -20,7 +20,7 @@ Widget buildGridList(
       (MediaQuery.of(context).orientation == Orientation.portrait ? 0.4 : 0.3);
   double cardHeight = 150.0;
 
-///?
+  ///?
   return Padding(
     padding: EdgeInsets.all(
       MediaQuery.of(context).size.width * 0.01,
@@ -29,7 +29,7 @@ Widget buildGridList(
       width: cardWidth,
       height: cardHeight,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.10),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 229, 218, 218),

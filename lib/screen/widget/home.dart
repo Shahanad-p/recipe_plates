@@ -106,7 +106,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20.10),
                 child: ValueListenableBuilder(
                   valueListenable: recipeNotifier,
                   builder: (BuildContext ctx, List<recipeModel> recipeList,

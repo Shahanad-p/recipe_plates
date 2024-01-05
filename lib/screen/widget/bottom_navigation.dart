@@ -5,7 +5,6 @@ import 'package:recipe_plates/screen/widget/favorite_page.dart';
 import 'package:recipe_plates/screen/widget/home.dart';
 import 'package:recipe_plates/screen/widget/pie_chart.dart';
 
-
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({
     super.key,
@@ -39,7 +38,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       child: Scaffold(
         body: pages[currentIndexValue],
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(22.10),
+          padding: const EdgeInsets.all(22.20),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: BottomNavigationBar(

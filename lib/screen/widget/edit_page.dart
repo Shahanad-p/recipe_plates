@@ -123,7 +123,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
 
   Widget buildDefaultRecipeImage() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15.0),
+      borderRadius: BorderRadius.circular(15.10),
       child: Image.file(
         image != null ? File(image!) : File(''),
         height: 150,
