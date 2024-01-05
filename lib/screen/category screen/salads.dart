@@ -4,9 +4,14 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class SaladsPage extends StatelessWidget {
+class SaladsPage extends StatefulWidget {
   const SaladsPage({super.key});
 
+  @override
+  State<SaladsPage> createState() => _SaladsPageState();
+}
+
+class _SaladsPageState extends State<SaladsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +20,11 @@ class SaladsPage extends StatelessWidget {
           'Salads',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18.10,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -28,8 +33,7 @@ class SaladsPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredSaladsList = recipeList
-              .where((categorizedRecipes) =>
-                  categorizedRecipes.category.toLowerCase() == 'salads')
+              .where((recipe) => recipe.category.toLowerCase() == 'salads')
               .toList();
 
           return ListView.builder(
@@ -77,7 +81,7 @@ class SaladsPage extends StatelessWidget {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.11),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -106,7 +110,7 @@ class SaladsPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.20),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(

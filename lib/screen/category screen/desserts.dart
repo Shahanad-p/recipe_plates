@@ -4,9 +4,14 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class DessertsPage extends StatelessWidget {
+class DessertsPage extends StatefulWidget {
   const DessertsPage({super.key});
 
+  @override
+  State<DessertsPage> createState() => _DessertsPageState();
+}
+
+class _DessertsPageState extends State<DessertsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +20,11 @@ class DessertsPage extends StatelessWidget {
           'Desserts',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18.10,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -28,12 +33,11 @@ class DessertsPage extends StatelessWidget {
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
           final filteredDessertsList = recipeList
-              .where((categorizedRecipes) =>
-                  categorizedRecipes.category.toLowerCase() == 'desserts')
+              .where((recipe) => recipe.category.toLowerCase() == 'desserts')
               .toList();
 
           return Padding(
-            padding: const EdgeInsets.all(15.10),
+            padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: filteredDessertsList.length,
@@ -83,7 +87,7 @@ class DessertsPage extends StatelessWidget {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.10),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -112,7 +116,7 @@ class DessertsPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.20),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(

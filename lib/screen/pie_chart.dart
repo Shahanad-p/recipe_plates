@@ -4,7 +4,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
-import 'package:recipe_plates/functions/model/model.dart';
 
 class PieChartPageWidget extends StatelessWidget {
   PieChartPageWidget({Key? key});
@@ -141,12 +140,4 @@ class PieChartPageWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-double calculateTotalCost(List<recipeModel> recipes) {
-  double totalCost = 0;
-  for (var recipe in recipes) {
-    totalCost += double.parse(recipe.cost);
-  }
-  return totalCost;
 }

@@ -63,10 +63,11 @@ Future<void> deleteFromFavourite(int index) async {
   favoriteItemsNotifier.value = favoriteBox.values.toList();
 }
 
-double calculateTotalCost(List<recipeModel> foods) {
+calculateTotalCost(List<recipeModel> recipes) {
   double totalCost = 0;
-  for (var food in foods) {
-    totalCost += double.parse(food.cost);
+  for (int i = 0; i < recipes.length; i++) {
+    recipeModel recipe = recipes[i];
+    totalCost += double.parse(recipe.cost);
   }
   return totalCost;
 }

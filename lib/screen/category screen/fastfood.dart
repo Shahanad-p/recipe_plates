@@ -3,11 +3,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class FastfoodPage extends StatelessWidget {
+class FastfoodPage extends StatefulWidget {
   const FastfoodPage({Key? key});
 
+  @override
+  State<FastfoodPage> createState() => _FastfoodPageState();
+}
+
+class _FastfoodPageState extends State<FastfoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,25 +22,25 @@ class FastfoodPage extends StatelessWidget {
           'Fastfood',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18.10,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
+        builder:
+            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
           final filteredFastfoodList = recipeList
-              .where((categorizedRecipes) =>
-                  categorizedRecipes.category.toLowerCase() == 'fastfood')
+              .where((food) => food.category.toLowerCase() == 'fastfood')
               .toList();
 
           return Padding(
-            padding: const EdgeInsets.all(15.10),
+            padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: filteredFastfoodList.length,
@@ -82,7 +88,7 @@ class FastfoodPage extends StatelessWidget {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.10),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -111,7 +117,7 @@ class FastfoodPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.20),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(

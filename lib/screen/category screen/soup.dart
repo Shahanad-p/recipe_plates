@@ -1,11 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class SoupPage extends StatelessWidget {
+class SoupPage extends StatefulWidget {
   const SoupPage({super.key});
 
+  @override
+  State<SoupPage> createState() => _SoupPageState();
+}
+
+class _SoupPageState extends State<SoupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,24 +20,24 @@ class SoupPage extends StatelessWidget {
           'Soup',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18.10,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
+        builder:
+            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
           final filteredBeveragesList = recipeList
-              .where((categorizedRecipes) =>
-                  categorizedRecipes.category.toLowerCase() == 'soup')
+              .where((food) => food.category.toLowerCase() == 'soup')
               .toList();
           return Padding(
-            padding: const EdgeInsets.all(15.11),
+            padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: filteredBeveragesList.length,
@@ -109,7 +115,7 @@ class SoupPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.20),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(

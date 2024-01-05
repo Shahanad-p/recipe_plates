@@ -4,9 +4,14 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/menu.dart';
 
-class HealthyPage extends StatelessWidget {
+class HealthyPage extends StatefulWidget {
   const HealthyPage({super.key});
 
+  @override
+  State<HealthyPage> createState() => _HealthyPageState();
+}
+
+class _HealthyPageState extends State<HealthyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +20,11 @@ class HealthyPage extends StatelessWidget {
           'Healthy',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18.10,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -27,9 +32,9 @@ class HealthyPage extends StatelessWidget {
       body: ValueListenableBuilder<List<recipeModel>>(
         valueListenable: recipeNotifier,
         builder: (context, recipeList, child) {
+          // Filter recipes based on the category
           final filteredHealthyList = recipeList
-              .where((categorizedRecipes) =>
-                  categorizedRecipes.category.toLowerCase() == 'healthy')
+              .where((recipe) => recipe.category.toLowerCase() == 'healthy')
               .toList();
 
           return ListView.builder(
@@ -77,7 +82,7 @@ class HealthyPage extends StatelessWidget {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.11),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -106,7 +111,7 @@ class HealthyPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.20),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(

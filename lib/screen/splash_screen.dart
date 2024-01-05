@@ -20,9 +20,21 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
     super.initState();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  Future goToLogin() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => LoginPageWidget()));
+  }
+
+  Future<void> CheckUserLoggedIn() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    final userLoggedIn = sharedPref.getBool(save_key_name);
+    if (userLoggedIn == null || userLoggedIn == false) {
+      goToLogin();
+    } else {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const BottomNavBarWidget(userName: '')));
+    }
   }
 
   @override
@@ -46,27 +58,5 @@ class _SplashScreenWidgetState extends State<SplashScreenWidget> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  Future goToLogin() async {
-    await Future.delayed(const Duration(seconds: 3));
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginPageWidget()));
-  }
-
-  Future<void> CheckUserLoggedIn() async {
-    final sharedPref = await SharedPreferences.getInstance();
-    final userLoggedIn = sharedPref.getBool(save_key_name);
-    if (userLoggedIn == null || userLoggedIn == false) {
-      goToLogin();
-    } else {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const BottomNavBarWidget(userName: '')));
-    }
   }
 }

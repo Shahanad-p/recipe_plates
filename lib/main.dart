@@ -9,7 +9,7 @@ import 'package:recipe_plates/screen/splash_screen.dart';
 const save_key_name = 'UserLoggedIn';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
+  Hive.initFlutter();
   if (!Hive.isAdapterRegistered(recipeModelAdapter().typeId)) {
     Hive.registerAdapter(recipeModelAdapter());
   }

@@ -1,11 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/functions/model/model.dart';
+
 import 'package:recipe_plates/screen/menu.dart';
 
-class BeveragesPage extends StatelessWidget {
+class BeveragesPage extends StatefulWidget {
   const BeveragesPage({super.key});
 
+  @override
+  State<BeveragesPage> createState() => _BeveragesPageState();
+}
+
+class _BeveragesPageState extends State<BeveragesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,25 +21,25 @@ class BeveragesPage extends StatelessWidget {
           'Beverages',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18.10,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
-        elevation: 1,
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: ValueListenableBuilder(
         valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
+        builder:
+            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
           final filteredBeveragesList = recipeList
-              .where((categorizedRecipes) =>
-                  categorizedRecipes.category.toLowerCase() == 'beverages')
+              .where((food) => food.category.toLowerCase() == 'beverages')
               .toList();
 
           return Padding(
-            padding: const EdgeInsets.all(15.10),
+            padding: const EdgeInsets.all(15.0),
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: filteredBeveragesList.length,
@@ -110,11 +117,11 @@ class BeveragesPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.20),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20.10),
+                  borderRadius: BorderRadius.circular(20),
                   child: image != null
                       ? Image.file(
                           image,
