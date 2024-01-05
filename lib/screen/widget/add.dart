@@ -381,13 +381,6 @@ class _AddPageWidgetState extends State<AddPageWidget> {
 
     Navigator.of(context).pop(recipe);
 
-    // _nameController.clear();
-    // _descriptionController.clear();
-    // _ingredientsController.clear();
-    // _costController.clear();
-    // setState(() {
-    //   _image = null;
-    // });
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Successfully added new recipe.!'),

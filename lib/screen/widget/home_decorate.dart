@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:recipe_plates/screen/menu.dart';
+import 'package:recipe_plates/screen/widget/menu.dart';
 
 Widget buildGridList(
   BuildContext context, {
@@ -17,9 +17,10 @@ Widget buildGridList(
   required VoidCallback onDelete,
 }) {
   double cardWidth = MediaQuery.of(context).size.width *
-      (MediaQuery.of(context).orientation == Orientation.portrait ? 0.4 : 0.2);
+      (MediaQuery.of(context).orientation == Orientation.portrait ? 0.4 : 0.3);
   double cardHeight = 150.0;
 
+///?
   return Padding(
     padding: EdgeInsets.all(
       MediaQuery.of(context).size.width * 0.01,

@@ -4,8 +4,8 @@ import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/data_reset.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/setting_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/terms_condions_page.dart';
-import 'package:recipe_plates/screen/login_page.dart';
 import 'package:recipe_plates/screen/sidebar%20drawer/about_page.dart';
+import 'package:recipe_plates/screen/widget/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SideBarDrawer extends StatelessWidget {

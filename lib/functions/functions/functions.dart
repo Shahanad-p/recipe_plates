@@ -9,13 +9,12 @@ ValueNotifier<List<recipeModel>> favoriteItemsNotifier =
 
 Future<void> addRecipies(recipeModel value) async {
   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
-  await recipedb.add(value);
+  recipedb.add(value);
   recipeNotifier.value.add(value);
   recipeNotifier.notifyListeners();
 }
 
 Future<void> getAllRecipiesByList() async {
-  await Hive.initFlutter();
   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
   recipeNotifier.value.clear();
   recipeNotifier.value.addAll(recipedb.values);
@@ -24,15 +23,15 @@ Future<void> getAllRecipiesByList() async {
 
 Future<void> deleteRecipies(int index) async {
   final recipedb = await Hive.openBox<recipeModel>('recipe_db');
-  await recipedb.deleteAt(index);
+  recipedb.deleteAt(index);
   getAllRecipiesByList();
 }
 
 Future<void> updateRecipe(int index, recipeModel newRecipe) async {
-  await Hive.initFlutter();
+  Hive.initFlutter();
   final recipeDB = await Hive.openBox<recipeModel>('recipies_db');
   if (index >= 0 && index < recipeDB.length) {
-    await recipeDB.putAt(index, newRecipe);
+    recipeDB.putAt(index, newRecipe);
     getAllRecipiesByList();
   }
 }
@@ -48,7 +47,7 @@ Future<void> addToFavourite(recipeModel recipe) async {
   bool isAlreadyInFavorites = favoriteItems.contains(recipe);
   if (!isAlreadyInFavorites) {
     favoriteBox.add(recipe);
-    favoriteItems.add(recipe);
+    // favoriteItems.add(recipe);
     recipeNotifier.value = List.from(recipeNotifier.value);
     favoriteItemsNotifier.value = favoriteItems;
   }

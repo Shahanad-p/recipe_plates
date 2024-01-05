@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/menu.dart';
+import 'package:recipe_plates/screen/widget/menu.dart';
+
 
 class HealthyPage extends StatefulWidget {
   const HealthyPage({super.key});

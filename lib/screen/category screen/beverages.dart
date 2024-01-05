@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/screen/widget/menu.dart';
 
-import 'package:recipe_plates/screen/menu.dart';
 
 class BeveragesPage extends StatefulWidget {
   const BeveragesPage({super.key});

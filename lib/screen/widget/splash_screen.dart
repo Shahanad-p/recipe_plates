@@ -1,9 +1,8 @@
 // ignore_for_file: use_build_context_synchronously, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/main.dart';
-import 'package:recipe_plates/screen/bottom_navigation.dart';
-import 'package:recipe_plates/screen/login_page.dart';
+import 'package:recipe_plates/screen/widget/bottom_navigation.dart';
+import 'package:recipe_plates/screen/widget/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenWidget extends StatefulWidget {
