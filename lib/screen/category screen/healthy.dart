@@ -4,7 +4,6 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-
 class HealthyPage extends StatefulWidget {
   const HealthyPage({super.key});
 
@@ -15,49 +14,51 @@ class HealthyPage extends StatefulWidget {
 class _HealthyPageState extends State<HealthyPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Healthy',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Healthy',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.black,
+            ),
           ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: ValueListenableBuilder<List<recipeModel>>(
-        valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
-          // Filter recipes based on the category
-          final filteredHealthyList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'healthy')
-              .toList();
+        body: ValueListenableBuilder<List<recipeModel>>(
+          valueListenable: recipeNotifier,
+          builder: (context, recipeList, child) {
+            // Filter recipes based on the category
+            final filteredHealthyList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'healthy')
+                .toList();
 
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: filteredHealthyList.length,
-            itemBuilder: (context, index) {
-              final recipeData = filteredHealthyList[index];
-              final recipeImage =
-                  recipeData.image != null ? File(recipeData.image!) : null;
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: filteredHealthyList.length,
+              itemBuilder: (context, index) {
+                final recipeData = filteredHealthyList[index];
+                final recipeImage =
+                    recipeData.image != null ? File(recipeData.image!) : null;
 
-              return buildGridList(
-                context,
-                image: recipeImage,
-                text: recipeData.name,
-                category: recipeData.category,
-                description: recipeData.description,
-                ingredients: recipeData.ingredients,
-                cost: recipeData.cost,
-              );
-            },
-          );
-        },
+                return buildGridList(
+                  context,
+                  image: recipeImage,
+                  text: recipeData.name,
+                  category: recipeData.category,
+                  description: recipeData.description,
+                  ingredients: recipeData.ingredients,
+                  cost: recipeData.cost,
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

@@ -37,41 +37,43 @@ class _AddPageWidgetState extends State<AddPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: const Text(
-          'New Recipe',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05,
-            vertical: MediaQuery.of(context).size.width * 0.05,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 1,
+          backgroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.black),
+          title: const Text(
+            'New Recipe',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          child: Form(
-            key: _formKey,
-            child: Center(
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () async {
-                      await selectImage();
-                      setState(() {});
-                    },
-                    child: buildRecipeImage(),
-                  ),
-                  const SizedBox(height: 20.0),
-                  buildRecipeForm(),
-                  const SizedBox(height: 10.10),
-                  buildAddButton(),
-                ],
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.05,
+              vertical: MediaQuery.of(context).size.width * 0.05,
+            ),
+            child: Form(
+              key: _formKey,
+              child: Center(
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () async {
+                        await selectImage();
+                        setState(() {});
+                      },
+                      child: buildRecipeImage(),
+                    ),
+                    const SizedBox(height: 20.0),
+                    buildRecipeForm(),
+                    const SizedBox(height: 10.10),
+                    buildAddButton(),
+                  ],
+                ),
               ),
             ),
           ),

@@ -4,7 +4,6 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-
 class DessertsPage extends StatefulWidget {
   const DessertsPage({super.key});
 
@@ -15,51 +14,53 @@ class DessertsPage extends StatefulWidget {
 class _DessertsPageState extends State<DessertsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Desserts',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: ValueListenableBuilder<List<recipeModel>>(
-        valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
-          final filteredDessertsList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'desserts')
-              .toList();
-
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: filteredDessertsList.length,
-              itemBuilder: (context, index) {
-                final recipeData = filteredDessertsList[index];
-                final recipeImage =
-                    recipeData.image != null ? File(recipeData.image!) : null;
-
-                return buildGridList(
-                  context,
-                  image: recipeImage,
-                  text: recipeData.name,
-                  category: recipeData.category,
-                  description: recipeData.description,
-                  ingredients: recipeData.ingredients,
-                  cost: recipeData.cost,
-                );
-              },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Desserts',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.black,
             ),
-          );
-        },
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
+        ),
+        body: ValueListenableBuilder<List<recipeModel>>(
+          valueListenable: recipeNotifier,
+          builder: (context, recipeList, child) {
+            final filteredDessertsList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'desserts')
+                .toList();
+
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: filteredDessertsList.length,
+                itemBuilder: (context, index) {
+                  final recipeData = filteredDessertsList[index];
+                  final recipeImage =
+                      recipeData.image != null ? File(recipeData.image!) : null;
+
+                  return buildGridList(
+                    context,
+                    image: recipeImage,
+                    text: recipeData.name,
+                    category: recipeData.category,
+                    description: recipeData.description,
+                    ingredients: recipeData.ingredients,
+                    cost: recipeData.cost,
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

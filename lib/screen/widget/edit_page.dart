@@ -66,36 +66,38 @@ class _EditPageWidgetState extends State<EditPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white10,
-        iconTheme: const IconThemeData(color: Colors.black),
-        title: const Text(
-          'Edit your recipes',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white10,
+          iconTheme: const IconThemeData(color: Colors.black),
+          title: const Text(
+            'Edit your recipes',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Center(
-            child: Column(
-              children: [
-                GestureDetector(
-                  onTap: () async {
-                    editImage();
-                    setState(() {});
-                  },
-                  child: buildRecipeImage(),
-                ),
-                const SizedBox(height: 20.0),
-                buildRecipeForm(),
-                const SizedBox(height: 10),
-                buildUpdateButton(),
-              ],
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Center(
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      editImage();
+                      setState(() {});
+                    },
+                    child: buildRecipeImage(),
+                  ),
+                  const SizedBox(height: 20.0),
+                  buildRecipeForm(),
+                  const SizedBox(height: 10),
+                  buildUpdateButton(),
+                ],
+              ),
             ),
           ),
         ),

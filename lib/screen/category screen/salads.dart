@@ -4,7 +4,6 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-
 class SaladsPage extends StatefulWidget {
   const SaladsPage({super.key});
 
@@ -15,48 +14,50 @@ class SaladsPage extends StatefulWidget {
 class _SaladsPageState extends State<SaladsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Salads',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Salads',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.black,
+            ),
           ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: ValueListenableBuilder<List<recipeModel>>(
-        valueListenable: recipeNotifier,
-        builder: (context, recipeList, child) {
-          final filteredSaladsList = recipeList
-              .where((recipe) => recipe.category.toLowerCase() == 'salads')
-              .toList();
+        body: ValueListenableBuilder<List<recipeModel>>(
+          valueListenable: recipeNotifier,
+          builder: (context, recipeList, child) {
+            final filteredSaladsList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'salads')
+                .toList();
 
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: filteredSaladsList.length,
-            itemBuilder: (context, index) {
-              final recipeData = filteredSaladsList[index];
-              final recipeImage =
-                  recipeData.image != null ? File(recipeData.image!) : null;
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: filteredSaladsList.length,
+              itemBuilder: (context, index) {
+                final recipeData = filteredSaladsList[index];
+                final recipeImage =
+                    recipeData.image != null ? File(recipeData.image!) : null;
 
-              return buildGridList(
-                context,
-                image: recipeImage,
-                text: recipeData.name,
-                category: recipeData.category,
-                description: recipeData.description,
-                ingredients: recipeData.ingredients,
-                cost: recipeData.cost,
-              );
-            },
-          );
-        },
+                return buildGridList(
+                  context,
+                  image: recipeImage,
+                  text: recipeData.name,
+                  category: recipeData.category,
+                  description: recipeData.description,
+                  ingredients: recipeData.ingredients,
+                  cost: recipeData.cost,
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

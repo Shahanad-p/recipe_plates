@@ -5,33 +5,35 @@ class SettingPageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Settings',
-          style: TextStyle(color: Colors.black),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Settings',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+          elevation: 1,
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(40.20),
-        child: ListView(
-          children: [
-            buildSection('Profile', Icons.person),
-            buildDivider(),
-            buildSection('Notification', Icons.notifications),
-            buildDivider(),
-            buildSection('Security', Icons.security),
-            buildDivider(),
-            buildSection('Account', Icons.person),
-            buildDivider(),
-            buildSection('Support', Icons.support),
-            buildDivider(),
-            buildSection('Mode', Icons.mode),
-            buildDivider(),
-          ],
+        body: Container(
+          padding: const EdgeInsets.all(40.20),
+          child: ListView(
+            children: [
+              buildSection('Profile', Icons.person),
+              buildDivider(),
+              buildSection('Notification', Icons.notifications),
+              buildDivider(),
+              buildSection('Security', Icons.security),
+              buildDivider(),
+              buildSection('Account', Icons.person),
+              buildDivider(),
+              buildSection('Support', Icons.support),
+              buildDivider(),
+              buildSection('Mode', Icons.mode),
+              buildDivider(),
+            ],
+          ),
         ),
       ),
     );

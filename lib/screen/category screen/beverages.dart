@@ -4,7 +4,6 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-
 class BeveragesPage extends StatefulWidget {
   const BeveragesPage({super.key});
 
@@ -15,54 +14,56 @@ class BeveragesPage extends StatefulWidget {
 class _BeveragesPageState extends State<BeveragesPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Beverages',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
-      body: ValueListenableBuilder(
-        valueListenable: recipeNotifier,
-        builder:
-            (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
-          final filteredBeveragesList = recipeList
-              .where((food) => food.category.toLowerCase() == 'beverages')
-              .toList();
-
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: filteredBeveragesList.length,
-              itemBuilder: (context, index) {
-                final recipeDatas = filteredBeveragesList[index];
-                File? recipeImage;
-                if (recipeDatas.image != null) {
-                  recipeImage = File(recipeDatas.image!);
-                }
-
-                return buildGridList(
-                  context,
-                  image: recipeImage,
-                  text: recipeDatas.name,
-                  category: recipeDatas.category,
-                  description: recipeDatas.description,
-                  ingredients: recipeDatas.ingredients,
-                  cost: recipeDatas.cost,
-                );
-              },
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Beverages',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.black,
             ),
-          );
-        },
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
+        ),
+        body: ValueListenableBuilder(
+          valueListenable: recipeNotifier,
+          builder:
+              (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
+            final filteredBeveragesList = recipeList
+                .where((food) => food.category.toLowerCase() == 'beverages')
+                .toList();
+
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: filteredBeveragesList.length,
+                itemBuilder: (context, index) {
+                  final recipeDatas = filteredBeveragesList[index];
+                  File? recipeImage;
+                  if (recipeDatas.image != null) {
+                    recipeImage = File(recipeDatas.image!);
+                  }
+
+                  return buildGridList(
+                    context,
+                    image: recipeImage,
+                    text: recipeDatas.name,
+                    category: recipeDatas.category,
+                    description: recipeDatas.description,
+                    ingredients: recipeDatas.ingredients,
+                    cost: recipeDatas.cost,
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
