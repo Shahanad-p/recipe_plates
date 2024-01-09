@@ -39,7 +39,7 @@ class _BeveragesPageState extends State<BeveragesPage> {
                 .toList();
 
             return Padding(
-              padding: const EdgeInsets.all(15.10),
+              padding: const EdgeInsets.all(15),
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: filteredBeveragesList.length,
@@ -118,11 +118,11 @@ class _BeveragesPageState extends State<BeveragesPage> {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2),
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20.10),
+                  borderRadius: BorderRadius.circular(20),
                   child: image != null
                       ? Image.file(
                           image,

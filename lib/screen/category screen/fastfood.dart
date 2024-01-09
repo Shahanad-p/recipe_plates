@@ -89,7 +89,7 @@ class _FastfoodPageState extends State<FastfoodPage> {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.10),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -118,7 +118,7 @@ class _FastfoodPageState extends State<FastfoodPage> {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2),
             child: Stack(
               children: [
                 ClipRRect(

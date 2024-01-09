@@ -112,11 +112,11 @@ class _SnacksPageState extends State<SnacksPage> {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2),
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20.10),
+                  borderRadius: BorderRadius.circular(20),
                   child: image != null
                       ? Image.file(
                           image,

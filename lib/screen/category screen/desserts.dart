@@ -38,7 +38,7 @@ class _DessertsPageState extends State<DessertsPage> {
                 .toList();
 
             return Padding(
-              padding: const EdgeInsets.all(15.10),
+              padding: const EdgeInsets.all(15),
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: filteredDessertsList.length,
@@ -89,7 +89,7 @@ class _DessertsPageState extends State<DessertsPage> {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.10),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -118,7 +118,7 @@ class _DessertsPageState extends State<DessertsPage> {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2),
             child: Stack(
               children: [
                 ClipRRect(
