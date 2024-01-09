@@ -39,7 +39,7 @@ class _BeveragesPageState extends State<BeveragesPage> {
                 .toList();
 
             return Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(15.10),
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: filteredBeveragesList.length,
