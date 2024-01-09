@@ -38,9 +38,9 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       child: Scaffold(
         body: pages[currentIndexValue],
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(22.20),
+          padding: const EdgeInsets.all(22.10),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.10),
             child: BottomNavigationBar(
               unselectedFontSize: 0,
               type: BottomNavigationBarType.fixed,

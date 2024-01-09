@@ -123,7 +123,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
 
   Widget buildDefaultRecipeImage() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15.10),
+      borderRadius: BorderRadius.circular(15.20),
       child: Image.file(
         image != null ? File(image!) : File(''),
         height: 150,
@@ -142,9 +142,9 @@ class _EditPageWidgetState extends State<EditPageWidget> {
           'Edit recipe name',
           80.10,
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 10.10),
         buildCategoryDropdown(),
-        const SizedBox(height: 10),
+        const SizedBox(height: 10.10),
         buildTextFormField(
           descriptionController,
           'Description',

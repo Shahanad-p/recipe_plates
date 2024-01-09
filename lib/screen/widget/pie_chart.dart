@@ -60,7 +60,7 @@ class PieChartPageWidget extends StatelessWidget {
                       width: 250,
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 236, 233, 233),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(18.10),
                       ),
                       child: Center(
                         child: Text(
