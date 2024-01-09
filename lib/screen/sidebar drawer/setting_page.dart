@@ -48,7 +48,7 @@ class SettingPageWidget extends StatelessWidget {
         Row(
           children: [
             Icon(iconData),
-            const SizedBox(width: 20),
+            const SizedBox(width: 20.10),
             Text(
               title,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

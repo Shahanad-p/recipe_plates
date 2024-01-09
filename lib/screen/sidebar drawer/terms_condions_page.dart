@@ -17,7 +17,7 @@ class TermsConditionsPageWidget extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(40.10),
+          padding: const EdgeInsets.all(40.20),
           child: ListView(
             children: [
               buildHeading('Terms and conditions'),
