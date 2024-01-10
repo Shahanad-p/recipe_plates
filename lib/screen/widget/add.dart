@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously, use_key_in_widget_constructors
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -62,16 +60,142 @@ class _AddPageWidgetState extends State<AddPageWidget> {
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () async {
-                        await selectImage();
-                        setState(() {});
-                      },
-                      child: buildRecipeImage(),
-                    ),
+                        onTap: () async {
+                          await selectImage();
+                          setState(() {});
+                        },
+                        child: _image != null
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.file(
+                                  _image!,
+                                  height: 150,
+                                  width: 220,
+                                  fit: BoxFit.fill,
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.asset(
+                                  'assets/2947690.jpg',
+                                  height: 150,
+                                  width: 220,
+                                  fit: BoxFit.fill,
+                                ),
+                              )),
                     const SizedBox(height: 20),
-                    buildRecipeForm(),
+                    Column(
+                      children: [
+                        buildTextFormField(
+                          _nameController,
+                          'Name',
+                          'Enter your recipe name',
+                          80.10,
+                          (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Name is required';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DropdownButtonFormField<String>(
+                            value: selectCategory,
+                            itemHeight: 50.0,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  bottom: Radius.circular(25),
+                                  top: Radius.circular(25),
+                                ),
+                              ),
+                              labelText: 'Categories',
+                              contentPadding: EdgeInsets.only(left: 25),
+                            ),
+                            items: _categoryList.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              if (value != null) {
+                                setState(() {
+                                  selectCategory = value;
+                                });
+                              }
+                            },
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Category is required';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        buildTextFormField(
+                          _descriptionController,
+                          'Description',
+                          'Enter your recipe description here',
+                          80.10,
+                          (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Description is required';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        buildTextFormField(
+                          _ingredientsController,
+                          'Ingredients',
+                          'Enter your recipe ingredients',
+                          80.10,
+                          (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Ingredients are required';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        buildTextFormField(_costController, 'Total cost',
+                            'Enter your recipe total cost', 80.10, (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Total cost is required';
+                          }
+                          return null;
+                        }, numericOnly: true),
+                      ],
+                    ),
                     const SizedBox(height: 10),
-                    buildAddButton(),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.amber),
+                        padding: MaterialStateProperty.all(
+                          EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.2,
+                            right: MediaQuery.of(context).size.width * 0.2,
+                          ),
+                        ),
+                        textStyle: MaterialStateProperty.all(
+                          const TextStyle(fontSize: 18, color: Colors.white),
+                        ),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          addButtonClicked();
+                        } else {
+                          debugPrint(
+                              'Please fix the errors before submitting.');
+                        }
+                      },
+                      child: const Text('Add all recipes'),
+                    ),
                   ],
                 ),
               ),
@@ -79,89 +203,6 @@ class _AddPageWidgetState extends State<AddPageWidget> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget buildRecipeImage() {
-    return _image != null ? buildDefaultRecipeImage() : buildPlaceholderImage();
-  }
-
-  Widget buildPlaceholderImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image.asset(
-        'assets/2947690.jpg',
-        height: 150,
-        width: 220,
-        fit: BoxFit.fill,
-      ),
-    );
-  }
-
-  Widget buildDefaultRecipeImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image.file(
-        _image!,
-        height: 150,
-        width: 220,
-        fit: BoxFit.fill,
-      ),
-    );
-  }
-
-  Widget buildRecipeForm() {
-    return Column(
-      children: [
-        buildTextFormField(
-          _nameController,
-          'Name',
-          'Enter your recipe name',
-          80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return 'Name is required';
-            }
-            return null;
-          },
-        ),
-        const SizedBox(height: 10),
-        buildCategoryDropdown(),
-        const SizedBox(height: 10),
-        buildTextFormField(
-          _descriptionController,
-          'Description',
-          'Enter your recipe description here',
-          80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return 'Description is required';
-            }
-            return null;
-          },
-        ),
-        const SizedBox(height: 10),
-        buildTextFormField(
-          _ingredientsController,
-          'Ingredients',
-          'Enter your recipe ingredients',
-          80.10,
-          (value) {
-            if (value == null || value.isEmpty) {
-              return 'Ingredients are required';
-            }
-            return null;
-          },
-        ),
-        const SizedBox(height: 10),
-        buildTextFormField(_costController, 'Total cost',
-            'Enter your recipe total cost', 80.10, (value) {
-          if (value == null || value.isEmpty) {
-            return 'Total cost is required';
-          }
-          return null;
-        }, numericOnly: true),
-      ],
     );
   }
 
@@ -196,115 +237,49 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     );
   }
 
-  Widget buildCategoryDropdown() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: DropdownButtonFormField<String>(
-        value: selectCategory,
-        itemHeight: 50.0,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25),
-              top: Radius.circular(25),
-            ),
-          ),
-          labelText: 'Categories',
-          contentPadding: EdgeInsets.only(left: 25),
-        ),
-        items: _categoryList.map((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
-        onChanged: (String? value) {
-          if (value != null) {
-            setState(() {
-              selectCategory = value;
-            });
-          }
-        },
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Category is required';
-          }
-          return null;
-        },
-      ),
-    );
-  }
-
-  Widget buildAddButton() {
-    return ElevatedButton(
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.amber),
-        padding: MaterialStateProperty.all(
-          EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.2,
-            right: MediaQuery.of(context).size.width * 0.2,
-          ),
-        ),
-        textStyle: MaterialStateProperty.all(
-          const TextStyle(fontSize: 18, color: Colors.white),
-        ),
-      ),
-      onPressed: () {
-        if (_formKey.currentState!.validate()) {
-          addButtonClicked();
-        } else {
-          debugPrint('Please fix the errors before submitting.');
-        }
-      },
-      child: const Text('Add all recipes'),
-    );
-  }
-
   Future selectImage() {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-        return buildImageSelectionDialog();
-      },
-    );
-  }
-
-  Widget buildImageSelectionDialog() {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.10)),
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.5,
-        height: MediaQuery.of(context).size.height * 0.25,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            children: [
-              const Text(
-                'Select Image From !',
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        return Dialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.10)),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: MediaQuery.of(context).size.height * 0.25,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
                 children: [
-                  buildImageSelectionOption(
-                    'assets/Animation - 1701430677440.json',
-                    'Gallery',
-                    selectedImageFromGallery,
+                  const Text(
+                    'Select Image From !',
+                    style:
+                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  buildImageSelectionOption(
-                    'assets/Animation - 1702530000704.json',
-                    'Camera',
-                    selectedImageFromCamera,
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      buildImageSelectionOption(
+                        'assets/Animation - 1701430677440.json',
+                        'Gallery',
+                        selectedImageFromGallery,
+                      ),
+                      buildImageSelectionOption(
+                        'assets/Animation - 1702530000704.json',
+                        'Camera',
+                        selectedImageFromCamera,
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
