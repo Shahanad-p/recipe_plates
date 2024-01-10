@@ -62,10 +62,10 @@ class MenuOpeningPage extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(18.5),
+              borderRadius: BorderRadius.circular(18),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(18.5),
+              borderRadius: BorderRadius.circular(18),
               child: Image.file(
                 image,
                 width: double.infinity,
@@ -74,7 +74,7 @@ class MenuOpeningPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20.20),
+          const SizedBox(height: 20),
           Text(
             nameText,
             style: const TextStyle(
@@ -83,7 +83,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             categoryText,
             style: const TextStyle(
@@ -93,7 +93,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             descriptionText,
             style: const TextStyle(
@@ -101,7 +101,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             ingredientsText,
             style: const TextStyle(
@@ -109,7 +109,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             '₹: $costText',
             style: const TextStyle(

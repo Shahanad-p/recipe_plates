@@ -95,7 +95,7 @@ class LoginPageWidget extends StatelessWidget {
                     const SizedBox(height: 30.10),
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.10),
+                        borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
                         border: Border.all(
                           color: const Color.fromRGBO(196, 135, 198, .3),
@@ -111,7 +111,7 @@ class LoginPageWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(10.20),
+                            padding: const EdgeInsets.all(10),
                             decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(

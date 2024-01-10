@@ -40,7 +40,7 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
             builder: (BuildContext context, List<recipeModel> favoriteList,
                 Widget? child) {
               return Padding(
-                padding: const EdgeInsets.all(20.10),
+                padding: const EdgeInsets.all(20),
                 child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

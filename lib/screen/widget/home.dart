@@ -79,7 +79,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             const SizedBox(height: 35),
             const Text(
               'What\'s in your kitchen..?',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.10),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
@@ -106,7 +106,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(20.20),
+                padding: const EdgeInsets.all(20),
                 child: ValueListenableBuilder(
                   valueListenable: recipeNotifier,
                   builder: (BuildContext ctx, List<recipeModel> recipeList,

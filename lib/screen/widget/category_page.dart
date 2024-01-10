@@ -137,7 +137,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
       child: Container(
         height: 55,
         width: cardWidth,
-        margin: const EdgeInsets.all(13.10),
+        margin: const EdgeInsets.all(13),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(18),
@@ -157,7 +157,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10.10),
+          padding: const EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

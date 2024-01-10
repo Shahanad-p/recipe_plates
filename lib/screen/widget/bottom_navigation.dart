@@ -40,7 +40,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(22.10),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.10),
+            borderRadius: BorderRadius.circular(20),
             child: BottomNavigationBar(
               unselectedFontSize: 0,
               type: BottomNavigationBarType.fixed,

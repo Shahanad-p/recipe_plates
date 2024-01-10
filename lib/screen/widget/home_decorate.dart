@@ -61,7 +61,7 @@ Widget buildGridList(
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(20.20),
+                borderRadius: BorderRadius.circular(20),
                 child: image != null
                     ? Image.file(
                         image,

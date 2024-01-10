@@ -68,9 +68,9 @@ class _AddPageWidgetState extends State<AddPageWidget> {
                       },
                       child: buildRecipeImage(),
                     ),
-                    const SizedBox(height: 20.10),
+                    const SizedBox(height: 20),
                     buildRecipeForm(),
-                    const SizedBox(height: 10.20),
+                    const SizedBox(height: 10),
                     buildAddButton(),
                   ],
                 ),
@@ -88,7 +88,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
 
   Widget buildPlaceholderImage() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15.0),
+      borderRadius: BorderRadius.circular(15),
       child: Image.asset(
         'assets/2947690.jpg',
         height: 150,
@@ -100,7 +100,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
 
   Widget buildDefaultRecipeImage() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15.0),
+      borderRadius: BorderRadius.circular(15),
       child: Image.file(
         _image!,
         height: 150,
@@ -169,7 +169,7 @@ class _AddPageWidgetState extends State<AddPageWidget> {
       String hintText, double height, String? Function(String?)? validator,
       {bool numericOnly = false}) {
     return Padding(
-      padding: const EdgeInsets.all(8.10),
+      padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: controller,
         keyboardType: numericOnly ? TextInputType.number : null,

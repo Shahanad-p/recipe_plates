@@ -47,7 +47,6 @@ Future<void> addToFavourite(recipeModel recipe) async {
   bool isAlreadyInFavorites = favoriteItems.contains(recipe);
   if (!isAlreadyInFavorites) {
     favoriteBox.add(recipe);
-    // favoriteItems.add(recipe);
     recipeNotifier.value = List.from(recipeNotifier.value);
     favoriteItemsNotifier.value = favoriteItems;
   }
