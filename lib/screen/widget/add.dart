@@ -1,10 +1,11 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/screen/widget/add_decorations.dart';
 
 class AddPageWidget extends StatefulWidget {
   const AddPageWidget({Key? key});
@@ -60,29 +61,30 @@ class _AddPageWidgetState extends State<AddPageWidget> {
                 child: Column(
                   children: [
                     GestureDetector(
-                        onTap: () async {
-                          await selectImage();
-                          setState(() {});
-                        },
-                        child: _image != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.file(
-                                  _image!,
-                                  height: 150,
-                                  width: 220,
-                                  fit: BoxFit.fill,
-                                ),
-                              )
-                            : ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.asset(
-                                  'assets/2947690.jpg',
-                                  height: 150,
-                                  width: 220,
-                                  fit: BoxFit.fill,
-                                ),
-                              )),
+                      onTap: () async {
+                        await selectImage();
+                        setState(() {});
+                      },
+                      child: _image != null
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.file(
+                                _image!,
+                                height: 150,
+                                width: 220,
+                                fit: BoxFit.fill,
+                              ),
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.asset(
+                                'assets/2947690.jpg',
+                                height: 150,
+                                width: 220,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                    ),
                     const SizedBox(height: 20),
                     Column(
                       children: [
@@ -206,37 +208,6 @@ class _AddPageWidgetState extends State<AddPageWidget> {
     );
   }
 
-  Widget buildTextFormField(TextEditingController controller, String label,
-      String hintText, double height, String? Function(String?)? validator,
-      {bool numericOnly = false}) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: numericOnly ? TextInputType.number : null,
-        inputFormatters:
-            numericOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-        maxLines: null,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(25),
-              top: Radius.circular(25),
-            ),
-          ),
-          labelText: label,
-          hintText: hintText,
-          contentPadding: EdgeInsets.only(
-            top: height / 2 - 16,
-            bottom: height / 2 - 16,
-            left: 25,
-          ),
-        ),
-        validator: validator,
-      ),
-    );
-  }
-
   Future selectImage() {
     return showDialog(
       context: context,
@@ -280,29 +251,6 @@ class _AddPageWidgetState extends State<AddPageWidget> {
           ),
         );
       },
-    );
-  }
-
-  GestureDetector buildImageSelectionOption(
-      String iconPath, String label, Function() onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: 5,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Lottie.asset(
-                iconPath,
-                height: 50,
-                width: 50,
-              ),
-              Text(label),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

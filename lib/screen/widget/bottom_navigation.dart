@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/screen/widget/add.dart';
 import 'package:recipe_plates/screen/widget/category_page.dart';
 import 'package:recipe_plates/screen/widget/favorite_page.dart';
@@ -105,4 +106,27 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       ),
     );
   }
+}
+
+GestureDetector buildImageSelectionOption(
+    String iconPath, String label, Function() onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Card(
+      elevation: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Lottie.asset(
+              iconPath,
+              height: 50,
+              width: 50,
+            ),
+            Text(label),
+          ],
+        ),
+      ),
+    ),
+  );
 }
