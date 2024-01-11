@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,7 +12,6 @@ final descriptionController = TextEditingController();
 final ingredientsController = TextEditingController();
 final costController = TextEditingController();
 String? image;
-
 String selectCategory = 'Beverages';
 final List<String> _categoryList = [
   'Beverages',
@@ -87,85 +85,96 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                 children: [
                   GestureDetector(
                     onTap: () async {
-                      editImage();
+                      _imagePicker
+                          .pickImage(
+                        source: ImageSource.gallery,
+                        imageQuality: 10,
+                      )
+                          .then((returnImage) {
+                        if (returnImage != null) {
+                          setState(() {
+                            image = returnImage.path;
+                          });
+                        }
+                      });
                       setState(() {});
                     },
-                    child: buildRecipeImage(),
+                    child: image != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(15.20),
+                            child: Image.file(
+                              image != null ? File(image!) : File(''),
+                              height: 150,
+                              width: 220,
+                              fit: BoxFit.fill,
+                            ),
+                          )
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.asset(
+                              'assets/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
+                              height: 150,
+                              width: 220,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
                   ),
                   const SizedBox(height: 20),
-                  buildRecipeForm(),
+                  Column(
+                    children: [
+                      buildTextFormField(
+                        nameController,
+                        'Name',
+                        'Edit recipe name',
+                        80.10,
+                      ),
+                      const SizedBox(height: 10),
+                      buildCategoryDropdown(),
+                      const SizedBox(height: 10),
+                      buildTextFormField(
+                        descriptionController,
+                        'Description',
+                        'Edit recipe description',
+                        80.10,
+                      ),
+                      const SizedBox(height: 10),
+                      buildTextFormField(
+                        ingredientsController,
+                        'Ingredients',
+                        'Edit recipe ingredients',
+                        80.10,
+                      ),
+                      const SizedBox(height: 10),
+                      buildTextFormField(
+                        costController,
+                        'Total cost',
+                        'Edit recipe cost',
+                        80.10,
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 10),
-                  buildUpdateButton(),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.amber),
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.only(left: 35, right: 35),
+                      ),
+                      textStyle: MaterialStateProperty.all(
+                        const TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                    onPressed: () {
+                      recipeUpdate(context);
+                    },
+                    child: const Text('Update Recipes'),
+                  ),
                 ],
               ),
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget buildRecipeImage() {
-    return image != null ? buildDefaultRecipeImage() : buildPlaceholderImage();
-  }
-
-  Widget buildPlaceholderImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15.0),
-      child: Image.asset(
-        'assets/restaurant-food-frame-with-rustic-wood-background-free-93.jpg',
-        height: 150,
-        width: 220,
-        fit: BoxFit.fill,
-      ),
-    );
-  }
-
-  Widget buildDefaultRecipeImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15.20),
-      child: Image.file(
-        image != null ? File(image!) : File(''),
-        height: 150,
-        width: 220,
-        fit: BoxFit.fill,
-      ),
-    );
-  }
-
-  Widget buildRecipeForm() {
-    return Column(
-      children: [
-        buildTextFormField(
-          nameController,
-          'Name',
-          'Edit recipe name',
-          80.10,
-        ),
-        const SizedBox(height: 10),
-        buildCategoryDropdown(),
-        const SizedBox(height: 10),
-        buildTextFormField(
-          descriptionController,
-          'Description',
-          'Edit recipe description',
-          80.10,
-        ),
-        const SizedBox(height: 10),
-        buildTextFormField(
-          ingredientsController,
-          'Ingredients',
-          'Edit recipe ingredients',
-          80.10,
-        ),
-        const SizedBox(height: 10),
-        buildTextFormField(
-          costController,
-          'Total cost',
-          'Edit recipe cost',
-          80.10,
-        ),
-      ],
     );
   }
 
@@ -197,39 +206,6 @@ class _EditPageWidgetState extends State<EditPageWidget> {
         ),
       ),
     );
-  }
-
-  Widget buildUpdateButton() {
-    return ElevatedButton(
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.amber),
-        padding: MaterialStateProperty.all(
-          const EdgeInsets.only(left: 35, right: 35),
-        ),
-        textStyle: MaterialStateProperty.all(
-          const TextStyle(fontSize: 18, color: Colors.white),
-        ),
-      ),
-      onPressed: () {
-        recipeUpdate(context);
-      },
-      child: const Text('Update Recipes'),
-    );
-  }
-
-  void editImage() {
-    _imagePicker
-        .pickImage(
-      source: ImageSource.gallery,
-      imageQuality: 10,
-    )
-        .then((returnImage) {
-      if (returnImage != null) {
-        setState(() {
-          image = returnImage.path;
-        });
-      }
-    });
   }
 
   Widget buildCategoryDropdown() {
