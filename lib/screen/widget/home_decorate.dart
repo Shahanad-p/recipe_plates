@@ -97,14 +97,14 @@ Widget buildGridList(
                 top: 2.0,
                 left: 2.0,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.5),
+                  padding: const EdgeInsets.all(8.0),
                   child: editIcon!,
                 ),
               ),
               Positioned(
                 bottom: 1.0,
                 child: Container(
-                  padding: const EdgeInsets.all(8.5),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

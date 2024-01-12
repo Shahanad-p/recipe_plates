@@ -21,7 +21,7 @@ Future<void> resetRecipe(BuildContext context) async {
               ),
               const SizedBox(height: 10.10),
               Lottie.asset('assets/Animation - 1703841326068.json',
-                  height: 50.10, width: 50.10)
+                  height: 50.10, width: 50)
             ],
           ),
         ),

@@ -53,7 +53,7 @@ class MenuOpeningPage extends StatelessWidget {
     String costText,
   ) {
     return Padding(
-      padding: const EdgeInsets.all(15.20),
+      padding: const EdgeInsets.all(15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -74,7 +74,7 @@ class MenuOpeningPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20.10),
+          const SizedBox(height: 20),
           Text(
             nameText,
             style: const TextStyle(
@@ -83,7 +83,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             categoryText,
             style: const TextStyle(
@@ -93,7 +93,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             descriptionText,
             style: const TextStyle(
@@ -101,7 +101,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             ingredientsText,
             style: const TextStyle(
@@ -109,7 +109,7 @@ class MenuOpeningPage extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const SizedBox(height: 28.10),
+          const SizedBox(height: 28),
           Text(
             '₹: $costText',
             style: const TextStyle(

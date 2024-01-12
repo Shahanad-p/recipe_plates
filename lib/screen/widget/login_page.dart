@@ -78,7 +78,7 @@ class LoginPageWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40.10),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -140,7 +140,7 @@ class LoginPageWidget extends StatelessWidget {
                       },
                       color: const Color.fromRGBO(49, 39, 79, 1),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.10),
+                        borderRadius: BorderRadius.circular(50),
                       ),
                       height: 50,
                       child: const Center(

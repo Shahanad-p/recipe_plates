@@ -101,7 +101,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                     },
                     child: image != null
                         ? ClipRRect(
-                            borderRadius: BorderRadius.circular(15.20),
+                            borderRadius: BorderRadius.circular(15),
                             child: Image.file(
                               image != null ? File(image!) : File(''),
                               height: 150,
@@ -153,7 +153,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10.10),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.amber),

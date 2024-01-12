@@ -39,7 +39,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       child: Scaffold(
         body: pages[currentIndexValue],
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(22.10),
+          padding: const EdgeInsets.all(22),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: BottomNavigationBar(
@@ -115,7 +115,7 @@ GestureDetector buildImageSelectionOption(
     child: Card(
       elevation: 5,
       child: Padding(
-        padding: const EdgeInsets.all(8.10),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Lottie.asset(
