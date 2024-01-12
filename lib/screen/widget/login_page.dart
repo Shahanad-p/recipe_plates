@@ -78,7 +78,7 @@ class LoginPageWidget extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 40.10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

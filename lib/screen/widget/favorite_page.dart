@@ -118,7 +118,7 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
             children: [
               if (image != null)
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.10),
                   child: Image.file(
                     File(image),
                     height: 160,

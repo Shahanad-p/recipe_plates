@@ -52,7 +52,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             content: Text('Recipe deleted successfully.!'),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.red,
-            duration: Duration(seconds: 2),
+            duration: Duration(seconds: 1),
           ),
         );
       }

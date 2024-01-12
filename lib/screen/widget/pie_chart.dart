@@ -48,7 +48,8 @@ class PieChartPageWidget extends StatelessWidget {
                 const SizedBox(height: 25),
                 const Text(
                   'Total Cost',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 23.10),
                 ),
                 const SizedBox(height: 30),
                 ValueListenableBuilder(

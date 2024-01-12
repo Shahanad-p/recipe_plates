@@ -153,7 +153,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 10.10),
                   ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.amber),
