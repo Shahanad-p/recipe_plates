@@ -5,7 +5,6 @@ import 'package:recipe_plates/services/service.dart';
 import 'package:recipe_plates/model/model.dart';
 import 'package:recipe_plates/view/widget/menu.dart';
 
-
 class FastfoodPage extends StatelessWidget {
   const FastfoodPage({Key? key});
 

@@ -8,14 +8,9 @@ import 'package:recipe_plates/view/category%20screen/salads.dart';
 import 'package:recipe_plates/view/category%20screen/snacks.dart';
 import 'package:recipe_plates/view/category%20screen/soup.dart';
 
-class CategoryPageWidget extends StatefulWidget {
+class CategoryPageWidget extends StatelessWidget {
   const CategoryPageWidget({super.key});
 
-  @override
-  State<CategoryPageWidget> createState() => _CategoryPageWidgetState();
-}
-
-class _CategoryPageWidgetState extends State<CategoryPageWidget> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -41,6 +36,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const BeveragesPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Beverages',
                     imagePath:
                         'assets/vecteezy_ramadan-kareem-iftar-icon_22506749.png',
@@ -52,6 +48,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const FastfoodPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Fastfood',
                     imagePath:
                         'assets/—Pngtree—creative cartoon burger vector material_3177179.png',
@@ -63,6 +60,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const SaladsPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Salads',
                     imagePath: 'assets/48049.jpg',
                   ),
@@ -73,6 +71,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const DessertsPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Desserts',
                     imagePath: 'assets/xj5t_6v6e_220330.jpg',
                   ),
@@ -83,6 +82,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const HealthyPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Healthy',
                     imagePath: 'assets/3631249.jpg',
                   ),
@@ -93,6 +93,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const GrilledPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Grilled',
                     imagePath: 'assets/13011.jpg',
                   ),
@@ -103,6 +104,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const SnacksPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Snacks',
                     imagePath: 'assets/3730825.jpg',
                   ),
@@ -113,6 +115,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
                         builder: (context) => const SoupPage()));
                   },
                   child: buildCategoriesBox(
+                    context: context,
                     category: 'Soup',
                     imagePath: 'assets/6339776.jpg',
                   ),
@@ -126,7 +129,7 @@ class _CategoryPageWidgetState extends State<CategoryPageWidget> {
   }
 
   Widget buildCategoriesBox(
-      {required String category, required String imagePath}) {
+      {required context, required String category, required String imagePath}) {
     double cardWidth = MediaQuery.of(context).size.width * 0.1;
 
     return Padding(
