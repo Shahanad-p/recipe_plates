@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-class BeveragesPage extends StatefulWidget {
+class BeveragesPage extends StatelessWidget {
   const BeveragesPage({super.key});
 
-  @override
-  State<BeveragesPage> createState() => _BeveragesPageState();
-}
-
-class _BeveragesPageState extends State<BeveragesPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

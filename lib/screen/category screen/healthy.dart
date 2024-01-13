@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-class HealthyPage extends StatefulWidget {
+class HealthyPage extends StatelessWidget {
   const HealthyPage({super.key});
 
-  @override
-  State<HealthyPage> createState() => _HealthyPageState();
-}
-
-class _HealthyPageState extends State<HealthyPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +28,6 @@ class _HealthyPageState extends State<HealthyPage> {
         body: ValueListenableBuilder<List<recipeModel>>(
           valueListenable: recipeNotifier,
           builder: (context, recipeList, child) {
-            // Filter recipes based on the category
             final filteredHealthyList = recipeList
                 .where((recipe) => recipe.category.toLowerCase() == 'healthy')
                 .toList();

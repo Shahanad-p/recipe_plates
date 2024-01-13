@@ -4,14 +4,9 @@ import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
 import 'package:recipe_plates/screen/widget/menu.dart';
 
-class SoupPage extends StatefulWidget {
+class SoupPage extends StatelessWidget {
   const SoupPage({super.key});
 
-  @override
-  State<SoupPage> createState() => _SoupPageState();
-}
-
-class _SoupPageState extends State<SoupPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
