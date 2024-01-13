@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/delete_snakbar.dart';
-import 'package:recipe_plates/screen/widget/edit_page.dart';
-import 'package:recipe_plates/screen/widget/home_decorate.dart';
-import 'package:recipe_plates/screen/widget/sidebar_drawer.dart';
+import 'package:recipe_plates/view/widget/delete_snakbar.dart';
+import 'package:recipe_plates/view/widget/edit_page.dart';
+import 'package:recipe_plates/view/widget/home_decorate.dart';
+import 'package:recipe_plates/view/widget/sidebar_drawer.dart';
 
 class HomePageWidget extends StatefulWidget {
   final String userName;

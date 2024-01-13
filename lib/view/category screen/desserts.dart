@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/menu.dart';
+import 'package:recipe_plates/view/widget/menu.dart';
 
-class HealthyPage extends StatelessWidget {
-  const HealthyPage({super.key});
+class DessertsPage extends StatelessWidget {
+  const DessertsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HealthyPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Healthy',
+            'Desserts',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -28,28 +28,31 @@ class HealthyPage extends StatelessWidget {
         body: ValueListenableBuilder<List<recipeModel>>(
           valueListenable: recipeNotifier,
           builder: (context, recipeList, child) {
-            final filteredHealthyList = recipeList
-                .where((recipe) => recipe.category.toLowerCase() == 'healthy')
+            final filteredDessertsList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'desserts')
                 .toList();
 
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: filteredHealthyList.length,
-              itemBuilder: (context, index) {
-                final recipeData = filteredHealthyList[index];
-                final recipeImage =
-                    recipeData.image != null ? File(recipeData.image!) : null;
+            return Padding(
+              padding: const EdgeInsets.all(15),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: filteredDessertsList.length,
+                itemBuilder: (context, index) {
+                  final recipeData = filteredDessertsList[index];
+                  final recipeImage =
+                      recipeData.image != null ? File(recipeData.image!) : null;
 
-                return buildGridList(
-                  context,
-                  image: recipeImage,
-                  text: recipeData.name,
-                  category: recipeData.category,
-                  description: recipeData.description,
-                  ingredients: recipeData.ingredients,
-                  cost: recipeData.cost,
-                );
-              },
+                  return buildGridList(
+                    context,
+                    image: recipeImage,
+                    text: recipeData.name,
+                    category: recipeData.category,
+                    description: recipeData.description,
+                    ingredients: recipeData.ingredients,
+                    cost: recipeData.cost,
+                  );
+                },
+              ),
             );
           },
         ),
@@ -60,11 +63,14 @@ class HealthyPage extends StatelessWidget {
   Widget buildGridList(
     BuildContext context, {
     File? image,
+    IconData? icon,
     String? text,
     String? category,
     String? description,
     String? ingredients,
     String? cost,
+    IconButton? deleteIcon,
+    IconButton? editIcon,
   }) {
     double cardWidth = MediaQuery.of(context).size.width *
         (MediaQuery.of(context).orientation == Orientation.portrait
@@ -127,7 +133,6 @@ class HealthyPage extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           text!,

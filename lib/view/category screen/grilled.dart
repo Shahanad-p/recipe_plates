@@ -2,10 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/menu.dart';
+import 'package:recipe_plates/view/widget/menu.dart';
 
-class DessertsPage extends StatelessWidget {
-  const DessertsPage({super.key});
+
+class GrilledPage extends StatelessWidget {
+  const GrilledPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class DessertsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Desserts',
+            'Grilled',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -28,31 +29,28 @@ class DessertsPage extends StatelessWidget {
         body: ValueListenableBuilder<List<recipeModel>>(
           valueListenable: recipeNotifier,
           builder: (context, recipeList, child) {
-            final filteredDessertsList = recipeList
-                .where((recipe) => recipe.category.toLowerCase() == 'desserts')
+            final filteredGrilledList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'grilled')
                 .toList();
 
-            return Padding(
-              padding: const EdgeInsets.all(15),
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: filteredDessertsList.length,
-                itemBuilder: (context, index) {
-                  final recipeData = filteredDessertsList[index];
-                  final recipeImage =
-                      recipeData.image != null ? File(recipeData.image!) : null;
+            return ListView.builder(
+              shrinkWrap: true,
+              itemCount: filteredGrilledList.length,
+              itemBuilder: (context, index) {
+                final recipeData = filteredGrilledList[index];
+                final recipeImage =
+                    recipeData.image != null ? File(recipeData.image!) : null;
 
-                  return buildGridList(
-                    context,
-                    image: recipeImage,
-                    text: recipeData.name,
-                    category: recipeData.category,
-                    description: recipeData.description,
-                    ingredients: recipeData.ingredients,
-                    cost: recipeData.cost,
-                  );
-                },
-              ),
+                return buildGridList(
+                  context,
+                  image: recipeImage,
+                  text: recipeData.name,
+                  category: recipeData.category,
+                  description: recipeData.description,
+                  ingredients: recipeData.ingredients,
+                  cost: recipeData.cost,
+                );
+              },
             );
           },
         ),
@@ -63,14 +61,11 @@ class DessertsPage extends StatelessWidget {
   Widget buildGridList(
     BuildContext context, {
     File? image,
-    IconData? icon,
     String? text,
     String? category,
     String? description,
     String? ingredients,
     String? cost,
-    IconButton? deleteIcon,
-    IconButton? editIcon,
   }) {
     double cardWidth = MediaQuery.of(context).size.width *
         (MediaQuery.of(context).orientation == Orientation.portrait
@@ -113,7 +108,7 @@ class DessertsPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2.10),
             child: Stack(
               children: [
                 ClipRRect(
@@ -133,6 +128,7 @@ class DessertsPage extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           text!,

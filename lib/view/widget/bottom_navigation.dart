@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/screen/widget/add.dart';
-import 'package:recipe_plates/screen/widget/category_page.dart';
-import 'package:recipe_plates/screen/widget/favorite_page.dart';
-import 'package:recipe_plates/screen/widget/home.dart';
-import 'package:recipe_plates/screen/widget/pie_chart.dart';
+import 'package:recipe_plates/view/widget/add.dart';
+import 'package:recipe_plates/view/widget/category_page.dart';
+import 'package:recipe_plates/view/widget/favorite_page.dart';
+import 'package:recipe_plates/view/widget/home.dart';
+import 'package:recipe_plates/view/widget/pie_chart.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/add_decorations.dart';
+import 'package:recipe_plates/view/widget/add_decorations.dart';
 
 class AddPageWidget extends StatefulWidget {
   const AddPageWidget({Key? key}) : super(key: key);
@@ -198,8 +198,8 @@ class _AddPageWidgetState extends State<AddPageWidget> {
       context: context,
       builder: (BuildContext context) {
         return Dialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             height: MediaQuery.of(context).size.height * 0.25,

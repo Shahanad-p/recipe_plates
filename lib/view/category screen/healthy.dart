@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/menu.dart';
+import 'package:recipe_plates/view/widget/menu.dart';
 
-class SnacksPage extends StatelessWidget {
-  const SnacksPage({super.key});
+class HealthyPage extends StatelessWidget {
+  const HealthyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class SnacksPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Snacks',
+            'Healthy',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -28,15 +28,15 @@ class SnacksPage extends StatelessWidget {
         body: ValueListenableBuilder<List<recipeModel>>(
           valueListenable: recipeNotifier,
           builder: (context, recipeList, child) {
-            final filteredSnacksList = recipeList
-                .where((recipe) => recipe.category.toLowerCase() == 'snacks')
+            final filteredHealthyList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'healthy')
                 .toList();
 
             return ListView.builder(
               shrinkWrap: true,
-              itemCount: filteredSnacksList.length,
+              itemCount: filteredHealthyList.length,
               itemBuilder: (context, index) {
-                final recipeData = filteredSnacksList[index];
+                final recipeData = filteredHealthyList[index];
                 final recipeImage =
                     recipeData.image != null ? File(recipeData.image!) : null;
 

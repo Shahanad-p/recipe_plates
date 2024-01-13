@@ -1,11 +1,13 @@
+// ignore_for_file: use_key_in_widget_constructors
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/menu.dart';
+import 'package:recipe_plates/view/widget/menu.dart';
 
-class SaladsPage extends StatelessWidget {
-  const SaladsPage({super.key});
+
+class FastfoodPage extends StatelessWidget {
+  const FastfoodPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class SaladsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Salads',
+            'Fastfood',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -25,31 +27,37 @@ class SaladsPage extends StatelessWidget {
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
         ),
-        body: ValueListenableBuilder<List<recipeModel>>(
+        body: ValueListenableBuilder(
           valueListenable: recipeNotifier,
-          builder: (context, recipeList, child) {
-            final filteredSaladsList = recipeList
-                .where((recipe) => recipe.category.toLowerCase() == 'salads')
+          builder:
+              (BuildContext ctx, List<recipeModel> recipeList, Widget? child) {
+            final filteredFastfoodList = recipeList
+                .where((food) => food.category.toLowerCase() == 'fastfood')
                 .toList();
 
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: filteredSaladsList.length,
-              itemBuilder: (context, index) {
-                final recipeData = filteredSaladsList[index];
-                final recipeImage =
-                    recipeData.image != null ? File(recipeData.image!) : null;
+            return Padding(
+              padding: const EdgeInsets.all(15.10),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: filteredFastfoodList.length,
+                itemBuilder: (context, index) {
+                  final recipeData = filteredFastfoodList[index];
+                  File? recipeImage;
+                  if (recipeData.image != null) {
+                    recipeImage = File(recipeData.image!);
+                  }
 
-                return buildGridList(
-                  context,
-                  image: recipeImage,
-                  text: recipeData.name,
-                  category: recipeData.category,
-                  description: recipeData.description,
-                  ingredients: recipeData.ingredients,
-                  cost: recipeData.cost,
-                );
-              },
+                  return buildGridList(
+                    context,
+                    image: recipeImage,
+                    text: recipeData.name,
+                    category: recipeData.category,
+                    description: recipeData.description,
+                    ingredients: recipeData.ingredients,
+                    cost: recipeData.cost,
+                  );
+                },
+              ),
             );
           },
         ),
@@ -71,7 +79,6 @@ class SaladsPage extends StatelessWidget {
             ? 0.4
             : 0.2);
     double cardHeight = 120.0;
-
     return Padding(
       padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.02),
       child: Container(

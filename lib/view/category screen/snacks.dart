@@ -2,10 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/menu.dart';
+import 'package:recipe_plates/view/widget/menu.dart';
 
-class GrilledPage extends StatelessWidget {
-  const GrilledPage({super.key});
+
+class SnacksPage extends StatelessWidget {
+  const SnacksPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class GrilledPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Grilled',
+            'Snacks',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -28,15 +29,15 @@ class GrilledPage extends StatelessWidget {
         body: ValueListenableBuilder<List<recipeModel>>(
           valueListenable: recipeNotifier,
           builder: (context, recipeList, child) {
-            final filteredGrilledList = recipeList
-                .where((recipe) => recipe.category.toLowerCase() == 'grilled')
+            final filteredSnacksList = recipeList
+                .where((recipe) => recipe.category.toLowerCase() == 'snacks')
                 .toList();
 
             return ListView.builder(
               shrinkWrap: true,
-              itemCount: filteredGrilledList.length,
+              itemCount: filteredSnacksList.length,
               itemBuilder: (context, index) {
-                final recipeData = filteredGrilledList[index];
+                final recipeData = filteredSnacksList[index];
                 final recipeImage =
                     recipeData.image != null ? File(recipeData.image!) : null;
 
@@ -107,7 +108,7 @@ class GrilledPage extends StatelessWidget {
             ));
           },
           child: Padding(
-            padding: const EdgeInsets.all(2.10),
+            padding: const EdgeInsets.all(2),
             child: Stack(
               children: [
                 ClipRRect(

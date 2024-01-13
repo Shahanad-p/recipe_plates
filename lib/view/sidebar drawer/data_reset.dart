@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_plates/functions/functions/functions.dart';
 import 'package:recipe_plates/functions/model/model.dart';
-import 'package:recipe_plates/screen/widget/splash_screen.dart';
+import 'package:recipe_plates/view/widget/splash_screen.dart';
 
 Future<void> resetRecipe(BuildContext context) async {
   bool confirmResetDatas = await showDialog(
