@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/model/model.dart';
 import 'package:recipe_plates/view/widget/splash_screen.dart';
 
 const save_key_name = 'UserLoggedIn';

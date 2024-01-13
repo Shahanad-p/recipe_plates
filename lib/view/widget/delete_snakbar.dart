@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/services/service.dart';
 
 Future<bool?> showDeleteConfirmationDialog(
     BuildContext context, int index) async {

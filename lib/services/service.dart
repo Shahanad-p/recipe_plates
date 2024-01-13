@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:recipe_plates/functions/model/model.dart';
+import 'package:recipe_plates/model/model.dart';
 
 ValueNotifier<List<recipeModel>> recipeNotifier = ValueNotifier([]);
 List<recipeModel> favoriteItems = [];

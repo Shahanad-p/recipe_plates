@@ -1,9 +1,9 @@
 // ignore_for_file: must_be_immutable, use_key_in_widget_constructors, non_constant_identifier_names
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/functions/functions/functions.dart';
+import 'package:recipe_plates/services/service.dart';
+
 
 class PieChartPageWidget extends StatelessWidget {
   PieChartPageWidget({Key? key});
