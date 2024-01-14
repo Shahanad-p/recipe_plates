@@ -4,7 +4,6 @@ import 'package:recipe_plates/functions/functions.dart';
 import 'package:recipe_plates/model/model.dart';
 import 'package:recipe_plates/view/widget/menu.dart';
 
-
 class SnacksPage extends StatelessWidget {
   const SnacksPage({super.key});
 
@@ -79,7 +78,7 @@ class SnacksPage extends StatelessWidget {
         width: cardWidth,
         height: cardHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.10),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 2, 36, 17),
@@ -112,7 +111,7 @@ class SnacksPage extends StatelessWidget {
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.10),
                   child: image != null
                       ? Image.file(
                           image,
