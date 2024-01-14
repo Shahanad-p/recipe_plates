@@ -30,7 +30,7 @@ Widget buildGridList(
       width: cardWidth,
       height: cardHeight,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.08),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 229, 218, 218),
@@ -62,7 +62,7 @@ Widget buildGridList(
           child: Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(20.08),
                 child: image != null
                     ? Image.file(
                         image,

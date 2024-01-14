@@ -77,13 +77,13 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
     required recipeModel recipe,
   }) {
     return Padding(
-      padding: const EdgeInsets.all(10.10),
+      padding: const EdgeInsets.all(10.08),
       child: Container(
         height: 160,
         width: 150,
         decoration: BoxDecoration(
           color: Colors.white10,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.08),
           boxShadow: const [
             BoxShadow(
               color: Color.fromARGB(255, 184, 177, 177),
@@ -118,7 +118,7 @@ class _FavouritePageWidgetState extends State<FavouritePageWidget> {
             children: [
               if (image != null)
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.08),
                   child: Image.file(
                     File(image),
                     height: 160,

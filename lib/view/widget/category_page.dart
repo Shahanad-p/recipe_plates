@@ -143,7 +143,7 @@ class CategoryPageWidget extends StatelessWidget {
         margin: const EdgeInsets.all(13),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(18.10),
           border: Border.all(color: const Color.fromARGB(255, 222, 215, 215)),
           boxShadow: const [
             BoxShadow(
@@ -160,7 +160,7 @@ class CategoryPageWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10.10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

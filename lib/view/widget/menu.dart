@@ -53,7 +53,7 @@ class MenuOpeningPage extends StatelessWidget {
     String costText,
   ) {
     return Padding(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15.10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -62,7 +62,7 @@ class MenuOpeningPage extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(18.10),
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),

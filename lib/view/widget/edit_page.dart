@@ -79,7 +79,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20.08, vertical: 20.08),
             child: Center(
               child: Column(
                 children: [
@@ -101,7 +101,7 @@ class _EditPageWidgetState extends State<EditPageWidget> {
                     },
                     child: image != null
                         ? ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(15.08),
                             child: Image.file(
                               image != null ? File(image!) : File(''),
                               height: 150,
