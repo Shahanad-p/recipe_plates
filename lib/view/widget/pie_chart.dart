@@ -2,7 +2,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/services/service.dart';
+import 'package:recipe_plates/functions/functions.dart';
 
 
 class PieChartPageWidget extends StatelessWidget {

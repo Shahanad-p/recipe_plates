@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:lottie/lottie.dart';
-import 'package:recipe_plates/services/service.dart';
+import 'package:recipe_plates/functions/functions.dart';
 import 'package:recipe_plates/model/model.dart';
 import 'package:recipe_plates/view/widget/splash_screen.dart';
 
